@@ -63,7 +63,11 @@
   .eo40-link:hover { text-decoration: underline; }
   .eo40-venue-link { color: #555; text-decoration: none; font-size: 0.8rem; }
   .eo40-venue-link:hover { color: #1a3a5c; text-decoration: underline; }
-  .eo40-links-cell { display: flex; gap: 8px; align-items: center; }
+  .eo40-links-cell { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .eo40-link-yt { color: #c62828; border-color: #c62828; }
+  .eo40-link-yt:hover { background: #c62828; color: #fff; }
+  .eo40-card-link-yt { color: #c62828; border-color: #c62828; }
+  .eo40-card-link-yt:hover { background: #c62828; color: #fff; }
 
   /* === Mobile Cards === */
   .eo40-cards { display: none; }
@@ -136,7 +140,7 @@
       <span class="eo40-legend-item"><span class="eo40-legend-dot" style="background:#f9a825;"></span> Tie</span>
       <span class="eo40-legend-item"><span class="eo40-legend-dot" style="background:#757575;"></span> No Result</span>
     </div>
-    <p>Source: englandseniors.play-cricket.com & triplecrown.play-cricket.com<br>Click scorecard links for full match details. Venue links open Google Maps.</p>
+    <p>Source: englandseniors.play-cricket.com & triplecrown.play-cricket.com<br>Click scorecard links for full match details. Venue links open Google Maps.<br>YouTube links open live stream recordings and match highlights.</p>
   </div>
 </div>
 
@@ -294,6 +298,8 @@
         var linksHtml = '<div class="eo40-links-cell">';
         if (m.ScorecardURL) linksHtml += '<a href="' + m.ScorecardURL + '" target="_blank" class="eo40-link">Scorecard</a>';
         if (m.VenueMapURL) linksHtml += '<a href="' + m.VenueMapURL + '" target="_blank" class="eo40-link" style="color:#546e7a">Map</a>';
+        if (m.YouTubeLive) linksHtml += '<a href="' + m.YouTubeLive + '" target="_blank" class="eo40-link eo40-link-yt">&#9654; Live</a>';
+        if (m.YouTubeHighlights) linksHtml += '<a href="' + m.YouTubeHighlights + '" target="_blank" class="eo40-link eo40-link-yt">&#9654; Highlights</a>';
         linksHtml += '</div>';
 
         html += '<tr class="' + rc + '">';
@@ -343,6 +349,8 @@
         html += '<div class="eo40-card-links">';
         if (m2.ScorecardURL) html += '<a href="' + m2.ScorecardURL + '" target="_blank" class="eo40-card-link">Scorecard</a>';
         if (m2.VenueMapURL) html += '<a href="' + m2.VenueMapURL + '" target="_blank" class="eo40-card-link">Map</a>';
+        if (m2.YouTubeLive) html += '<a href="' + m2.YouTubeLive + '" target="_blank" class="eo40-card-link eo40-card-link-yt">&#9654; Live</a>';
+        if (m2.YouTubeHighlights) html += '<a href="' + m2.YouTubeHighlights + '" target="_blank" class="eo40-card-link eo40-card-link-yt">&#9654; Highlights</a>';
         html += '</div></div></div>';
       }
       html += '</div>';
