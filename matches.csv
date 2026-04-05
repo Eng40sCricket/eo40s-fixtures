@@ -1,32 +1,44 @@
-Season,Date,Tournament,HomeTeam,AwayTeam,Venue,Result,Details,ScorecardURL
-2025,08 Sep 2025,ODI,England Over 40s,India Over 40s,"Datchet CC, Slough",Win,England won by 114 runs,https://englandseniors.play-cricket.com/website/results/7072108
-2025,04 Sep 2025,ODI,England Over 40s,India Over 40s,Hammerwich CC,No Result,Cancelled — Rain,
-2025,31 Jul 2025,Triple Crown,England Over 40s,Scotland Over 40s,Stirling University,Win,England won by 140 runs,https://triplecrown.play-cricket.com/website/results/7072114
-2025,30 Jul 2025,Triple Crown,England Over 40s,Ireland Over 40s,Stirling University,Win,England won by 8 wickets,https://triplecrown.play-cricket.com/website/results/7072113
-2025,29 Jul 2025,Triple Crown,England Over 40s,Wales Over 40s,Stirling University,Win,England won by 8 wickets,https://triplecrown.play-cricket.com/website/results/7072112
-2025,10 Jul 2025,Friendly,England Over 40s,Berkshire CCC,"Datchet CC, Slough",Win,England won by 8 wickets,https://englandseniors.play-cricket.com/website/results/7072107
-2025,03 Jul 2025,ODI,England Over 40s,Wales Over 40s,"Hammerwich CC, Burntwood",Win,England won by 262 runs,https://englandseniors.play-cricket.com/website/results/7072106
-2025,10 Jun 2025,Friendly,England Over 40s,Veterans Cricket Ireland XI,High Wycombe CC,Win,England won by 5 wickets,https://englandseniors.play-cricket.com/website/results/7072105
-2025,29 May 2025,ODI,Wales Over 40s,England Over 40s,"St Fagans, Cardiff",Win,England won by 8 wickets,https://englandseniors.play-cricket.com/website/results/7072104
-2024,27 Aug 2024,ODI,Wales Over 40s,England Over 40s,Colwyn Bay CC,Loss,Wales won by 2 wickets,https://englandseniors.play-cricket.com/website/results/6580416
-2024,22 Aug 2024,ODI,Ireland Over 40s,England Over 40s,"Merrion CC, Dublin",Loss,Ireland won by 5 wickets,https://englandseniors.play-cricket.com/website/results/6580415
-2024,11 Aug 2024,Friendly,England "A" Over 40s,Worcestershire Over 40s,Droitwich CC,Loss,Worcestershire won by 5 wickets,https://englandseniors.play-cricket.com/website/results/6580414
-2024,05 Aug 2024,Friendly,England "A" Over 40s,MCC,Darlington CC,Tie,Match Tied,https://englandseniors.play-cricket.com/website/results/6580413
-2024,02 Aug 2024,Triple Crown,England Over 40s,Wales Over 40s,Newport CC,Win,England won by 10 wickets,https://englandseniors.play-cricket.com/website/results/6580412
-2024,01 Aug 2024,Triple Crown,England Over 40s,Ireland Over 40s,Newport CC,Loss,Ireland won by 41 runs,https://englandseniors.play-cricket.com/website/results/6580411
-2024,31 Jul 2024,Triple Crown,England Over 40s,Scotland Over 40s,Newport CC,Win,England won by 10 wickets,https://englandseniors.play-cricket.com/website/results/6580410
-2024,11 Jul 2024,ODI,England Over 40s,Wales Over 40s,Arundel Castle CC,Win,England won by 108 runs,https://englandseniors.play-cricket.com/website/results/6580409
-2024,25 Jun 2024,T20i (Game 2),England Over 40s,Wales Over 40s,Hammerwich CC,Loss,Wales won by 5 wickets,https://englandseniors.play-cricket.com/website/results/6580408
-2024,25 Jun 2024,T20i (Game 1),England Over 40s,Wales Over 40s,Hammerwich CC,Win,England won by 121 runs,https://englandseniors.play-cricket.com/website/results/6580407
-2024,04 Jun 2024,Friendly,England "A" Over 40s,Forty Club,"Tickhill CC, Doncaster",Win,England A won by 111 runs,https://englandseniors.play-cricket.com/website/results/6580406
-2024,29 Feb 2024,World Cup 3/4,England Over 40s,Australia Over 40s,"Claremont CC, Cape Town",Loss,Australia won by 5 wickets,https://englandseniors.play-cricket.com/website/results/6088911
-2024,27 Feb 2024,World Cup SF,England Over 40s,South Africa Over 40s,"Green Point CC, Cape Town",Loss,South Africa won by 17 runs,https://englandseniors.play-cricket.com/website/results/6088910
-2024,25 Feb 2024,World Cup,Canada Over 40s,England Over 40s,"Green Point CC, Cape Town",Win,England won by 9 wickets,https://englandseniors.play-cricket.com/website/results/6088909
-2024,23 Feb 2024,World Cup,Australia Over 40s,England Over 40s,"Rondebosch CC, Cape Town",Win,England won by 2 runs,https://englandseniors.play-cricket.com/website/results/6088908
-2024,22 Feb 2024,World Cup,England Over 40s,Namibia Over 40s,"Milnerton HS, Cape Town",Win,England won by 8 wickets,https://englandseniors.play-cricket.com/website/results/6088906
-2024,20 Feb 2024,World Cup,England Over 40s,USA Over 40s,"Reddam House School, Cape Town",Win,England won by 97 runs,https://englandseniors.play-cricket.com/website/results/6088905
-2024,19 Feb 2024,World Cup,England Over 40s,Zimbabwe Over 40s,"WPCC, Cape Town",Win,England won by 5 wickets,https://englandseniors.play-cricket.com/website/results/6088903
-2023,08 Aug 2023,Friendly,England Over 40s,MCC,Darlington CC,Loss,MCC won by 10 wickets,https://englandseniors.play-cricket.com/website/results/5979498
-2023,14 Jun 2023,ODI,Wales Over 40s,England Over 40s,"Panteg CC, Pontypool",Win,England won by 7 wickets,https://englandseniors.play-cricket.com/website/results/5979497
-2023,31 May 2023,ODI,England Over 40s,Ireland Over 40s,Uxbridge CC,Loss,Ireland won by 53 runs,https://englandseniors.play-cricket.com/website/results/5979496
-2023,23 May 2023,ODI,England Over 40s,Wales Over 40s,Broxbourne CC,Win,England won by 92 runs,https://englandseniors.play-cricket.com/website/results/5979495
+Season,Date,Tournament,HomeTeam,AwayTeam,Venue,Result,Details,ScorecardURL,VenueMapURL,HomeEmblem,AwayEmblem
+2026,04 May 2026,Non-ODI,England XI Over 40s,England XI Over 40s,"Datchet CC, Berkshire",Upcoming,Warm-up match,https://englandseniors.play-cricket.com/match_details?id=7416572,https://maps.google.com/maps/search/Datchet+CC+Berkshire,england.png,england.png
+2026,27 May 2026,ODI,England Over 40s,India Over 40s,"Swindon CC, Wiltshire",Upcoming,ODI Series - Match 1,https://englandseniors.play-cricket.com/match_details?id=7416573,https://maps.google.com/maps/search/Swindon+CC+Wiltshire,england.png,india.png
+2026,28 May 2026,ODI,England Lions Over 40s,India Over 40s,"High Wycombe CC, Buckinghamshire",Upcoming,ODI Series - Match 2,https://englandseniors.play-cricket.com/match_details?id=7416716,https://maps.google.com/maps/search/High+Wycombe+CC+Buckinghamshire,england.png,india.png
+2026,04 Jun 2026,ODI,England Lions Over 40s,India Over 40s,"Hammerwich CC, Staffordshire",Upcoming,ODI Series - Match 3,https://englandseniors.play-cricket.com/match_details?id=7416719,https://maps.google.com/maps/search/Hammerwich+CC+Staffordshire,england.png,india.png
+2026,15 Jul 2026,Non-ODI,XL Club,England Lions Over 40s,"TBC, North West",Upcoming,Away fixture,https://englandseniors.play-cricket.com/match_details?id=7616969,,xl_club.png,england.png
+2026,28 Jul 2026,Triple Crown,England Over 40s,Wales Over 40s,"Bishop's Stortford CC, Hertfordshire",Upcoming,Triple Crown - Day 1,https://englandseniors.play-cricket.com/match_details?id=7616870,https://maps.google.com/maps/search/Bishops+Stortford+CC+Hertfordshire,england.png,wales.png
+2026,29 Jul 2026,Triple Crown,England Over 40s,Scotland Over 40s,"Bishop's Stortford CC, Hertfordshire",Upcoming,Triple Crown - Day 2,https://englandseniors.play-cricket.com/match_details?id=7616869,https://maps.google.com/maps/search/Bishops+Stortford+CC+Hertfordshire,england.png,scotland.png
+2026,30 Jul 2026,Triple Crown,England Over 40s,Ireland Over 40s,"Bishop's Stortford CC, Hertfordshire",Upcoming,Triple Crown - Day 3,https://englandseniors.play-cricket.com/match_details?id=7616872,https://maps.google.com/maps/search/Bishops+Stortford+CC+Hertfordshire,england.png,ireland.png
+2026,05 Aug 2026,ODI,Wales Over 40s,England Lions Over 40s,"Panteg CC, Wales",Upcoming,Away fixture,https://englandseniors.play-cricket.com/match_details?id=7416762,https://maps.google.com/maps/search/Panteg+CC+Wales,wales.png,england.png
+2026,11 Aug 2026,Non-ODI,Worcestershire Over 40s,England Lions Over 40s,"Stourport CC, Worcestershire",Upcoming,County fixture,https://englandseniors.play-cricket.com/match_details?id=7416768,https://maps.google.com/maps/search/Stourport+CC+Worcestershire,worcestershire.png,england.png
+2026,26 Aug 2026,Non-ODI,England Lions Over 40s,MCC,"Hartlepool CC, County Durham",Upcoming,Prestigious fixture,https://englandseniors.play-cricket.com/match_details?id=7616970,https://maps.google.com/maps/search/Hartlepool+CC+County+Durham,england.png,mcc.png
+2026,03 Sep 2026,Non-ODI,Ireland Over 40s,England Lions Over 40s,"TBC, Dublin",Upcoming,International friendly,https://englandseniors.play-cricket.com/match_details?id=7616972,,ireland.png,england.png
+2025,08 Sep 2025,ODI,England Over 40s,India Over 40s,"Datchet CC, Slough",Win,England won by 114 runs,https://englandseniors.play-cricket.com/website/results/7072108,,england.png,india.png
+2025,04 Sep 2025,ODI,England Over 40s,India Over 40s,Hammerwich CC,No Result,Cancelled — Rain,,,england.png,india.png
+2025,31 Jul 2025,Triple Crown,England Over 40s,Scotland Over 40s,Stirling University,Win,England won by 140 runs,https://triplecrown.play-cricket.com/website/results/7072114,,england.png,scotland.png
+2025,30 Jul 2025,Triple Crown,England Over 40s,Ireland Over 40s,Stirling University,Win,England won by 8 wickets,https://triplecrown.play-cricket.com/website/results/7072113,,england.png,ireland.png
+2025,29 Jul 2025,Triple Crown,England Over 40s,Wales Over 40s,Stirling University,Win,England won by 8 wickets,https://triplecrown.play-cricket.com/website/results/7072112,,england.png,wales.png
+2025,10 Jul 2025,Friendly,England Over 40s,Berkshire CCC,"Datchet CC, Slough",Win,England won by 8 wickets,https://englandseniors.play-cricket.com/website/results/7072107,,england.png,england.png
+2025,03 Jul 2025,ODI,England Over 40s,Wales Over 40s,"Hammerwich CC, Burntwood",Win,England won by 262 runs,https://englandseniors.play-cricket.com/website/results/7072106,,england.png,wales.png
+2025,10 Jun 2025,Friendly,England Over 40s,Veterans Cricket Ireland XI,High Wycombe CC,Win,England won by 5 wickets,https://englandseniors.play-cricket.com/website/results/7072105,,england.png,ireland.png
+2025,29 May 2025,ODI,Wales Over 40s,England Over 40s,"St Fagans, Cardiff",Win,England won by 8 wickets,https://englandseniors.play-cricket.com/website/results/7072104,,wales.png,england.png
+2024,27 Aug 2024,ODI,Wales Over 40s,England Over 40s,Colwyn Bay CC,Loss,Wales won by 2 wickets,https://englandseniors.play-cricket.com/website/results/6580416,,wales.png,england.png
+2024,22 Aug 2024,ODI,Ireland Over 40s,England Over 40s,"Merrion CC, Dublin",Loss,Ireland won by 5 wickets,https://englandseniors.play-cricket.com/website/results/6580415,,ireland.png,england.png
+2024,11 Aug 2024,Friendly,England "A" Over 40s,Worcestershire Over 40s,Droitwich CC,Loss,Worcestershire won by 5 wickets,https://englandseniors.play-cricket.com/website/results/6580414,,england.png,worcestershire.png
+2024,05 Aug 2024,Friendly,England "A" Over 40s,MCC,Darlington CC,Tie,Match Tied,https://englandseniors.play-cricket.com/website/results/6580413,,england.png,mcc.png
+2024,02 Aug 2024,Triple Crown,England Over 40s,Wales Over 40s,Newport CC,Win,England won by 10 wickets,https://englandseniors.play-cricket.com/website/results/6580412,,england.png,wales.png
+2024,01 Aug 2024,Triple Crown,England Over 40s,Ireland Over 40s,Newport CC,Loss,Ireland won by 41 runs,https://englandseniors.play-cricket.com/website/results/6580411,,england.png,ireland.png
+2024,31 Jul 2024,Triple Crown,England Over 40s,Scotland Over 40s,Newport CC,Win,England won by 10 wickets,https://englandseniors.play-cricket.com/website/results/6580410,,england.png,scotland.png
+2024,11 Jul 2024,ODI,England Over 40s,Wales Over 40s,Arundel Castle CC,Win,England won by 108 runs,https://englandseniors.play-cricket.com/website/results/6580409,,england.png,wales.png
+2024,25 Jun 2024,T20i (Game 2),England Over 40s,Wales Over 40s,Hammerwich CC,Loss,Wales won by 5 wickets,https://englandseniors.play-cricket.com/website/results/6580408,,england.png,wales.png
+2024,25 Jun 2024,T20i (Game 1),England Over 40s,Wales Over 40s,Hammerwich CC,Win,England won by 121 runs,https://englandseniors.play-cricket.com/website/results/6580407,,england.png,wales.png
+2024,04 Jun 2024,Friendly,England "A" Over 40s,Forty Club,"Tickhill CC, Doncaster",Win,England A won by 111 runs,https://englandseniors.play-cricket.com/website/results/6580406,,england.png,england.png
+2024,29 Feb 2024,World Cup 3/4,England Over 40s,Australia Over 40s,"Claremont CC, Cape Town",Loss,Australia won by 5 wickets,https://englandseniors.play-cricket.com/website/results/6088911,,england.png,england.png
+2024,27 Feb 2024,World Cup SF,England Over 40s,South Africa Over 40s,"Green Point CC, Cape Town",Loss,South Africa won by 17 runs,https://englandseniors.play-cricket.com/website/results/6088910,,england.png,england.png
+2024,25 Feb 2024,World Cup,Canada Over 40s,England Over 40s,"Green Point CC, Cape Town",Win,England won by 9 wickets,https://englandseniors.play-cricket.com/website/results/6088909,,england.png,england.png
+2024,23 Feb 2024,World Cup,Australia Over 40s,England Over 40s,"Rondebosch CC, Cape Town",Win,England won by 2 runs,https://englandseniors.play-cricket.com/website/results/6088908,,england.png,england.png
+2024,22 Feb 2024,World Cup,England Over 40s,Namibia Over 40s,"Milnerton HS, Cape Town",Win,England won by 8 wickets,https://englandseniors.play-cricket.com/website/results/6088906,,england.png,england.png
+2024,20 Feb 2024,World Cup,England Over 40s,USA Over 40s,"Reddam House School, Cape Town",Win,England won by 97 runs,https://englandseniors.play-cricket.com/website/results/6088905,,england.png,england.png
+2024,19 Feb 2024,World Cup,England Over 40s,Zimbabwe Over 40s,"WPCC, Cape Town",Win,England won by 5 wickets,https://englandseniors.play-cricket.com/website/results/6088903,,england.png,england.png
+2023,08 Aug 2023,Friendly,England Over 40s,MCC,Darlington CC,Loss,MCC won by 10 wickets,https://englandseniors.play-cricket.com/website/results/5979498,,england.png,mcc.png
+2023,14 Jun 2023,ODI,Wales Over 40s,England Over 40s,"Panteg CC, Pontypool",Win,England won by 7 wickets,https://englandseniors.play-cricket.com/website/results/5979497,,wales.png,england.png
+2023,31 May 2023,ODI,England Over 40s,Ireland Over 40s,Uxbridge CC,Loss,Ireland won by 53 runs,https://englandseniors.play-cricket.com/website/results/5979496,,england.png,ireland.png
+2023,23 May 2023,ODI,England Over 40s,Wales Over 40s,Broxbourne CC,Win,England won by 92 runs,https://englandseniors.play-cricket.com/website/results/5979495,,england.png,wales.png

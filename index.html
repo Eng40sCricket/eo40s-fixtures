@@ -24,7 +24,11 @@
   .eo40-stat-val { font-size: 1.4rem; font-weight: 700; color: #1a3a5c; }
   .eo40-stat-lbl { font-size: 0.65rem; text-transform: uppercase; color: #7a8a9a; letter-spacing: 0.5px; }
 
-  .eo40-table-wrap { overflow-x: auto; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .eo40-section { margin-bottom: 20px; }
+  .eo40-section-title { font-size: 1.1rem; font-weight: 700; color: #1a3a5c; padding: 10px 0 8px; border-bottom: 2px solid #1a3a5c; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .eo40-section-badge { font-size: 0.7rem; background: #1a3a5c; color: #fff; padding: 2px 10px; border-radius: 10px; }
+
+  .eo40-table-wrap { overflow-x: auto; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); margin-bottom: 16px; }
   .eo40-table { width: 100%; border-collapse: collapse; background: #fff; font-size: 0.82rem; }
   .eo40-table thead th { background: #1a3a5c; color: #fff; padding: 10px 8px; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; position: sticky; top: 0; white-space: nowrap; }
   .eo40-table tbody td { padding: 8px; border-bottom: 1px solid #eef0f3; vertical-align: middle; }
@@ -32,7 +36,12 @@
   .eo40-table tbody tr.eo40-loss { background: #ffebee; }
   .eo40-table tbody tr.eo40-tie { background: #fff9c4; }
   .eo40-table tbody tr.eo40-noresult { background: #f5f5f5; }
+  .eo40-table tbody tr.eo40-upcoming { background: #e8eef5; }
   .eo40-table tbody tr:hover { filter: brightness(0.97); }
+
+  .eo40-team-cell { display: flex; align-items: center; gap: 6px; }
+  .eo40-team-img { width: 28px; height: 28px; object-fit: contain; border-radius: 50%; background: #fff; border: 1px solid #eee; flex-shrink: 0; }
+  .eo40-england { font-weight: 700; }
 
   .eo40-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; white-space: nowrap; }
   .eo40-badge-odi { background: #1565c0; color: #fff; }
@@ -40,35 +49,44 @@
   .eo40-badge-tc { background: #7b1fa2; color: #fff; }
   .eo40-badge-friendly { background: #2e7d32; color: #fff; }
   .eo40-badge-t20 { background: #c62828; color: #fff; }
+  .eo40-badge-nonodi { background: #546e7a; color: #fff; }
+  .eo40-badge-upcoming { background: #1a3a5c; color: #fff; }
 
   .eo40-result { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; }
   .eo40-result-win { background: #2e7d32; color: #fff; }
   .eo40-result-loss { background: #c62828; color: #fff; }
   .eo40-result-tie { background: #f9a825; color: #333; }
   .eo40-result-noresult { background: #757575; color: #fff; }
+  .eo40-result-upcoming { background: #1a3a5c; color: #fff; }
 
-  .eo40-sc-link { display: inline-block; padding: 4px 12px; background: #1a3a5c; color: #fff; border-radius: 6px; text-decoration: none; font-size: 0.72rem; font-weight: 600; transition: background 0.2s; white-space: nowrap; }
-  .eo40-sc-link:hover { background: #2a5a8c; }
-
-  .eo40-england { font-weight: 700; }
+  .eo40-link { color: #1a3a5c; text-decoration: none; font-weight: 600; font-size: 0.75rem; white-space: nowrap; }
+  .eo40-link:hover { text-decoration: underline; }
+  .eo40-venue-link { color: #555; text-decoration: none; font-size: 0.8rem; }
+  .eo40-venue-link:hover { color: #1a3a5c; text-decoration: underline; }
+  .eo40-links-cell { display: flex; gap: 8px; align-items: center; }
 
   /* === Mobile Cards === */
   .eo40-cards { display: none; }
-  .eo40-card { background: #fff; border-radius: 12px; padding: 14px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); border-left: 5px solid #ccc; }
+  .eo40-card { background: #fff; border-radius: 12px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); overflow: hidden; border-left: 5px solid #ccc; }
   .eo40-card.eo40-win { border-left-color: #2e7d32; }
   .eo40-card.eo40-loss { border-left-color: #c62828; }
   .eo40-card.eo40-tie { border-left-color: #f9a825; }
   .eo40-card.eo40-noresult { border-left-color: #757575; }
-  .eo40-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eo40-card.eo40-upcoming { border-left-color: #1a3a5c; }
+  .eo40-card-top { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px 4px; }
   .eo40-card-date { font-size: 0.8rem; color: #5a6a7a; font-weight: 600; }
-  .eo40-card-teams { margin-bottom: 6px; }
-  .eo40-card-team { font-size: 0.95rem; }
-  .eo40-card-vs { font-size: 0.75rem; color: #999; margin: 2px 0; }
-  .eo40-card-bottom { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 8px; gap: 8px; }
-  .eo40-card-details { font-size: 0.78rem; color: #555; font-style: italic; margin-top: 4px; }
-  .eo40-card-venue { font-size: 0.72rem; color: #888; margin-top: 4px; }
-
-  .eo40-season-divider { padding: 10px 16px; margin-top: 8px; font-size: 1rem; font-weight: 700; color: #1a3a5c; border-bottom: 2px solid #1a3a5c; }
+  .eo40-card-badges { display: flex; gap: 4px; align-items: center; }
+  .eo40-card-teams { display: flex; align-items: center; justify-content: center; padding: 10px 12px; gap: 14px; }
+  .eo40-card-team { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 80px; }
+  .eo40-card-team img { width: 44px; height: 44px; object-fit: contain; border-radius: 50%; background: #fff; border: 1px solid #eee; }
+  .eo40-card-team span { font-size: 0.72rem; font-weight: 600; text-align: center; line-height: 1.2; }
+  .eo40-card-vs { font-size: 0.85rem; font-weight: 700; color: #bbb; }
+  .eo40-card-bottom { padding: 8px 12px 10px; border-top: 1px solid #f0f0f0; }
+  .eo40-card-detail { font-size: 0.75rem; color: #555; font-style: italic; margin-bottom: 4px; }
+  .eo40-card-venue { font-size: 0.72rem; color: #888; margin-bottom: 6px; }
+  .eo40-card-links { display: flex; gap: 8px; flex-wrap: wrap; }
+  .eo40-card-link { font-size: 0.72rem; color: #1a3a5c; text-decoration: none; font-weight: 600; padding: 4px 12px; border: 1.5px solid #1a3a5c; border-radius: 14px; transition: all 0.2s; }
+  .eo40-card-link:hover { background: #1a3a5c; color: #fff; }
 
   .eo40-footer { text-align: center; padding: 16px; font-size: 0.72rem; color: #888; margin-top: 12px; }
   .eo40-legend { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
@@ -78,8 +96,8 @@
   .eo40-loading { text-align: center; padding: 40px; color: #888; font-size: 0.9rem; }
 
   @media (max-width: 768px) {
-    .eo40-table-wrap { display: none; }
-    .eo40-cards { display: block; }
+    .eo40-table-wrap { display: none !important; }
+    .eo40-cards { display: block !important; }
     .eo40-header h1 { font-size: 1.2rem; }
     .eo40-stats { gap: 8px; padding: 10px 8px; }
     .eo40-stat-val { font-size: 1.1rem; }
@@ -93,11 +111,12 @@
 <div class="eo40-wrap">
   <div class="eo40-header">
     <h1>England Over 40s Cricket — Fixtures & Results</h1>
-    <p>Seasons 2023, 2024 & 2025</p>
+    <p>Seasons 2023 to 2026</p>
   </div>
 
   <div class="eo40-tabs" id="eo40-tabs">
     <button class="eo40-tab active" data-season="all">All Seasons</button>
+    <button class="eo40-tab" data-season="2026">2026</button>
     <button class="eo40-tab" data-season="2025">2025</button>
     <button class="eo40-tab" data-season="2024">2024</button>
     <button class="eo40-tab" data-season="2023">2023</button>
@@ -107,34 +126,17 @@
 
   <div class="eo40-loading" id="eo40-loading">Loading fixtures data...</div>
 
-  <div class="eo40-table-wrap" id="eo40-table-wrap" style="display:none;">
-    <table class="eo40-table">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Tournament</th>
-          <th>Home Team</th>
-          <th>Away Team</th>
-          <th>Venue</th>
-          <th>Result</th>
-          <th>Details</th>
-          <th>Scorecard</th>
-        </tr>
-      </thead>
-      <tbody id="eo40-tbody"></tbody>
-    </table>
-  </div>
-
-  <div class="eo40-cards" id="eo40-cards"></div>
+  <div id="eo40-content"></div>
 
   <div class="eo40-footer">
     <div class="eo40-legend">
+      <span class="eo40-legend-item"><span class="eo40-legend-dot" style="background:#1a3a5c;"></span> Upcoming</span>
       <span class="eo40-legend-item"><span class="eo40-legend-dot" style="background:#2e7d32;"></span> Win</span>
       <span class="eo40-legend-item"><span class="eo40-legend-dot" style="background:#c62828;"></span> Loss</span>
       <span class="eo40-legend-item"><span class="eo40-legend-dot" style="background:#f9a825;"></span> Tie</span>
       <span class="eo40-legend-item"><span class="eo40-legend-dot" style="background:#757575;"></span> No Result</span>
     </div>
-    <p>Source: englandseniors.play-cricket.com & triplecrown.play-cricket.com<br>Click scorecard links for full match details and scores.</p>
+    <p>Source: englandseniors.play-cricket.com & triplecrown.play-cricket.com<br>Click scorecard links for full match details. Venue links open Google Maps.</p>
   </div>
 </div>
 
@@ -148,7 +150,7 @@
     var data = [];
     for (var i = 1; i < lines.length; i++) {
       var vals = parseCSVLine(lines[i]);
-      if (vals.length < headers.length) continue;
+      if (vals.length < 2) continue;
       var row = {};
       for (var j = 0; j < headers.length; j++) {
         row[headers[j].trim()] = (vals[j] || '').trim();
@@ -182,8 +184,10 @@
     if (tl.indexOf('world cup') >= 0) return 'eo40-badge-wc';
     if (tl.indexOf('triple crown') >= 0) return 'eo40-badge-tc';
     if (tl.indexOf('t20') >= 0) return 'eo40-badge-t20';
+    if (tl.indexOf('non-odi') >= 0) return 'eo40-badge-nonodi';
     if (tl.indexOf('friendly') >= 0) return 'eo40-badge-friendly';
-    return 'eo40-badge-odi';
+    if (tl.indexOf('odi') >= 0) return 'eo40-badge-odi';
+    return 'eo40-badge-friendly';
   }
 
   function resultClass(r) {
@@ -191,6 +195,7 @@
     if (rl === 'win') return 'eo40-win';
     if (rl === 'loss') return 'eo40-loss';
     if (rl === 'tie') return 'eo40-tie';
+    if (rl === 'upcoming') return 'eo40-upcoming';
     return 'eo40-noresult';
   }
 
@@ -199,108 +204,153 @@
     if (rl === 'win') return 'eo40-result-win';
     if (rl === 'loss') return 'eo40-result-loss';
     if (rl === 'tie') return 'eo40-result-tie';
+    if (rl === 'upcoming') return 'eo40-result-upcoming';
     return 'eo40-result-noresult';
   }
 
   function isEngland(team) { return team.toLowerCase().indexOf('england') >= 0; }
 
-  function teamHTML(team) {
-    if (isEngland(team)) return '<span class="eo40-england">' + team + '</span>';
-    return team;
+  function shortTeam(name) {
+    return name.replace(/ Over 40s/gi, '').replace(/ Over 40/gi, '').replace(/Veterans Cricket /gi, '').trim();
+  }
+
+  function teamCellHTML(team, emblem) {
+    var cls = isEngland(team) ? ' eo40-england' : '';
+    var img = emblem ? '<img class="eo40-team-img" src="images/' + emblem + '" alt="">' : '';
+    return '<div class="eo40-team-cell">' + img + '<span class="' + cls + '">' + shortTeam(team) + '</span></div>';
   }
 
   var allMatches = [];
 
   function renderStats(matches) {
-    var total = matches.length;
+    var played = matches.filter(function(m) { return m.Result.toLowerCase() !== 'upcoming'; });
+    var upcoming = matches.filter(function(m) { return m.Result.toLowerCase() === 'upcoming'; });
     var wins = 0, losses = 0, ties = 0, nr = 0;
-    for (var i = 0; i < matches.length; i++) {
-      var rl = matches[i].Result.toLowerCase().trim();
+    for (var i = 0; i < played.length; i++) {
+      var rl = played[i].Result.toLowerCase().trim();
       if (rl === 'win') wins++;
       else if (rl === 'loss') losses++;
       else if (rl === 'tie') ties++;
       else nr++;
     }
-    var denom = total - nr;
+    var denom = played.length - nr;
     var pct = denom > 0 ? Math.round((wins / denom) * 100) : 0;
 
-    document.getElementById('eo40-stats').innerHTML =
-      '<div class="eo40-stat"><div class="eo40-stat-val">' + total + '</div><div class="eo40-stat-lbl">Played</div></div>' +
-      '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#2e7d32">' + wins + '</div><div class="eo40-stat-lbl">Won</div></div>' +
-      '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#c62828">' + losses + '</div><div class="eo40-stat-lbl">Lost</div></div>' +
-      '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#f9a825">' + ties + '</div><div class="eo40-stat-lbl">Tied</div></div>' +
-      '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#757575">' + nr + '</div><div class="eo40-stat-lbl">No Result</div></div>' +
-      '<div class="eo40-stat"><div class="eo40-stat-val">' + pct + '%</div><div class="eo40-stat-lbl">Win %</div></div>';
-  }
-
-  function renderTable(matches) {
-    var tbody = document.getElementById('eo40-tbody');
     var html = '';
-    for (var i = 0; i < matches.length; i++) {
-      var m = matches[i];
-      var rc = resultClass(m.Result);
-      var rbc = resultBadgeClass(m.Result);
-      var bc = badgeClass(m.Tournament);
-      var scLink = m.ScorecardURL
-        ? '<a class="eo40-sc-link" href="' + m.ScorecardURL + '" target="_blank" rel="noopener">View Scorecard</a>'
-        : '—';
-
-      html += '<tr class="' + rc + '">' +
-        '<td style="white-space:nowrap;">' + m.Date + '</td>' +
-        '<td><span class="eo40-badge ' + bc + '">' + m.Tournament + '</span></td>' +
-        '<td>' + teamHTML(m.HomeTeam) + '</td>' +
-        '<td>' + teamHTML(m.AwayTeam) + '</td>' +
-        '<td>' + m.Venue + '</td>' +
-        '<td><span class="eo40-result ' + rbc + '">' + m.Result.toUpperCase() + '</span></td>' +
-        '<td>' + m.Details + '</td>' +
-        '<td>' + scLink + '</td>' +
-        '</tr>';
+    if (played.length > 0) {
+      html += '<div class="eo40-stat"><div class="eo40-stat-val">' + played.length + '</div><div class="eo40-stat-lbl">Played</div></div>';
+      html += '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#2e7d32">' + wins + '</div><div class="eo40-stat-lbl">Won</div></div>';
+      html += '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#c62828">' + losses + '</div><div class="eo40-stat-lbl">Lost</div></div>';
+      html += '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#f9a825">' + ties + '</div><div class="eo40-stat-lbl">Tied</div></div>';
+      html += '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#757575">' + nr + '</div><div class="eo40-stat-lbl">No Result</div></div>';
+      html += '<div class="eo40-stat"><div class="eo40-stat-val">' + pct + '%</div><div class="eo40-stat-lbl">Win %</div></div>';
     }
-    tbody.innerHTML = html;
+    if (upcoming.length > 0) {
+      html += '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#1a3a5c">' + upcoming.length + '</div><div class="eo40-stat-lbl">Upcoming</div></div>';
+    }
+    document.getElementById('eo40-stats').innerHTML = html;
   }
 
-  function renderCards(matches) {
-    var container = document.getElementById('eo40-cards');
-    var html = '';
-    var lastSeason = '';
-
+  function renderContent(matches) {
+    var grouped = {};
     for (var i = 0; i < matches.length; i++) {
-      var m = matches[i];
+      var s = matches[i].Season;
+      if (!grouped[s]) grouped[s] = [];
+      grouped[s].push(matches[i]);
+    }
 
-      if (m.Season !== lastSeason) {
-        html += '<div class="eo40-season-divider">' + m.Season + ' Season</div>';
-        lastSeason = m.Season;
+    var seasons = Object.keys(grouped).sort(function(a, b) { return parseInt(b) - parseInt(a); });
+    var html = '';
+
+    for (var si = 0; si < seasons.length; si++) {
+      var season = seasons[si];
+      var sMatches = grouped[season];
+      var playedCount = sMatches.filter(function(m) { return m.Result.toLowerCase() !== 'upcoming'; }).length;
+      var upcomingCount = sMatches.filter(function(m) { return m.Result.toLowerCase() === 'upcoming'; }).length;
+      var badgeText = '';
+      if (upcomingCount > 0 && playedCount > 0) badgeText = sMatches.length + ' matches';
+      else if (upcomingCount > 0) badgeText = upcomingCount + ' fixtures';
+      else badgeText = playedCount + ' matches';
+
+      html += '<div class="eo40-section">';
+      html += '<div class="eo40-section-title">' + season + ' Season <span class="eo40-section-badge">' + badgeText + '</span></div>';
+
+      // Desktop table
+      html += '<div class="eo40-table-wrap"><table class="eo40-table"><thead><tr>';
+      html += '<th>Date</th><th>Type</th><th>Home</th><th></th><th>Away</th><th>Venue</th><th>Result</th><th>Details</th><th>Links</th>';
+      html += '</tr></thead><tbody>';
+
+      for (var mi = 0; mi < sMatches.length; mi++) {
+        var m = sMatches[mi];
+        var rc = resultClass(m.Result);
+        var rbc = resultBadgeClass(m.Result);
+        var bc = badgeClass(m.Tournament);
+
+        var venueHtml = m.Venue;
+        if (m.VenueMapURL) {
+          venueHtml = '<a href="' + m.VenueMapURL + '" target="_blank" class="eo40-venue-link">' + m.Venue + '</a>';
+        }
+
+        var linksHtml = '<div class="eo40-links-cell">';
+        if (m.ScorecardURL) linksHtml += '<a href="' + m.ScorecardURL + '" target="_blank" class="eo40-link">Scorecard</a>';
+        if (m.VenueMapURL) linksHtml += '<a href="' + m.VenueMapURL + '" target="_blank" class="eo40-link" style="color:#546e7a">Map</a>';
+        linksHtml += '</div>';
+
+        html += '<tr class="' + rc + '">';
+        html += '<td style="white-space:nowrap;">' + m.Date.replace(/ \d{4}$/, '') + '</td>';
+        html += '<td><span class="eo40-badge ' + bc + '">' + m.Tournament + '</span></td>';
+        html += '<td>' + teamCellHTML(m.HomeTeam, m.HomeEmblem) + '</td>';
+        html += '<td style="color:#bbb;font-weight:700;font-size:0.75rem;text-align:center">vs</td>';
+        html += '<td>' + teamCellHTML(m.AwayTeam, m.AwayEmblem) + '</td>';
+        html += '<td style="font-size:0.78rem">' + venueHtml + '</td>';
+        html += '<td><span class="eo40-result ' + rbc + '">' + m.Result.toUpperCase() + '</span></td>';
+        html += '<td style="font-size:0.75rem;color:#555">' + m.Details + '</td>';
+        html += '<td>' + linksHtml + '</td>';
+        html += '</tr>';
       }
 
-      var rc = resultClass(m.Result);
-      var rbc = resultBadgeClass(m.Result);
-      var bc = badgeClass(m.Tournament);
-      var scLink = m.ScorecardURL
-        ? '<a class="eo40-sc-link" href="' + m.ScorecardURL + '" target="_blank" rel="noopener">Scorecard</a>'
-        : '';
+      html += '</tbody></table></div>';
 
-      html += '<div class="eo40-card ' + rc + '">' +
-        '<div class="eo40-card-top">' +
-          '<span class="eo40-card-date">' + m.Date + '</span>' +
-          '<span class="eo40-badge ' + bc + '">' + m.Tournament + '</span>' +
-        '</div>' +
-        '<div class="eo40-card-teams">' +
-          '<div class="eo40-card-team">' + teamHTML(m.HomeTeam) + '</div>' +
-          '<div class="eo40-card-vs">vs</div>' +
-          '<div class="eo40-card-team">' + teamHTML(m.AwayTeam) + '</div>' +
-        '</div>' +
-        '<div class="eo40-card-venue">' + m.Venue + '</div>' +
-        '<div class="eo40-card-bottom">' +
-          '<div>' +
-            '<span class="eo40-result ' + rbc + '">' + m.Result.toUpperCase() + '</span>' +
-            '<div class="eo40-card-details">' + m.Details + '</div>' +
-          '</div>' +
-          scLink +
-        '</div>' +
-      '</div>';
+      // Mobile cards
+      html += '<div class="eo40-cards">';
+      for (var ci = 0; ci < sMatches.length; ci++) {
+        var m2 = sMatches[ci];
+        var rc2 = resultClass(m2.Result);
+        var rbc2 = resultBadgeClass(m2.Result);
+        var bc2 = badgeClass(m2.Tournament);
+        var homeImg = m2.HomeEmblem ? '<img src="images/' + m2.HomeEmblem + '" alt="">' : '';
+        var awayImg = m2.AwayEmblem ? '<img src="images/' + m2.AwayEmblem + '" alt="">' : '';
+
+        html += '<div class="eo40-card ' + rc2 + '">';
+        html += '<div class="eo40-card-top">';
+        html += '<span class="eo40-card-date">' + m2.Date.replace(/ \d{4}$/, '') + '</span>';
+        html += '<div class="eo40-card-badges"><span class="eo40-badge ' + bc2 + '">' + m2.Tournament + '</span> <span class="eo40-result ' + rbc2 + '">' + m2.Result.toUpperCase() + '</span></div>';
+        html += '</div>';
+        html += '<div class="eo40-card-teams">';
+        html += '<div class="eo40-card-team">' + homeImg + '<span>' + shortTeam(m2.HomeTeam) + '</span></div>';
+        html += '<div class="eo40-card-vs">VS</div>';
+        html += '<div class="eo40-card-team">' + awayImg + '<span>' + shortTeam(m2.AwayTeam) + '</span></div>';
+        html += '</div>';
+        html += '<div class="eo40-card-bottom">';
+        html += '<div class="eo40-card-detail">' + m2.Details + '</div>';
+        if (m2.Venue) {
+          if (m2.VenueMapURL) {
+            html += '<div class="eo40-card-venue"><a href="' + m2.VenueMapURL + '" target="_blank" class="eo40-venue-link">&#x1F4CD; ' + m2.Venue + '</a></div>';
+          } else {
+            html += '<div class="eo40-card-venue">&#x1F4CD; ' + m2.Venue + '</div>';
+          }
+        }
+        html += '<div class="eo40-card-links">';
+        if (m2.ScorecardURL) html += '<a href="' + m2.ScorecardURL + '" target="_blank" class="eo40-card-link">Scorecard</a>';
+        if (m2.VenueMapURL) html += '<a href="' + m2.VenueMapURL + '" target="_blank" class="eo40-card-link">Map</a>';
+        html += '</div></div></div>';
+      }
+      html += '</div>';
+
+      html += '</div>';
     }
 
-    container.innerHTML = html;
+    document.getElementById('eo40-content').innerHTML = html;
   }
 
   function filterAndRender(season) {
@@ -313,8 +363,7 @@
       }
     }
     renderStats(filtered);
-    renderTable(filtered);
-    renderCards(filtered);
+    renderContent(filtered);
   }
 
   document.getElementById('eo40-tabs').addEventListener('click', function(e) {
@@ -332,7 +381,6 @@
     if (xhr.status === 200) {
       allMatches = parseCSV(xhr.responseText);
       document.getElementById('eo40-loading').style.display = 'none';
-      document.getElementById('eo40-table-wrap').style.display = '';
       filterAndRender('all');
     } else {
       document.getElementById('eo40-loading').textContent = 'Unable to load fixtures data. Please try refreshing the page.';
