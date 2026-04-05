@@ -235,7 +235,10 @@
     var away = m.AwayTeam.toLowerCase();
     var engTeam = isEngland(m.HomeTeam) ? home : (isEngland(m.AwayTeam) ? away : '');
     if (!engTeam) return false;
-    return engTeam.indexOf('lions') >= 0 || engTeam.indexOf('"a"') >= 0 || engTeam.indexOf('xi') >= 0;
+    if (engTeam.indexOf('lions') >= 0 || engTeam.indexOf('xi') >= 0) return true;
+    /* After CSV parsing, England "A" becomes England A — check as a word boundary */
+    if (/\bengland\s+a\b/i.test(engTeam)) return true;
+    return false;
   }
 
   function shortTeam(name) {
