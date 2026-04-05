@@ -1,234 +1,114 @@
-<!-- England Over 40s Cricket — Fixtures & Results (Embeddable HTML) -->
-<!-- Paste this entire block into a Hostinger HTML embed widget -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>England Over 40s Cricket — Fixtures & Results</title>
 <style>
-  .eo40-fixtures-container {
-    font-family: 'Segoe UI', Calibri, Arial, sans-serif;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 10px;
-    color: #333;
-  }
-  .eo40-fixtures-container * { box-sizing: border-box; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #f0f2f5; color: #1a1a2e; line-height: 1.5; }
 
-  .eo40-title {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: #1F4E79;
-    margin: 0 0 4px 0;
-    text-align: center;
-  }
-  .eo40-subtitle {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1rem;
-    color: #666;
-    margin: 0 0 16px 0;
-    text-align: center;
-  }
+  .eo40-wrap { max-width: 1100px; margin: 0 auto; padding: 16px; }
 
-  /* Season filter tabs */
-  .eo40-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-  }
-  .eo40-tab {
-    padding: 8px 20px;
-    border: 2px solid #1F4E79;
-    border-radius: 6px;
-    background: #fff;
-    color: #1F4E79;
-    font-weight: 600;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .eo40-tab:hover { background: #D6E3F0; }
-  .eo40-tab.active { background: #1F4E79; color: #fff; }
+  .eo40-header { text-align: center; padding: 24px 16px 12px; }
+  .eo40-header h1 { font-size: 1.5rem; color: #1a3a5c; margin-bottom: 4px; }
+  .eo40-header p { font-size: 0.9rem; color: #5a6a7a; }
 
-  /* Summary bar */
-  .eo40-summary {
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
-    padding: 12px 16px;
-    background: #f5f8fc;
-    border-radius: 8px;
-    border: 1px solid #D6E3F0;
-  }
-  .eo40-stat {
-    text-align: center;
-  }
-  .eo40-stat-value {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #1F4E79;
-    display: block;
-  }
-  .eo40-stat-label {
-    font-size: 0.75rem;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
+  .eo40-tabs { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
+  .eo40-tab { padding: 8px 18px; border: 2px solid #1a3a5c; border-radius: 24px; background: #fff; color: #1a3a5c; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  .eo40-tab:hover { background: #e8eef5; }
+  .eo40-tab.active { background: #1a3a5c; color: #fff; }
 
-  /* Table wrapper for horizontal scroll on mobile */
-  .eo40-table-wrap {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    border-radius: 8px;
-    border: 1px solid #D6E3F0;
-  }
+  .eo40-stats { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; background: #fff; border-radius: 12px; padding: 14px 16px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .eo40-stat { text-align: center; min-width: 55px; }
+  .eo40-stat-val { font-size: 1.4rem; font-weight: 700; color: #1a3a5c; }
+  .eo40-stat-lbl { font-size: 0.65rem; text-transform: uppercase; color: #7a8a9a; letter-spacing: 0.5px; }
 
-  .eo40-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.85rem;
-    min-width: 700px;
-  }
-  .eo40-table thead th {
-    background: #1F4E79;
-    color: #fff;
-    padding: 10px 8px;
-    text-align: left;
-    font-weight: 600;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    white-space: nowrap;
-  }
-  .eo40-table tbody td {
-    padding: 8px 8px;
-    border-bottom: 1px solid #e8e8e8;
-    vertical-align: middle;
-  }
-  .eo40-table tbody tr:last-child td { border-bottom: none; }
-
-  /* Result colours */
+  .eo40-table-wrap { overflow-x: auto; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .eo40-table { width: 100%; border-collapse: collapse; background: #fff; font-size: 0.82rem; }
+  .eo40-table thead th { background: #1a3a5c; color: #fff; padding: 10px 8px; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; position: sticky; top: 0; white-space: nowrap; }
+  .eo40-table tbody td { padding: 8px; border-bottom: 1px solid #eef0f3; vertical-align: middle; }
   .eo40-table tbody tr.eo40-win { background: #e8f5e9; }
   .eo40-table tbody tr.eo40-loss { background: #ffebee; }
   .eo40-table tbody tr.eo40-tie { background: #fff9c4; }
   .eo40-table tbody tr.eo40-noresult { background: #f5f5f5; }
-  .eo40-table tbody tr:hover { filter: brightness(0.96); }
+  .eo40-table tbody tr:hover { filter: brightness(0.97); }
 
-  /* Result badge */
-  .eo40-badge {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-  }
-  .eo40-badge-win { background: #4caf50; color: #fff; }
-  .eo40-badge-loss { background: #e53935; color: #fff; }
-  .eo40-badge-tie { background: #fbc02d; color: #333; }
-  .eo40-badge-noresult { background: #9e9e9e; color: #fff; }
+  .eo40-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; white-space: nowrap; }
+  .eo40-badge-odi { background: #1565c0; color: #fff; }
+  .eo40-badge-wc { background: #f57c00; color: #fff; }
+  .eo40-badge-tc { background: #7b1fa2; color: #fff; }
+  .eo40-badge-friendly { background: #2e7d32; color: #fff; }
+  .eo40-badge-t20 { background: #c62828; color: #fff; }
 
-  /* Scorecard link */
-  .eo40-scorecard-link {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 4px;
-    background: #1F4E79;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.78rem;
-    transition: background 0.2s;
-  }
-  .eo40-scorecard-link:hover { background: #163a5c; text-decoration: none; }
+  .eo40-result { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; }
+  .eo40-result-win { background: #2e7d32; color: #fff; }
+  .eo40-result-loss { background: #c62828; color: #fff; }
+  .eo40-result-tie { background: #f9a825; color: #333; }
+  .eo40-result-noresult { background: #757575; color: #fff; }
 
-  /* Tournament tag */
-  .eo40-tournament {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-  .eo40-t-odi { background: #e3f2fd; color: #1565c0; }
-  .eo40-t-wc { background: #fce4ec; color: #c62828; }
-  .eo40-t-tc { background: #e8f5e9; color: #2e7d32; }
-  .eo40-t-friendly { background: #f3e5f5; color: #6a1b9a; }
-  .eo40-t-t20 { background: #fff3e0; color: #e65100; }
+  .eo40-sc-link { display: inline-block; padding: 4px 12px; background: #1a3a5c; color: #fff; border-radius: 6px; text-decoration: none; font-size: 0.72rem; font-weight: 600; transition: background 0.2s; white-space: nowrap; }
+  .eo40-sc-link:hover { background: #2a5a8c; }
 
-  /* Venue */
-  .eo40-venue { font-size: 0.8rem; color: #555; }
+  .eo40-england { font-weight: 700; }
 
-  /* Colour key */
-  .eo40-key {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-top: 12px;
-    font-size: 0.8rem;
-    color: #666;
-  }
-  .eo40-key-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .eo40-key-swatch {
-    width: 14px;
-    height: 14px;
-    border-radius: 3px;
-    border: 1px solid #ccc;
-  }
+  /* === Mobile Cards === */
+  .eo40-cards { display: none; }
+  .eo40-card { background: #fff; border-radius: 12px; padding: 14px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); border-left: 5px solid #ccc; }
+  .eo40-card.eo40-win { border-left-color: #2e7d32; }
+  .eo40-card.eo40-loss { border-left-color: #c62828; }
+  .eo40-card.eo40-tie { border-left-color: #f9a825; }
+  .eo40-card.eo40-noresult { border-left-color: #757575; }
+  .eo40-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eo40-card-date { font-size: 0.8rem; color: #5a6a7a; font-weight: 600; }
+  .eo40-card-teams { margin-bottom: 6px; }
+  .eo40-card-team { font-size: 0.95rem; }
+  .eo40-card-vs { font-size: 0.75rem; color: #999; margin: 2px 0; }
+  .eo40-card-bottom { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 8px; gap: 8px; }
+  .eo40-card-details { font-size: 0.78rem; color: #555; font-style: italic; margin-top: 4px; }
+  .eo40-card-venue { font-size: 0.72rem; color: #888; margin-top: 4px; }
 
-  .eo40-footer {
-    text-align: center;
-    font-size: 0.75rem;
-    color: #999;
-    margin-top: 12px;
-  }
+  .eo40-season-divider { padding: 10px 16px; margin-top: 8px; font-size: 1rem; font-weight: 700; color: #1a3a5c; border-bottom: 2px solid #1a3a5c; }
 
-  /* Responsive adjustments */
+  .eo40-footer { text-align: center; padding: 16px; font-size: 0.72rem; color: #888; margin-top: 12px; }
+  .eo40-legend { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+  .eo40-legend-item { display: flex; align-items: center; gap: 4px; font-size: 0.72rem; }
+  .eo40-legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+
+  .eo40-loading { text-align: center; padding: 40px; color: #888; font-size: 0.9rem; }
+
   @media (max-width: 768px) {
-    .eo40-title { font-size: 1.3rem; }
-    .eo40-subtitle { font-size: 0.85rem; }
-    .eo40-summary { gap: 12px; padding: 8px 12px; }
-    .eo40-stat-value { font-size: 1.2rem; }
+    .eo40-table-wrap { display: none; }
+    .eo40-cards { display: block; }
+    .eo40-header h1 { font-size: 1.2rem; }
+    .eo40-stats { gap: 8px; padding: 10px 8px; }
+    .eo40-stat-val { font-size: 1.1rem; }
+    .eo40-stat-lbl { font-size: 0.6rem; }
     .eo40-tab { padding: 6px 14px; font-size: 0.8rem; }
   }
 </style>
+</head>
+<body>
 
-<div class="eo40-fixtures-container">
-  <h2 class="eo40-title">England Over 40s Cricket &mdash; Fixtures &amp; Results</h2>
-  <p class="eo40-subtitle">Seasons 2023, 2024 &amp; 2025</p>
-
-  <!-- Season filter tabs -->
-  <div class="eo40-tabs">
-    <button class="eo40-tab active" onclick="eo40Filter('all')">All Seasons</button>
-    <button class="eo40-tab" onclick="eo40Filter('2025')">2025</button>
-    <button class="eo40-tab" onclick="eo40Filter('2024')">2024</button>
-    <button class="eo40-tab" onclick="eo40Filter('2023')">2023</button>
+<div class="eo40-wrap">
+  <div class="eo40-header">
+    <h1>England Over 40s Cricket — Fixtures & Results</h1>
+    <p>Seasons 2023, 2024 & 2025</p>
   </div>
 
-  <!-- Summary stats -->
-  <div class="eo40-summary" id="eo40-summary">
-    <div class="eo40-stat"><span class="eo40-stat-value" id="eo40-played">31</span><span class="eo40-stat-label">Played</span></div>
-    <div class="eo40-stat"><span class="eo40-stat-value" id="eo40-won">20</span><span class="eo40-stat-label">Won</span></div>
-    <div class="eo40-stat"><span class="eo40-stat-value" id="eo40-lost">10</span><span class="eo40-stat-label">Lost</span></div>
-    <div class="eo40-stat"><span class="eo40-stat-value" id="eo40-tied">1</span><span class="eo40-stat-label">Tied</span></div>
-    <div class="eo40-stat"><span class="eo40-stat-value" id="eo40-nr">1</span><span class="eo40-stat-label">No Result</span></div>
-    <div class="eo40-stat"><span class="eo40-stat-value" id="eo40-winpct">67%</span><span class="eo40-stat-label">Win %</span></div>
+  <div class="eo40-tabs" id="eo40-tabs">
+    <button class="eo40-tab active" data-season="all">All Seasons</button>
+    <button class="eo40-tab" data-season="2025">2025</button>
+    <button class="eo40-tab" data-season="2024">2024</button>
+    <button class="eo40-tab" data-season="2023">2023</button>
   </div>
 
-  <!-- Table -->
-  <div class="eo40-table-wrap">
-    <table class="eo40-table" id="eo40-table">
+  <div class="eo40-stats" id="eo40-stats"></div>
+
+  <div class="eo40-loading" id="eo40-loading">Loading fixtures data...</div>
+
+  <div class="eo40-table-wrap" id="eo40-table-wrap" style="display:none;">
+    <table class="eo40-table">
       <thead>
         <tr>
           <th>Date</th>
@@ -241,373 +121,229 @@
           <th>Scorecard</th>
         </tr>
       </thead>
-      <tbody id="eo40-tbody">
-        <!-- 2025 SEASON -->
-        <tr class="eo40-win" data-season="2025" data-result="Win">
-          <td>08 Sep 2025</td>
-          <td><span class="eo40-tournament eo40-t-odi">ODI</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>India Over 40s</td>
-          <td class="eo40-venue">Datchet CC, Slough</td>
-          <td><span class="eo40-badge eo40-badge-win">Win</span></td>
-          <td>England won by 114 runs</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/match_details?id=7169589" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-noresult" data-season="2025" data-result="No Result">
-          <td>04 Sep 2025</td>
-          <td><span class="eo40-tournament eo40-t-odi">ODI</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>India Over 40s</td>
-          <td class="eo40-venue">Hammerwich CC</td>
-          <td><span class="eo40-badge eo40-badge-noresult">No Result</span></td>
-          <td>Cancelled &mdash; Rain</td>
-          <td>&mdash;</td>
-        </tr>
-        <tr class="eo40-win" data-season="2025" data-result="Win">
-          <td>31 Jul 2025</td>
-          <td><span class="eo40-tournament eo40-t-tc">Triple Crown</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>Scotland Over 40s</td>
-          <td class="eo40-venue">Stirling University</td>
-          <td><span class="eo40-badge eo40-badge-win">Win</span></td>
-          <td>England won by 140 runs</td>
-          <td><a class="eo40-scorecard-link" href="https://triplecrown.play-cricket.com/website/results/7166695" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-win" data-season="2025" data-result="Win">
-          <td>30 Jul 2025</td>
-          <td><span class="eo40-tournament eo40-t-tc">Triple Crown</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>Ireland Over 40s</td>
-          <td class="eo40-venue">Stirling University</td>
-          <td><span class="eo40-badge eo40-badge-win">Win</span></td>
-          <td>England won by 8 wickets</td>
-          <td><a class="eo40-scorecard-link" href="https://triplecrown.play-cricket.com/website/results/7166696" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-win" data-season="2025" data-result="Win">
-          <td>29 Jul 2025</td>
-          <td><span class="eo40-tournament eo40-t-tc">Triple Crown</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>Wales Over 40s</td>
-          <td class="eo40-venue">Stirling University</td>
-          <td><span class="eo40-badge eo40-badge-win">Win</span></td>
-          <td>England won by 8 wickets</td>
-          <td><a class="eo40-scorecard-link" href="https://triplecrown.play-cricket.com/website/results/7166694" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-win" data-season="2025" data-result="Win">
-          <td>10 Jul 2025</td>
-          <td><span class="eo40-tournament eo40-t-friendly">Friendly</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>Berkshire CCC</td>
-          <td class="eo40-venue">Datchet CC, Slough</td>
-          <td><span class="eo40-badge eo40-badge-win">Win</span></td>
-          <td>England won by 8 wickets</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/7068544" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-win" data-season="2025" data-result="Win">
-          <td>03 Jul 2025</td>
-          <td><span class="eo40-tournament eo40-t-odi">ODI</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>Wales Over 40s</td>
-          <td class="eo40-venue">Hammerwich CC, Burntwood</td>
-          <td><span class="eo40-badge eo40-badge-win">Win</span></td>
-          <td>England won by 262 runs</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/7068542" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-win" data-season="2025" data-result="Win">
-          <td>10 Jun 2025</td>
-          <td><span class="eo40-tournament eo40-t-friendly">Friendly</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>Veterans Cricket Ireland XI</td>
-          <td class="eo40-venue">High Wycombe CC</td>
-          <td><span class="eo40-badge eo40-badge-win">Win</span></td>
-          <td>England won by 5 wickets</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/7042459" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-win" data-season="2025" data-result="Win">
-          <td>29 May 2025</td>
-          <td><span class="eo40-tournament eo40-t-odi">ODI</span></td>
-          <td>Wales Over 40s</td>
-          <td><strong>England Over 40s</strong></td>
-          <td class="eo40-venue">St Fagans, Cardiff</td>
-          <td><span class="eo40-badge eo40-badge-win">Win</span></td>
-          <td>England won by 8 wickets</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/7072108" target="_blank">View Scorecard</a></td>
-        </tr>
-
-        <!-- 2024 SEASON — Domestic (most recent first) -->
-        <tr class="eo40-loss" data-season="2024" data-result="Loss">
-          <td>27 Aug 2024</td>
-          <td><span class="eo40-tournament eo40-t-odi">ODI</span></td>
-          <td>Wales Over 40s</td>
-          <td><strong>England Over 40s</strong></td>
-          <td class="eo40-venue">Colwyn Bay CC</td>
-          <td><span class="eo40-badge eo40-badge-loss">Loss</span></td>
-          <td>Wales won by 2 wickets</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/6546862" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-loss" data-season="2024" data-result="Loss">
-          <td>22 Aug 2024</td>
-          <td><span class="eo40-tournament eo40-t-odi">ODI</span></td>
-          <td>Ireland Over 40s</td>
-          <td><strong>England Over 40s</strong></td>
-          <td class="eo40-venue">Merrion CC, Dublin</td>
-          <td><span class="eo40-badge eo40-badge-loss">Loss</span></td>
-          <td>Ireland won by 5 wickets</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/6546866" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-loss" data-season="2024" data-result="Loss">
-          <td>11 Aug 2024</td>
-          <td><span class="eo40-tournament eo40-t-friendly">Friendly</span></td>
-          <td><strong>England "A" Over 40s</strong></td>
-          <td>Worcestershire Over 40s</td>
-          <td class="eo40-venue">Droitwich CC</td>
-          <td><span class="eo40-badge eo40-badge-loss">Loss</span></td>
-          <td>Worcestershire won by 5 wickets</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/6631966" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-tie" data-season="2024" data-result="Tie">
-          <td>05 Aug 2024</td>
-          <td><span class="eo40-tournament eo40-t-friendly">Friendly</span></td>
-          <td><strong>England "A" Over 40s</strong></td>
-          <td>MCC</td>
-          <td class="eo40-venue">Darlington CC</td>
-          <td><span class="eo40-badge eo40-badge-tie">Tie</span></td>
-          <td>Match Tied</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/6546863" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-win" data-season="2024" data-result="Win">
-          <td>02 Aug 2024</td>
-          <td><span class="eo40-tournament eo40-t-tc">Triple Crown</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>Wales Over 40s</td>
-          <td class="eo40-venue">Newport CC</td>
-          <td><span class="eo40-badge eo40-badge-win">Win</span></td>
-          <td>England won by 10 wickets</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/6632499" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-loss" data-season="2024" data-result="Loss">
-          <td>01 Aug 2024</td>
-          <td><span class="eo40-tournament eo40-t-tc">Triple Crown</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>Ireland Over 40s</td>
-          <td class="eo40-venue">Newport CC</td>
-          <td><span class="eo40-badge eo40-badge-loss">Loss</span></td>
-          <td>Ireland won by 41 runs</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/6632498" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-win" data-season="2024" data-result="Win">
-          <td>31 Jul 2024</td>
-          <td><span class="eo40-tournament eo40-t-tc">Triple Crown</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>Scotland Over 40s</td>
-          <td class="eo40-venue">Newport CC</td>
-          <td><span class="eo40-badge eo40-badge-win">Win</span></td>
-          <td>England won by 10 wickets</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/6632496" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-win" data-season="2024" data-result="Win">
-          <td>11 Jul 2024</td>
-          <td><span class="eo40-tournament eo40-t-odi">ODI</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>Wales Over 40s</td>
-          <td class="eo40-venue">Arundel Castle CC</td>
-          <td><span class="eo40-badge eo40-badge-win">Win</span></td>
-          <td>England won by 108 runs</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/6546865" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-loss" data-season="2024" data-result="Loss">
-          <td>25 Jun 2024</td>
-          <td><span class="eo40-tournament eo40-t-t20">T20i (Game 2)</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>Wales Over 40s</td>
-          <td class="eo40-venue">Hammerwich CC</td>
-          <td><span class="eo40-badge eo40-badge-loss">Loss</span></td>
-          <td>Wales won by 5 wickets</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/6580412" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-win" data-season="2024" data-result="Win">
-          <td>25 Jun 2024</td>
-          <td><span class="eo40-tournament eo40-t-t20">T20i (Game 1)</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>Wales Over 40s</td>
-          <td class="eo40-venue">Hammerwich CC</td>
-          <td><span class="eo40-badge eo40-badge-win">Win</span></td>
-          <td>England won by 121 runs</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/6580410" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-win" data-season="2024" data-result="Win">
-          <td>04 Jun 2024</td>
-          <td><span class="eo40-tournament eo40-t-friendly">Friendly</span></td>
-          <td><strong>England "A" Over 40s</strong></td>
-          <td>Forty Club</td>
-          <td class="eo40-venue">Tickhill CC, Doncaster</td>
-          <td><span class="eo40-badge eo40-badge-win">Win</span></td>
-          <td>England A won by 111 runs</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/6600203" target="_blank">View Scorecard</a></td>
-        </tr>
-
-        <!-- 2024 SEASON — IMC World Cup (most recent first) -->
-        <tr class="eo40-loss" data-season="2024" data-result="Loss">
-          <td>29 Feb 2024</td>
-          <td><span class="eo40-tournament eo40-t-wc">World Cup 3/4</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>Australia Over 40s</td>
-          <td class="eo40-venue">Claremont CC, Cape Town</td>
-          <td><span class="eo40-badge eo40-badge-loss">Loss</span></td>
-          <td>Australia won by 5 wickets</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/6088911" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-loss" data-season="2024" data-result="Loss">
-          <td>27 Feb 2024</td>
-          <td><span class="eo40-tournament eo40-t-wc">World Cup SF</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>South Africa Over 40s</td>
-          <td class="eo40-venue">Green Point CC, Cape Town</td>
-          <td><span class="eo40-badge eo40-badge-loss">Loss</span></td>
-          <td>South Africa won by 17 runs</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/6088910" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-win" data-season="2024" data-result="Win">
-          <td>25 Feb 2024</td>
-          <td><span class="eo40-tournament eo40-t-wc">World Cup</span></td>
-          <td>Canada Over 40s</td>
-          <td><strong>England Over 40s</strong></td>
-          <td class="eo40-venue">Green Point CC, Cape Town</td>
-          <td><span class="eo40-badge eo40-badge-win">Win</span></td>
-          <td>England won by 9 wickets</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/6088909" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-win" data-season="2024" data-result="Win">
-          <td>23 Feb 2024</td>
-          <td><span class="eo40-tournament eo40-t-wc">World Cup</span></td>
-          <td>Australia Over 40s</td>
-          <td><strong>England Over 40s</strong></td>
-          <td class="eo40-venue">Rondebosch CC, Cape Town</td>
-          <td><span class="eo40-badge eo40-badge-win">Win</span></td>
-          <td>England won by 2 runs</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/6088908" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-win" data-season="2024" data-result="Win">
-          <td>22 Feb 2024</td>
-          <td><span class="eo40-tournament eo40-t-wc">World Cup</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>Namibia Over 40s</td>
-          <td class="eo40-venue">Milnerton HS, Cape Town</td>
-          <td><span class="eo40-badge eo40-badge-win">Win</span></td>
-          <td>England won by 8 wickets</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/6088906" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-win" data-season="2024" data-result="Win">
-          <td>20 Feb 2024</td>
-          <td><span class="eo40-tournament eo40-t-wc">World Cup</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>USA Over 40s</td>
-          <td class="eo40-venue">Reddam House School, Cape Town</td>
-          <td><span class="eo40-badge eo40-badge-win">Win</span></td>
-          <td>England won by 97 runs</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/6088905" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-win" data-season="2024" data-result="Win">
-          <td>19 Feb 2024</td>
-          <td><span class="eo40-tournament eo40-t-wc">World Cup</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>Zimbabwe Over 40s</td>
-          <td class="eo40-venue">WPCC, Cape Town</td>
-          <td><span class="eo40-badge eo40-badge-win">Win</span></td>
-          <td>England won by 5 wickets</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/6088903" target="_blank">View Scorecard</a></td>
-        </tr>
-
-        <!-- 2023 SEASON (most recent first) -->
-        <tr class="eo40-loss" data-season="2023" data-result="Loss">
-          <td>08 Aug 2023</td>
-          <td><span class="eo40-tournament eo40-t-friendly">Friendly</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>MCC</td>
-          <td class="eo40-venue">Darlington CC</td>
-          <td><span class="eo40-badge eo40-badge-loss">Loss</span></td>
-          <td>MCC won by 10 wickets</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/6043069" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-win" data-season="2023" data-result="Win">
-          <td>14 Jun 2023</td>
-          <td><span class="eo40-tournament eo40-t-odi">ODI</span></td>
-          <td>Wales Over 40s</td>
-          <td><strong>England Over 40s</strong></td>
-          <td class="eo40-venue">Panteg CC, Pontypool</td>
-          <td><span class="eo40-badge eo40-badge-win">Win</span></td>
-          <td>England won by 7 wickets</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/5984731" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-loss" data-season="2023" data-result="Loss">
-          <td>31 May 2023</td>
-          <td><span class="eo40-tournament eo40-t-odi">ODI</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>Ireland Over 40s</td>
-          <td class="eo40-venue">Uxbridge CC</td>
-          <td><span class="eo40-badge eo40-badge-loss">Loss</span></td>
-          <td>Ireland won by 53 runs</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/5901523" target="_blank">View Scorecard</a></td>
-        </tr>
-        <tr class="eo40-win" data-season="2023" data-result="Win">
-          <td>23 May 2023</td>
-          <td><span class="eo40-tournament eo40-t-odi">ODI</span></td>
-          <td><strong>England Over 40s</strong></td>
-          <td>Wales Over 40s</td>
-          <td class="eo40-venue">Broxbourne CC</td>
-          <td><span class="eo40-badge eo40-badge-win">Win</span></td>
-          <td>England won by 92 runs</td>
-          <td><a class="eo40-scorecard-link" href="https://englandseniors.play-cricket.com/website/results/5901523" target="_blank">View Scorecard</a></td>
-        </tr>
-      </tbody>
+      <tbody id="eo40-tbody"></tbody>
     </table>
   </div>
 
-  <!-- Colour key -->
-  <div class="eo40-key">
-    <div class="eo40-key-item"><span class="eo40-key-swatch" style="background:#e8f5e9;"></span> Win</div>
-    <div class="eo40-key-item"><span class="eo40-key-swatch" style="background:#ffebee;"></span> Loss</div>
-    <div class="eo40-key-item"><span class="eo40-key-swatch" style="background:#fff9c4;"></span> Tie</div>
-    <div class="eo40-key-item"><span class="eo40-key-swatch" style="background:#f5f5f5;"></span> No Result</div>
-  </div>
+  <div class="eo40-cards" id="eo40-cards"></div>
 
-  <p class="eo40-footer">Source: englandseniors.play-cricket.com &amp; triplecrown.play-cricket.com &mdash; Click &ldquo;View Scorecard&rdquo; for full match details and scores.</p>
+  <div class="eo40-footer">
+    <div class="eo40-legend">
+      <span class="eo40-legend-item"><span class="eo40-legend-dot" style="background:#2e7d32;"></span> Win</span>
+      <span class="eo40-legend-item"><span class="eo40-legend-dot" style="background:#c62828;"></span> Loss</span>
+      <span class="eo40-legend-item"><span class="eo40-legend-dot" style="background:#f9a825;"></span> Tie</span>
+      <span class="eo40-legend-item"><span class="eo40-legend-dot" style="background:#757575;"></span> No Result</span>
+    </div>
+    <p>Source: englandseniors.play-cricket.com & triplecrown.play-cricket.com<br>Click scorecard links for full match details and scores.</p>
+  </div>
 </div>
 
 <script>
 (function() {
-  function eo40Filter(season) {
-    var rows = document.querySelectorAll('#eo40-tbody tr');
-    var tabs = document.querySelectorAll('.eo40-tab');
-    var wins = 0, losses = 0, ties = 0, nr = 0, total = 0;
+  var CSV_URL = 'matches.csv';
 
-    tabs.forEach(function(t) { t.classList.remove('active'); });
-    event.target.classList.add('active');
-
-    rows.forEach(function(row) {
-      var s = row.getAttribute('data-season');
-      var r = row.getAttribute('data-result');
-      if (season === 'all' || s === season) {
-        row.style.display = '';
-        total++;
-        if (r === 'Win') wins++;
-        else if (r === 'Loss') losses++;
-        else if (r === 'Tie') ties++;
-        else nr++;
-      } else {
-        row.style.display = 'none';
+  function parseCSV(text) {
+    var lines = text.trim().split('\n');
+    var headers = parseCSVLine(lines[0]);
+    var data = [];
+    for (var i = 1; i < lines.length; i++) {
+      var vals = parseCSVLine(lines[i]);
+      if (vals.length < headers.length) continue;
+      var row = {};
+      for (var j = 0; j < headers.length; j++) {
+        row[headers[j].trim()] = (vals[j] || '').trim();
       }
-    });
-
-    document.getElementById('eo40-played').textContent = total;
-    document.getElementById('eo40-won').textContent = wins;
-    document.getElementById('eo40-lost').textContent = losses;
-    document.getElementById('eo40-tied').textContent = ties;
-    document.getElementById('eo40-nr').textContent = nr;
-    var decided = wins + losses;
-    document.getElementById('eo40-winpct').textContent = decided > 0 ? Math.round((wins / decided) * 100) + '%' : '—';
+      data.push(row);
+    }
+    return data;
   }
 
-  window.eo40Filter = eo40Filter;
+  function parseCSVLine(line) {
+    var result = [], current = '', inQuotes = false;
+    for (var i = 0; i < line.length; i++) {
+      var ch = line[i];
+      if (inQuotes) {
+        if (ch === '"') {
+          if (i + 1 < line.length && line[i + 1] === '"') { current += '"'; i++; }
+          else { inQuotes = false; }
+        } else { current += ch; }
+      } else {
+        if (ch === '"') { inQuotes = true; }
+        else if (ch === ',') { result.push(current); current = ''; }
+        else { current += ch; }
+      }
+    }
+    result.push(current);
+    return result;
+  }
+
+  function badgeClass(t) {
+    var tl = t.toLowerCase();
+    if (tl.indexOf('world cup') >= 0) return 'eo40-badge-wc';
+    if (tl.indexOf('triple crown') >= 0) return 'eo40-badge-tc';
+    if (tl.indexOf('t20') >= 0) return 'eo40-badge-t20';
+    if (tl.indexOf('friendly') >= 0) return 'eo40-badge-friendly';
+    return 'eo40-badge-odi';
+  }
+
+  function resultClass(r) {
+    var rl = r.toLowerCase().trim();
+    if (rl === 'win') return 'eo40-win';
+    if (rl === 'loss') return 'eo40-loss';
+    if (rl === 'tie') return 'eo40-tie';
+    return 'eo40-noresult';
+  }
+
+  function resultBadgeClass(r) {
+    var rl = r.toLowerCase().trim();
+    if (rl === 'win') return 'eo40-result-win';
+    if (rl === 'loss') return 'eo40-result-loss';
+    if (rl === 'tie') return 'eo40-result-tie';
+    return 'eo40-result-noresult';
+  }
+
+  function isEngland(team) { return team.toLowerCase().indexOf('england') >= 0; }
+
+  function teamHTML(team) {
+    if (isEngland(team)) return '<span class="eo40-england">' + team + '</span>';
+    return team;
+  }
+
+  var allMatches = [];
+
+  function renderStats(matches) {
+    var total = matches.length;
+    var wins = 0, losses = 0, ties = 0, nr = 0;
+    for (var i = 0; i < matches.length; i++) {
+      var rl = matches[i].Result.toLowerCase().trim();
+      if (rl === 'win') wins++;
+      else if (rl === 'loss') losses++;
+      else if (rl === 'tie') ties++;
+      else nr++;
+    }
+    var denom = total - nr;
+    var pct = denom > 0 ? Math.round((wins / denom) * 100) : 0;
+
+    document.getElementById('eo40-stats').innerHTML =
+      '<div class="eo40-stat"><div class="eo40-stat-val">' + total + '</div><div class="eo40-stat-lbl">Played</div></div>' +
+      '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#2e7d32">' + wins + '</div><div class="eo40-stat-lbl">Won</div></div>' +
+      '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#c62828">' + losses + '</div><div class="eo40-stat-lbl">Lost</div></div>' +
+      '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#f9a825">' + ties + '</div><div class="eo40-stat-lbl">Tied</div></div>' +
+      '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#757575">' + nr + '</div><div class="eo40-stat-lbl">No Result</div></div>' +
+      '<div class="eo40-stat"><div class="eo40-stat-val">' + pct + '%</div><div class="eo40-stat-lbl">Win %</div></div>';
+  }
+
+  function renderTable(matches) {
+    var tbody = document.getElementById('eo40-tbody');
+    var html = '';
+    for (var i = 0; i < matches.length; i++) {
+      var m = matches[i];
+      var rc = resultClass(m.Result);
+      var rbc = resultBadgeClass(m.Result);
+      var bc = badgeClass(m.Tournament);
+      var scLink = m.ScorecardURL
+        ? '<a class="eo40-sc-link" href="' + m.ScorecardURL + '" target="_blank" rel="noopener">View Scorecard</a>'
+        : '—';
+
+      html += '<tr class="' + rc + '">' +
+        '<td style="white-space:nowrap;">' + m.Date + '</td>' +
+        '<td><span class="eo40-badge ' + bc + '">' + m.Tournament + '</span></td>' +
+        '<td>' + teamHTML(m.HomeTeam) + '</td>' +
+        '<td>' + teamHTML(m.AwayTeam) + '</td>' +
+        '<td>' + m.Venue + '</td>' +
+        '<td><span class="eo40-result ' + rbc + '">' + m.Result.toUpperCase() + '</span></td>' +
+        '<td>' + m.Details + '</td>' +
+        '<td>' + scLink + '</td>' +
+        '</tr>';
+    }
+    tbody.innerHTML = html;
+  }
+
+  function renderCards(matches) {
+    var container = document.getElementById('eo40-cards');
+    var html = '';
+    var lastSeason = '';
+
+    for (var i = 0; i < matches.length; i++) {
+      var m = matches[i];
+
+      if (m.Season !== lastSeason) {
+        html += '<div class="eo40-season-divider">' + m.Season + ' Season</div>';
+        lastSeason = m.Season;
+      }
+
+      var rc = resultClass(m.Result);
+      var rbc = resultBadgeClass(m.Result);
+      var bc = badgeClass(m.Tournament);
+      var scLink = m.ScorecardURL
+        ? '<a class="eo40-sc-link" href="' + m.ScorecardURL + '" target="_blank" rel="noopener">Scorecard</a>'
+        : '';
+
+      html += '<div class="eo40-card ' + rc + '">' +
+        '<div class="eo40-card-top">' +
+          '<span class="eo40-card-date">' + m.Date + '</span>' +
+          '<span class="eo40-badge ' + bc + '">' + m.Tournament + '</span>' +
+        '</div>' +
+        '<div class="eo40-card-teams">' +
+          '<div class="eo40-card-team">' + teamHTML(m.HomeTeam) + '</div>' +
+          '<div class="eo40-card-vs">vs</div>' +
+          '<div class="eo40-card-team">' + teamHTML(m.AwayTeam) + '</div>' +
+        '</div>' +
+        '<div class="eo40-card-venue">' + m.Venue + '</div>' +
+        '<div class="eo40-card-bottom">' +
+          '<div>' +
+            '<span class="eo40-result ' + rbc + '">' + m.Result.toUpperCase() + '</span>' +
+            '<div class="eo40-card-details">' + m.Details + '</div>' +
+          '</div>' +
+          scLink +
+        '</div>' +
+      '</div>';
+    }
+
+    container.innerHTML = html;
+  }
+
+  function filterAndRender(season) {
+    var filtered = [];
+    if (season === 'all') {
+      filtered = allMatches;
+    } else {
+      for (var i = 0; i < allMatches.length; i++) {
+        if (allMatches[i].Season === season) filtered.push(allMatches[i]);
+      }
+    }
+    renderStats(filtered);
+    renderTable(filtered);
+    renderCards(filtered);
+  }
+
+  document.getElementById('eo40-tabs').addEventListener('click', function(e) {
+    if (!e.target.classList.contains('eo40-tab')) return;
+    var tabs = document.querySelectorAll('.eo40-tab');
+    for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove('active');
+    e.target.classList.add('active');
+    filterAndRender(e.target.getAttribute('data-season'));
+  });
+
+  // Fetch CSV data
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', CSV_URL + '?t=' + Date.now(), true);
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      allMatches = parseCSV(xhr.responseText);
+      document.getElementById('eo40-loading').style.display = 'none';
+      document.getElementById('eo40-table-wrap').style.display = '';
+      filterAndRender('all');
+    } else {
+      document.getElementById('eo40-loading').textContent = 'Unable to load fixtures data. Please try refreshing the page.';
+    }
+  };
+  xhr.onerror = function() {
+    document.getElementById('eo40-loading').textContent = 'Unable to load fixtures data. Please try refreshing the page.';
+  };
+  xhr.send();
 })();
 </script>
+
+</body>
+</html>
