@@ -19,10 +19,20 @@
   .eo40-tab:hover { background: #e8eef5; }
   .eo40-tab.active { background: #1a3a5c; color: #fff; }
 
-  .eo40-stats { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; background: #fff; border-radius: 12px; padding: 14px 16px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  .eo40-stat { text-align: center; min-width: 55px; }
-  .eo40-stat-val { font-size: 1.4rem; font-weight: 700; color: #1a3a5c; }
-  .eo40-stat-lbl { font-size: 0.65rem; text-transform: uppercase; color: #7a8a9a; letter-spacing: 0.5px; }
+  /* Split stats container */
+  .eo40-stats-wrap { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+  .eo40-stats-group { flex: 1; min-width: 280px; background: #fff; border-radius: 12px; padding: 12px 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .eo40-stats-group-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #fff; background: #1a3a5c; display: inline-block; padding: 3px 12px; border-radius: 8px; margin-bottom: 8px; }
+  .eo40-stats-group-title.lions { background: #546e7a; }
+  .eo40-stats-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+  .eo40-stat { text-align: center; min-width: 45px; }
+  .eo40-stat-val { font-size: 1.3rem; font-weight: 700; color: #1a3a5c; }
+  .eo40-stat-lbl { font-size: 0.6rem; text-transform: uppercase; color: #7a8a9a; letter-spacing: 0.5px; }
+
+  /* CricketStatz link */
+  .eo40-statz-link { display: flex; justify-content: center; margin-bottom: 16px; }
+  .eo40-statz-link a { display: inline-flex; align-items: center; gap: 6px; padding: 8px 20px; background: #1a3a5c; color: #fff; text-decoration: none; border-radius: 24px; font-size: 0.82rem; font-weight: 600; transition: all 0.2s; }
+  .eo40-statz-link a:hover { background: #2a5a8c; }
 
   .eo40-section { margin-bottom: 20px; }
   .eo40-section-title { font-size: 1.1rem; font-weight: 700; color: #1a3a5c; padding: 10px 0 8px; border-bottom: 2px solid #1a3a5c; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
@@ -103,9 +113,10 @@
     .eo40-table-wrap { display: none !important; }
     .eo40-cards { display: block !important; }
     .eo40-header h1 { font-size: 1.2rem; }
-    .eo40-stats { gap: 8px; padding: 10px 8px; }
+    .eo40-stats-wrap { flex-direction: column; gap: 8px; }
+    .eo40-stats-group { padding: 10px 8px; }
     .eo40-stat-val { font-size: 1.1rem; }
-    .eo40-stat-lbl { font-size: 0.6rem; }
+    .eo40-stat-lbl { font-size: 0.55rem; }
     .eo40-tab { padding: 6px 14px; font-size: 0.8rem; }
   }
 </style>
@@ -126,7 +137,11 @@
     <button class="eo40-tab" data-season="2023">2023</button>
   </div>
 
-  <div class="eo40-stats" id="eo40-stats"></div>
+  <div id="eo40-stats"></div>
+
+  <div class="eo40-statz-link">
+    <a href="https://www2.cricketstatz.com/ss/w?&club=97523" target="_blank">&#x1F4CA; Full Career &amp; Match Statistics on CricketStatz</a>
+  </div>
 
   <div class="eo40-loading" id="eo40-loading">Loading fixtures data...</div>
 
@@ -140,7 +155,7 @@
       <span class="eo40-legend-item"><span class="eo40-legend-dot" style="background:#f9a825;"></span> Tie</span>
       <span class="eo40-legend-item"><span class="eo40-legend-dot" style="background:#757575;"></span> No Result</span>
     </div>
-    <p>Source: englandseniors.play-cricket.com & triplecrown.play-cricket.com<br>Click scorecard links for full match details. Venue links open Google Maps.<br>YouTube links open live stream recordings and match highlights.</p>
+    <p>Source: englandseniors.play-cricket.com &amp; triplecrown.play-cricket.com<br>Click scorecard links for full match details. Venue links open Google Maps.<br>YouTube links open live stream recordings and match highlights.</p>
   </div>
 </div>
 
@@ -214,6 +229,15 @@
 
   function isEngland(team) { return team.toLowerCase().indexOf('england') >= 0; }
 
+  /* Determine if a match is an England Lions / England A / England XI match */
+  function isLionsMatch(m) {
+    var home = m.HomeTeam.toLowerCase();
+    var away = m.AwayTeam.toLowerCase();
+    var engTeam = isEngland(m.HomeTeam) ? home : (isEngland(m.AwayTeam) ? away : '');
+    if (!engTeam) return false;
+    return engTeam.indexOf('lions') >= 0 || engTeam.indexOf('"a"') >= 0 || engTeam.indexOf('xi') >= 0;
+  }
+
   function shortTeam(name) {
     return name.replace(/ Over 40s/gi, '').replace(/ Over 40/gi, '').replace(/Veterans Cricket /gi, '').trim();
   }
@@ -226,7 +250,7 @@
 
   var allMatches = [];
 
-  function renderStats(matches) {
+  function buildStatsHTML(label, labelClass, matches) {
     var played = matches.filter(function(m) { return m.Result.toLowerCase() !== 'upcoming'; });
     var upcoming = matches.filter(function(m) { return m.Result.toLowerCase() === 'upcoming'; });
     var wins = 0, losses = 0, ties = 0, nr = 0;
@@ -240,7 +264,9 @@
     var denom = played.length - nr;
     var pct = denom > 0 ? Math.round((wins / denom) * 100) : 0;
 
-    var html = '';
+    var html = '<div class="eo40-stats-group">';
+    html += '<div class="eo40-stats-group-title ' + labelClass + '">' + label + '</div>';
+    html += '<div class="eo40-stats-row">';
     if (played.length > 0) {
       html += '<div class="eo40-stat"><div class="eo40-stat-val">' + played.length + '</div><div class="eo40-stat-lbl">Played</div></div>';
       html += '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#2e7d32">' + wins + '</div><div class="eo40-stat-lbl">Won</div></div>';
@@ -252,6 +278,24 @@
     if (upcoming.length > 0) {
       html += '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#1a3a5c">' + upcoming.length + '</div><div class="eo40-stat-lbl">Upcoming</div></div>';
     }
+    if (played.length === 0 && upcoming.length === 0) {
+      html += '<div class="eo40-stat"><div class="eo40-stat-val">0</div><div class="eo40-stat-lbl">Matches</div></div>';
+    }
+    html += '</div></div>';
+    return html;
+  }
+
+  function renderStats(matches) {
+    var engMatches = matches.filter(function(m) { return !isLionsMatch(m); });
+    var lionsMatches = matches.filter(function(m) { return isLionsMatch(m); });
+
+    var html = '<div class="eo40-stats-wrap">';
+    html += buildStatsHTML('England Over 40s', '', engMatches);
+    if (lionsMatches.length > 0) {
+      html += buildStatsHTML('England Lions / A', 'lions', lionsMatches);
+    }
+    html += '</div>';
+
     document.getElementById('eo40-stats').innerHTML = html;
   }
 
