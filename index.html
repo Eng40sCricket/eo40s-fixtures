@@ -6,72 +6,148 @@
 <title>England Over 40s Cricket — Fixtures & Results</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #f0f2f5; color: #1a1a2e; line-height: 1.5; }
 
-  .eo40-wrap { max-width: 1100px; margin: 0 auto; padding: 16px; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #e8eef5;
+    line-height: 1.5;
+    min-height: 100vh;
+    background: #0a1628;
+  }
+
+  /* ── Atmospheric background ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background: url('images/cricket-bg.jpg') center center / cover no-repeat;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      180deg,
+      rgba(10, 22, 40, 0.92) 0%,
+      rgba(10, 22, 40, 0.85) 30%,
+      rgba(12, 28, 50, 0.88) 60%,
+      rgba(10, 22, 40, 0.95) 100%
+    );
+  }
+
+  .eo40-wrap { max-width: 1100px; margin: 0 auto; padding: 16px; position: relative; z-index: 1; }
 
   .eo40-header { text-align: center; padding: 24px 16px 12px; }
-  .eo40-header h1 { font-size: 1.5rem; color: #1a3a5c; margin-bottom: 4px; }
-  .eo40-header p { font-size: 0.9rem; color: #5a6a7a; }
+  .eo40-header h1 { font-size: 1.5rem; color: #fff; margin-bottom: 4px; text-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+  .eo40-header p { font-size: 0.9rem; color: rgba(200, 215, 235, 0.8); }
 
   /* Navigation tabs */
   .eo40-tabs { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin: 16px 0; }
-  .eo40-tab { padding: 8px 16px; border: 2px solid #1a3a5c; border-radius: 24px; background: #fff; color: #1a3a5c; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
-  .eo40-tab:hover { background: #e8eef5; }
-  .eo40-tab.active { background: #1a3a5c; color: #fff; }
-  .eo40-tab .eo40-tab-count { font-size: 0.68rem; background: rgba(255,255,255,0.25); padding: 1px 6px; border-radius: 8px; margin-left: 4px; }
-  .eo40-tab.active .eo40-tab-count { background: rgba(255,255,255,0.3); }
-  .eo40-tab:not(.active) .eo40-tab-count { background: #e8eef5; }
+  .eo40-tab {
+    padding: 8px 16px; border: 2px solid rgba(200, 215, 235, 0.4); border-radius: 24px;
+    background: rgba(255,255,255,0.08); color: rgba(220, 230, 245, 0.9);
+    font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    white-space: nowrap; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  }
+  .eo40-tab:hover { background: rgba(255,255,255,0.15); border-color: rgba(200, 215, 235, 0.6); }
+  .eo40-tab.active { background: rgba(26, 58, 92, 0.9); color: #fff; border-color: rgba(100, 160, 220, 0.6); box-shadow: 0 0 12px rgba(26, 58, 92, 0.5); }
+  .eo40-tab .eo40-tab-count { font-size: 0.68rem; background: rgba(255,255,255,0.2); padding: 1px 6px; border-radius: 8px; margin-left: 4px; }
+  .eo40-tab.active .eo40-tab-count { background: rgba(255,255,255,0.25); }
+  .eo40-tab:not(.active) .eo40-tab-count { background: rgba(255,255,255,0.12); }
 
   /* Split stats container */
   .eo40-stats-wrap { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
-  .eo40-stats-group { flex: 1; min-width: 260px; background: #fff; border-radius: 12px; padding: 12px 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  .eo40-stats-group-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #fff; background: #1a3a5c; display: inline-block; padding: 3px 12px; border-radius: 8px; margin-bottom: 8px; }
-  .eo40-stats-group-title.lions { background: #546e7a; }
+  .eo40-stats-group {
+    flex: 1; min-width: 260px;
+    background: rgba(15, 30, 55, 0.7);
+    border: 1px solid rgba(100, 160, 220, 0.15);
+    border-radius: 12px; padding: 12px 16px;
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .eo40-stats-group-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #fff; background: rgba(26, 58, 92, 0.9); display: inline-block; padding: 3px 12px; border-radius: 8px; margin-bottom: 8px; }
+  .eo40-stats-group-title.lions { background: rgba(84, 110, 122, 0.9); }
   .eo40-stats-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
   .eo40-stat { text-align: center; min-width: 45px; }
-  .eo40-stat-val { font-size: 1.3rem; font-weight: 700; color: #1a3a5c; }
-  .eo40-stat-lbl { font-size: 0.6rem; text-transform: uppercase; color: #7a8a9a; letter-spacing: 0.5px; }
+  .eo40-stat-val { font-size: 1.3rem; font-weight: 700; color: #c8d7eb; }
+  .eo40-stat-lbl { font-size: 0.6rem; text-transform: uppercase; color: rgba(180, 195, 215, 0.7); letter-spacing: 0.5px; }
 
   /* Stats panel */
-  .eo40-stats-panel { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); text-align: center; }
-  .eo40-stats-panel h2 { font-size: 1.1rem; color: #1a3a5c; margin-bottom: 12px; }
-  .eo40-stats-panel p { font-size: 0.85rem; color: #5a6a7a; margin-bottom: 12px; }
-  .eo40-statz-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 24px; background: #1a3a5c; color: #fff; text-decoration: none; border-radius: 24px; font-size: 0.85rem; font-weight: 600; transition: all 0.2s; }
-  .eo40-statz-btn:hover { background: #2a5a8c; }
-  .eo40-statz-btn.secondary { background: #546e7a; margin-left: 8px; }
-  .eo40-statz-btn.secondary:hover { background: #6a8a9a; }
+  .eo40-stats-panel {
+    background: rgba(15, 30, 55, 0.7);
+    border: 1px solid rgba(100, 160, 220, 0.15);
+    border-radius: 12px; padding: 20px; margin-bottom: 16px;
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    text-align: center;
+  }
+  .eo40-stats-panel h2 { font-size: 1.1rem; color: #fff; margin-bottom: 12px; }
+  .eo40-stats-panel p { font-size: 0.85rem; color: rgba(200, 215, 235, 0.8); margin-bottom: 12px; }
+  .eo40-statz-btn {
+    display: inline-flex; align-items: center; gap: 6px; padding: 10px 24px;
+    background: linear-gradient(135deg, #1a3a5c, #2a5a8c); color: #fff;
+    text-decoration: none; border-radius: 24px; font-size: 0.85rem; font-weight: 600;
+    transition: all 0.2s; border: 1px solid rgba(100, 160, 220, 0.3);
+    box-shadow: 0 2px 10px rgba(26, 58, 92, 0.4);
+  }
+  .eo40-statz-btn:hover { background: linear-gradient(135deg, #2a5a8c, #3a7abc); box-shadow: 0 4px 16px rgba(26, 58, 92, 0.6); }
+  .eo40-statz-btn.secondary { background: linear-gradient(135deg, #546e7a, #6a8a9a); margin-left: 8px; }
+  .eo40-statz-btn.secondary:hover { background: linear-gradient(135deg, #6a8a9a, #7a9aaa); }
   .eo40-stats-btns { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
 
   /* Section headers */
   .eo40-section { margin-bottom: 20px; }
-  .eo40-section-title { font-size: 1.1rem; font-weight: 700; color: #1a3a5c; padding: 10px 0 8px; border-bottom: 2px solid #1a3a5c; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-  .eo40-section-badge { font-size: 0.7rem; background: #1a3a5c; color: #fff; padding: 2px 10px; border-radius: 10px; }
-  .eo40-section-badge.archive { background: #546e7a; }
+  .eo40-section-title {
+    font-size: 1.1rem; font-weight: 700; color: #fff;
+    padding: 10px 0 8px; border-bottom: 2px solid rgba(100, 160, 220, 0.3);
+    margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+  }
+  .eo40-section-badge { font-size: 0.7rem; background: rgba(26, 58, 92, 0.9); color: #fff; padding: 2px 10px; border-radius: 10px; }
+  .eo40-section-badge.archive { background: rgba(84, 110, 122, 0.9); }
 
   /* Archive toggle */
-  .eo40-archive-toggle { display: inline-flex; align-items: center; gap: 4px; padding: 4px 12px; border: 1.5px solid #546e7a; border-radius: 14px; background: #fff; color: #546e7a; font-size: 0.72rem; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-left: auto; }
-  .eo40-archive-toggle:hover { background: #546e7a; color: #fff; }
-  .eo40-archive-toggle.expanded { background: #546e7a; color: #fff; }
+  .eo40-archive-toggle { display: inline-flex; align-items: center; gap: 4px; padding: 4px 12px; border: 1.5px solid rgba(200, 215, 235, 0.4); border-radius: 14px; background: rgba(255,255,255,0.06); color: rgba(200, 215, 235, 0.8); font-size: 0.72rem; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-left: auto; }
+  .eo40-archive-toggle:hover { background: rgba(84, 110, 122, 0.6); color: #fff; }
+  .eo40-archive-toggle.expanded { background: rgba(84, 110, 122, 0.7); color: #fff; }
 
   /* Empty state */
-  .eo40-empty { text-align: center; padding: 32px 16px; color: #7a8a9a; font-size: 0.88rem; }
+  .eo40-empty { text-align: center; padding: 32px 16px; color: rgba(180, 195, 215, 0.7); font-size: 0.88rem; }
 
-  .eo40-table-wrap { overflow-x: auto; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); margin-bottom: 16px; }
-  .eo40-table { width: 100%; border-collapse: collapse; background: #fff; font-size: 0.82rem; }
-  .eo40-table thead th { background: #1a3a5c; color: #fff; padding: 10px 8px; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; position: sticky; top: 0; white-space: nowrap; }
-  .eo40-table.archive-table thead th { background: #546e7a; }
-  .eo40-table tbody td { padding: 8px; border-bottom: 1px solid #eef0f3; vertical-align: middle; }
-  .eo40-table tbody tr.eo40-win { background: #e8f5e9; }
-  .eo40-table tbody tr.eo40-loss { background: #ffebee; }
-  .eo40-table tbody tr.eo40-tie { background: #fff9c4; }
-  .eo40-table tbody tr.eo40-noresult { background: #f5f5f5; }
-  .eo40-table tbody tr.eo40-upcoming { background: #e8eef5; }
-  .eo40-table tbody tr:hover { filter: brightness(0.97); }
+  /* ── Tables ── */
+  .eo40-table-wrap {
+    overflow-x: auto; border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    margin-bottom: 16px;
+    border: 1px solid rgba(100, 160, 220, 0.12);
+  }
+  .eo40-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  .eo40-table thead th {
+    background: rgba(14, 28, 50, 0.95); color: rgba(200, 215, 235, 0.9);
+    padding: 10px 8px; text-align: left; font-size: 0.75rem;
+    text-transform: uppercase; letter-spacing: 0.5px; position: sticky; top: 0;
+    white-space: nowrap; border-bottom: 2px solid rgba(100, 160, 220, 0.2);
+  }
+  .eo40-table.archive-table thead th { background: rgba(40, 55, 70, 0.95); }
+
+  .eo40-table tbody td {
+    padding: 8px; border-bottom: 1px solid rgba(100, 160, 220, 0.08);
+    vertical-align: middle; color: #d0daea;
+  }
+
+  /* Row result colours — dark-themed with transparency */
+  .eo40-table tbody tr { background: rgba(15, 30, 55, 0.5); }
+  .eo40-table tbody tr.eo40-win { background: rgba(20, 60, 30, 0.45); }
+  .eo40-table tbody tr.eo40-loss { background: rgba(70, 20, 20, 0.4); }
+  .eo40-table tbody tr.eo40-tie { background: rgba(80, 65, 10, 0.4); }
+  .eo40-table tbody tr.eo40-noresult { background: rgba(50, 50, 55, 0.4); }
+  .eo40-table tbody tr.eo40-upcoming { background: rgba(20, 40, 70, 0.5); }
+  .eo40-table tbody tr:hover { background: rgba(40, 60, 90, 0.5); }
 
   .eo40-team-cell { display: flex; align-items: center; gap: 6px; }
-  .eo40-team-img { width: 28px; height: 28px; object-fit: contain; border-radius: 50%; background: #fff; border: 1px solid #eee; flex-shrink: 0; }
-  .eo40-england { font-weight: 700; }
+  .eo40-team-img { width: 28px; height: 28px; object-fit: contain; border-radius: 50%; background: rgba(255,255,255,0.9); border: 1px solid rgba(255,255,255,0.2); flex-shrink: 0; }
+  .eo40-england { font-weight: 700; color: #fff; }
 
   .eo40-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; white-space: nowrap; }
   .eo40-badge-odi { background: #1565c0; color: #fff; }
@@ -79,54 +155,65 @@
   .eo40-badge-tc { background: #7b1fa2; color: #fff; }
   .eo40-badge-friendly { background: #2e7d32; color: #fff; }
   .eo40-badge-t20 { background: #c62828; color: #fff; }
-  .eo40-badge-nonodi { background: #546e7a; color: #fff; }
+  .eo40-badge-nonodi { background: rgba(84, 110, 122, 0.9); color: #fff; }
 
   .eo40-result { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; }
   .eo40-result-win { background: #2e7d32; color: #fff; }
   .eo40-result-loss { background: #c62828; color: #fff; }
-  .eo40-result-tie { background: #f9a825; color: #333; }
+  .eo40-result-tie { background: #f9a825; color: #1a1a2e; }
   .eo40-result-noresult { background: #757575; color: #fff; }
-  .eo40-result-upcoming { background: #1a3a5c; color: #fff; }
+  .eo40-result-upcoming { background: rgba(26, 58, 92, 0.9); color: #fff; border: 1px solid rgba(100, 160, 220, 0.3); }
 
-  .eo40-link { color: #1a3a5c; text-decoration: none; font-weight: 600; font-size: 0.75rem; white-space: nowrap; }
-  .eo40-link:hover { text-decoration: underline; }
-  .eo40-venue-link { color: #555; text-decoration: none; font-size: 0.8rem; }
-  .eo40-venue-link:hover { color: #1a3a5c; text-decoration: underline; }
+  .eo40-link { color: #7ab3e0; text-decoration: none; font-weight: 600; font-size: 0.75rem; white-space: nowrap; }
+  .eo40-link:hover { text-decoration: underline; color: #a0d0f0; }
+  .eo40-venue-link { color: rgba(180, 200, 225, 0.8); text-decoration: none; font-size: 0.8rem; }
+  .eo40-venue-link:hover { color: #7ab3e0; text-decoration: underline; }
   .eo40-links-cell { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
-  .eo40-link-yt { color: #c62828; }
-  .eo40-link-yt:hover { background: #c62828; color: #fff; }
-  .eo40-card-link-yt { color: #c62828; border-color: #c62828; }
-  .eo40-card-link-yt:hover { background: #c62828; color: #fff; }
+  .eo40-link-yt { color: #ef5350; }
+  .eo40-link-yt:hover { color: #ff8a80; }
+  .eo40-card-link-yt { color: #ef5350; border-color: #ef5350; }
+  .eo40-card-link-yt:hover { background: #ef5350; color: #fff; }
 
   /* Mobile Cards */
   .eo40-cards { display: none; }
-  .eo40-card { background: #fff; border-radius: 12px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); overflow: hidden; border-left: 5px solid #ccc; }
+  .eo40-card {
+    background: rgba(15, 30, 55, 0.7);
+    border: 1px solid rgba(100, 160, 220, 0.12);
+    border-radius: 12px; margin-bottom: 10px;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    overflow: hidden; border-left: 5px solid rgba(100, 160, 220, 0.3);
+  }
   .eo40-card.eo40-win { border-left-color: #2e7d32; }
   .eo40-card.eo40-loss { border-left-color: #c62828; }
   .eo40-card.eo40-tie { border-left-color: #f9a825; }
   .eo40-card.eo40-noresult { border-left-color: #757575; }
-  .eo40-card.eo40-upcoming { border-left-color: #1a3a5c; }
+  .eo40-card.eo40-upcoming { border-left-color: rgba(100, 160, 220, 0.6); }
   .eo40-card-top { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px 4px; }
-  .eo40-card-date { font-size: 0.8rem; color: #5a6a7a; font-weight: 600; }
+  .eo40-card-date { font-size: 0.8rem; color: rgba(180, 200, 225, 0.8); font-weight: 600; }
   .eo40-card-badges { display: flex; gap: 4px; align-items: center; }
   .eo40-card-teams { display: flex; align-items: center; justify-content: center; padding: 10px 12px; gap: 14px; }
   .eo40-card-team { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 80px; }
-  .eo40-card-team img { width: 44px; height: 44px; object-fit: contain; border-radius: 50%; background: #fff; border: 1px solid #eee; }
-  .eo40-card-team span { font-size: 0.72rem; font-weight: 600; text-align: center; line-height: 1.2; }
-  .eo40-card-vs { font-size: 0.85rem; font-weight: 700; color: #bbb; }
-  .eo40-card-bottom { padding: 8px 12px 10px; border-top: 1px solid #f0f0f0; }
-  .eo40-card-detail { font-size: 0.75rem; color: #555; font-style: italic; margin-bottom: 4px; }
-  .eo40-card-venue { font-size: 0.72rem; color: #888; margin-bottom: 6px; }
+  .eo40-card-team img { width: 44px; height: 44px; object-fit: contain; border-radius: 50%; background: rgba(255,255,255,0.9); border: 1px solid rgba(255,255,255,0.2); }
+  .eo40-card-team span { font-size: 0.72rem; font-weight: 600; text-align: center; line-height: 1.2; color: #d0daea; }
+  .eo40-card-vs { font-size: 0.85rem; font-weight: 700; color: rgba(180, 200, 225, 0.5); }
+  .eo40-card-bottom { padding: 8px 12px 10px; border-top: 1px solid rgba(100, 160, 220, 0.1); }
+  .eo40-card-detail { font-size: 0.75rem; color: rgba(180, 200, 225, 0.7); font-style: italic; margin-bottom: 4px; }
+  .eo40-card-venue { font-size: 0.72rem; color: rgba(160, 180, 205, 0.6); margin-bottom: 6px; }
   .eo40-card-links { display: flex; gap: 8px; flex-wrap: wrap; }
-  .eo40-card-link { font-size: 0.72rem; color: #1a3a5c; text-decoration: none; font-weight: 600; padding: 4px 12px; border: 1.5px solid #1a3a5c; border-radius: 14px; transition: all 0.2s; }
-  .eo40-card-link:hover { background: #1a3a5c; color: #fff; }
+  .eo40-card-link {
+    font-size: 0.72rem; color: #7ab3e0; text-decoration: none; font-weight: 600;
+    padding: 4px 12px; border: 1.5px solid rgba(122, 179, 224, 0.4); border-radius: 14px;
+    transition: all 0.2s; background: rgba(255,255,255,0.04);
+  }
+  .eo40-card-link:hover { background: rgba(26, 58, 92, 0.7); color: #fff; border-color: rgba(100, 160, 220, 0.6); }
 
-  .eo40-footer { text-align: center; padding: 16px; font-size: 0.72rem; color: #888; margin-top: 12px; }
+  .eo40-footer { text-align: center; padding: 16px; font-size: 0.72rem; color: rgba(160, 180, 205, 0.5); margin-top: 12px; }
   .eo40-legend { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
-  .eo40-legend-item { display: flex; align-items: center; gap: 4px; font-size: 0.72rem; }
+  .eo40-legend-item { display: flex; align-items: center; gap: 4px; font-size: 0.72rem; color: rgba(180, 200, 225, 0.7); }
   .eo40-legend-dot { width: 12px; height: 12px; border-radius: 3px; }
 
-  .eo40-loading { text-align: center; padding: 40px; color: #888; font-size: 0.9rem; }
+  .eo40-loading { text-align: center; padding: 40px; color: rgba(180, 200, 225, 0.7); font-size: 0.9rem; }
 
   @media (max-width: 768px) {
     .eo40-table-wrap { display: none !important; }
@@ -290,14 +377,14 @@
     html += '<div class="eo40-stats-row">';
     if (played.length > 0) {
       html += '<div class="eo40-stat"><div class="eo40-stat-val">' + played.length + '</div><div class="eo40-stat-lbl">Played</div></div>';
-      html += '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#2e7d32">' + wins + '</div><div class="eo40-stat-lbl">Won</div></div>';
-      html += '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#c62828">' + losses + '</div><div class="eo40-stat-lbl">Lost</div></div>';
-      html += '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#f9a825">' + ties + '</div><div class="eo40-stat-lbl">Tied</div></div>';
-      html += '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#757575">' + nr + '</div><div class="eo40-stat-lbl">No Result</div></div>';
+      html += '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#4caf50">' + wins + '</div><div class="eo40-stat-lbl">Won</div></div>';
+      html += '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#ef5350">' + losses + '</div><div class="eo40-stat-lbl">Lost</div></div>';
+      html += '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#fdd835">' + ties + '</div><div class="eo40-stat-lbl">Tied</div></div>';
+      html += '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#9e9e9e">' + nr + '</div><div class="eo40-stat-lbl">No Result</div></div>';
       html += '<div class="eo40-stat"><div class="eo40-stat-val">' + pct + '%</div><div class="eo40-stat-lbl">Win %</div></div>';
     }
     if (upcoming.length > 0) {
-      html += '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#1a3a5c">' + upcoming.length + '</div><div class="eo40-stat-lbl">Upcoming</div></div>';
+      html += '<div class="eo40-stat"><div class="eo40-stat-val" style="color:#7ab3e0">' + upcoming.length + '</div><div class="eo40-stat-lbl">Upcoming</div></div>';
     }
     if (played.length === 0 && upcoming.length === 0) {
       html += '<div class="eo40-stat"><div class="eo40-stat-val">0</div><div class="eo40-stat-lbl">Matches</div></div>';
@@ -312,7 +399,6 @@
 
     if (view === 'stats') {
       el.innerHTML = '';
-      /* Build current-season stats + CricketStatz panel */
       var currentMatches = allMatches.filter(function(m) { return m.Season === CURRENT_SEASON; });
       var engM = currentMatches.filter(function(m) { return !isLionsMatch(m); });
       var lionsM = currentMatches.filter(function(m) { return isLionsMatch(m); });
@@ -347,7 +433,7 @@
     el.innerHTML = html;
   }
 
-  /* ── Table rendering (shared between desktop table and mobile cards) ── */
+  /* ── Table rendering ── */
   function renderTableHTML(matches, isArchive) {
     var archiveClass = isArchive ? ' archive-table' : '';
     var html = '<div class="eo40-table-wrap"><table class="eo40-table' + archiveClass + '"><thead><tr>';
@@ -367,7 +453,7 @@
 
       var linksHtml = '<div class="eo40-links-cell">';
       if (m.ScorecardURL) linksHtml += '<a href="' + m.ScorecardURL + '" target="_blank" class="eo40-link">Scorecard</a>';
-      if (m.VenueMapURL) linksHtml += '<a href="' + m.VenueMapURL + '" target="_blank" class="eo40-link" style="color:#546e7a">Map</a>';
+      if (m.VenueMapURL) linksHtml += '<a href="' + m.VenueMapURL + '" target="_blank" class="eo40-link" style="color:rgba(180,200,225,0.7)">Map</a>';
       if (m.YouTubeLive) linksHtml += '<a href="' + m.YouTubeLive + '" target="_blank" class="eo40-link eo40-link-yt">&#9654; Live</a>';
       if (m.YouTubeHighlights) linksHtml += '<a href="' + m.YouTubeHighlights + '" target="_blank" class="eo40-link eo40-link-yt">&#9654; Highlights</a>';
       linksHtml += '</div>';
@@ -376,11 +462,11 @@
       html += '<td style="white-space:nowrap;">' + m.Date.replace(/ \d{4}$/, '') + '</td>';
       html += '<td><span class="eo40-badge ' + bc + '">' + m.Tournament + '</span></td>';
       html += '<td>' + teamCellHTML(m.HomeTeam, m.HomeEmblem) + '</td>';
-      html += '<td style="color:#bbb;font-weight:700;font-size:0.75rem;text-align:center">vs</td>';
+      html += '<td style="color:rgba(180,200,225,0.5);font-weight:700;font-size:0.75rem;text-align:center">vs</td>';
       html += '<td>' + teamCellHTML(m.AwayTeam, m.AwayEmblem) + '</td>';
       html += '<td style="font-size:0.78rem">' + venueHtml + '</td>';
       html += '<td><span class="eo40-result ' + rbc + '">' + m.Result.toUpperCase() + '</span></td>';
-      html += '<td style="font-size:0.75rem;color:#555">' + m.Details + '</td>';
+      html += '<td style="font-size:0.75rem;color:rgba(180,200,225,0.7)">' + m.Details + '</td>';
       html += '<td>' + linksHtml + '</td>';
       html += '</tr>';
     }
@@ -493,7 +579,7 @@
   }
 
   function renderStatsView() {
-    return '<div class="eo40-empty" style="color:#1a3a5c;">Statistics are displayed above. Click the link to access full career data on CricketStatz.</div>';
+    return '<div class="eo40-empty" style="color:rgba(180,200,225,0.8);">Statistics are displayed above. Click the link to access full career data on CricketStatz.</div>';
   }
 
   /* ── Navigation ── */
