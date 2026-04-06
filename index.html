@@ -14,14 +14,18 @@
   .eo40-header h1 { font-size: 1.5rem; color: #1a3a5c; margin-bottom: 4px; }
   .eo40-header p { font-size: 0.9rem; color: #5a6a7a; }
 
-  .eo40-tabs { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
-  .eo40-tab { padding: 8px 18px; border: 2px solid #1a3a5c; border-radius: 24px; background: #fff; color: #1a3a5c; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  /* Navigation tabs */
+  .eo40-tabs { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin: 16px 0; }
+  .eo40-tab { padding: 8px 16px; border: 2px solid #1a3a5c; border-radius: 24px; background: #fff; color: #1a3a5c; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
   .eo40-tab:hover { background: #e8eef5; }
   .eo40-tab.active { background: #1a3a5c; color: #fff; }
+  .eo40-tab .eo40-tab-count { font-size: 0.68rem; background: rgba(255,255,255,0.25); padding: 1px 6px; border-radius: 8px; margin-left: 4px; }
+  .eo40-tab.active .eo40-tab-count { background: rgba(255,255,255,0.3); }
+  .eo40-tab:not(.active) .eo40-tab-count { background: #e8eef5; }
 
   /* Split stats container */
   .eo40-stats-wrap { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
-  .eo40-stats-group { flex: 1; min-width: 280px; background: #fff; border-radius: 12px; padding: 12px 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .eo40-stats-group { flex: 1; min-width: 260px; background: #fff; border-radius: 12px; padding: 12px 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
   .eo40-stats-group-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #fff; background: #1a3a5c; display: inline-block; padding: 3px 12px; border-radius: 8px; margin-bottom: 8px; }
   .eo40-stats-group-title.lions { background: #546e7a; }
   .eo40-stats-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
@@ -29,18 +33,34 @@
   .eo40-stat-val { font-size: 1.3rem; font-weight: 700; color: #1a3a5c; }
   .eo40-stat-lbl { font-size: 0.6rem; text-transform: uppercase; color: #7a8a9a; letter-spacing: 0.5px; }
 
-  /* CricketStatz link */
-  .eo40-statz-link { display: flex; justify-content: center; margin-bottom: 16px; }
-  .eo40-statz-link a { display: inline-flex; align-items: center; gap: 6px; padding: 8px 20px; background: #1a3a5c; color: #fff; text-decoration: none; border-radius: 24px; font-size: 0.82rem; font-weight: 600; transition: all 0.2s; }
-  .eo40-statz-link a:hover { background: #2a5a8c; }
+  /* Stats panel */
+  .eo40-stats-panel { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); text-align: center; }
+  .eo40-stats-panel h2 { font-size: 1.1rem; color: #1a3a5c; margin-bottom: 12px; }
+  .eo40-stats-panel p { font-size: 0.85rem; color: #5a6a7a; margin-bottom: 12px; }
+  .eo40-statz-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 24px; background: #1a3a5c; color: #fff; text-decoration: none; border-radius: 24px; font-size: 0.85rem; font-weight: 600; transition: all 0.2s; }
+  .eo40-statz-btn:hover { background: #2a5a8c; }
+  .eo40-statz-btn.secondary { background: #546e7a; margin-left: 8px; }
+  .eo40-statz-btn.secondary:hover { background: #6a8a9a; }
+  .eo40-stats-btns { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
 
+  /* Section headers */
   .eo40-section { margin-bottom: 20px; }
   .eo40-section-title { font-size: 1.1rem; font-weight: 700; color: #1a3a5c; padding: 10px 0 8px; border-bottom: 2px solid #1a3a5c; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
   .eo40-section-badge { font-size: 0.7rem; background: #1a3a5c; color: #fff; padding: 2px 10px; border-radius: 10px; }
+  .eo40-section-badge.archive { background: #546e7a; }
+
+  /* Archive toggle */
+  .eo40-archive-toggle { display: inline-flex; align-items: center; gap: 4px; padding: 4px 12px; border: 1.5px solid #546e7a; border-radius: 14px; background: #fff; color: #546e7a; font-size: 0.72rem; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-left: auto; }
+  .eo40-archive-toggle:hover { background: #546e7a; color: #fff; }
+  .eo40-archive-toggle.expanded { background: #546e7a; color: #fff; }
+
+  /* Empty state */
+  .eo40-empty { text-align: center; padding: 32px 16px; color: #7a8a9a; font-size: 0.88rem; }
 
   .eo40-table-wrap { overflow-x: auto; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); margin-bottom: 16px; }
   .eo40-table { width: 100%; border-collapse: collapse; background: #fff; font-size: 0.82rem; }
   .eo40-table thead th { background: #1a3a5c; color: #fff; padding: 10px 8px; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; position: sticky; top: 0; white-space: nowrap; }
+  .eo40-table.archive-table thead th { background: #546e7a; }
   .eo40-table tbody td { padding: 8px; border-bottom: 1px solid #eef0f3; vertical-align: middle; }
   .eo40-table tbody tr.eo40-win { background: #e8f5e9; }
   .eo40-table tbody tr.eo40-loss { background: #ffebee; }
@@ -60,7 +80,6 @@
   .eo40-badge-friendly { background: #2e7d32; color: #fff; }
   .eo40-badge-t20 { background: #c62828; color: #fff; }
   .eo40-badge-nonodi { background: #546e7a; color: #fff; }
-  .eo40-badge-upcoming { background: #1a3a5c; color: #fff; }
 
   .eo40-result { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; }
   .eo40-result-win { background: #2e7d32; color: #fff; }
@@ -74,12 +93,12 @@
   .eo40-venue-link { color: #555; text-decoration: none; font-size: 0.8rem; }
   .eo40-venue-link:hover { color: #1a3a5c; text-decoration: underline; }
   .eo40-links-cell { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
-  .eo40-link-yt { color: #c62828; border-color: #c62828; }
+  .eo40-link-yt { color: #c62828; }
   .eo40-link-yt:hover { background: #c62828; color: #fff; }
   .eo40-card-link-yt { color: #c62828; border-color: #c62828; }
   .eo40-card-link-yt:hover { background: #c62828; color: #fff; }
 
-  /* === Mobile Cards === */
+  /* Mobile Cards */
   .eo40-cards { display: none; }
   .eo40-card { background: #fff; border-radius: 12px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); overflow: hidden; border-left: 5px solid #ccc; }
   .eo40-card.eo40-win { border-left-color: #2e7d32; }
@@ -117,7 +136,8 @@
     .eo40-stats-group { padding: 10px 8px; }
     .eo40-stat-val { font-size: 1.1rem; }
     .eo40-stat-lbl { font-size: 0.55rem; }
-    .eo40-tab { padding: 6px 14px; font-size: 0.8rem; }
+    .eo40-tab { padding: 6px 12px; font-size: 0.78rem; }
+    .eo40-stats-btns { flex-direction: column; align-items: center; }
   }
 </style>
 </head>
@@ -126,22 +146,13 @@
 <div class="eo40-wrap">
   <div class="eo40-header">
     <h1>England Over 40s Cricket — Fixtures & Results</h1>
-    <p>Seasons 2023 to 2026</p>
+    <p id="eo40-subtitle">Seasons 2023 to 2026</p>
   </div>
 
-  <div class="eo40-tabs" id="eo40-tabs">
-    <button class="eo40-tab active" data-season="all">All Seasons</button>
-    <button class="eo40-tab" data-season="2026">2026</button>
-    <button class="eo40-tab" data-season="2025">2025</button>
-    <button class="eo40-tab" data-season="2024">2024</button>
-    <button class="eo40-tab" data-season="2023">2023</button>
-  </div>
+  <div class="eo40-tabs" id="eo40-tabs"></div>
 
   <div id="eo40-stats"></div>
-
-  <div class="eo40-statz-link">
-    <a href="https://www2.cricketstatz.com/ss/w?&club=97523" target="_blank">&#x1F4CA; Full Career &amp; Match Statistics on CricketStatz</a>
-  </div>
+  <div id="eo40-stats-panel"></div>
 
   <div class="eo40-loading" id="eo40-loading">Loading fixtures data...</div>
 
@@ -162,7 +173,10 @@
 <script>
 (function() {
   var CSV_URL = 'matches.csv';
+  var CURRENT_SEASON = '2026';
+  var CRICKETSTATZ_URL = 'https://www2.cricketstatz.com/ss/w?&club=97523';
 
+  /* ── CSV Parsing ── */
   function parseCSV(text) {
     var lines = text.trim().split('\n');
     var headers = parseCSVLine(lines[0]);
@@ -198,6 +212,7 @@
     return result;
   }
 
+  /* ── Helpers ── */
   function badgeClass(t) {
     var tl = t.toLowerCase();
     if (tl.indexOf('world cup') >= 0) return 'eo40-badge-wc';
@@ -229,17 +244,18 @@
 
   function isEngland(team) { return team.toLowerCase().indexOf('england') >= 0; }
 
-  /* Determine if a match is an England Lions / England A / England XI match */
   function isLionsMatch(m) {
     var home = m.HomeTeam.toLowerCase();
     var away = m.AwayTeam.toLowerCase();
     var engTeam = isEngland(m.HomeTeam) ? home : (isEngland(m.AwayTeam) ? away : '');
     if (!engTeam) return false;
     if (engTeam.indexOf('lions') >= 0 || engTeam.indexOf('xi') >= 0) return true;
-    /* After CSV parsing, England "A" becomes England A — check as a word boundary */
     if (/\bengland\s+a\b/i.test(engTeam)) return true;
     return false;
   }
+
+  function isUpcoming(m) { return m.Result.toLowerCase().trim() === 'upcoming'; }
+  function isPlayed(m) { return !isUpcoming(m); }
 
   function shortTeam(name) {
     return name.replace(/ Over 40s/gi, '').replace(/ Over 40/gi, '').replace(/Veterans Cricket /gi, '').trim();
@@ -251,11 +267,13 @@
     return '<div class="eo40-team-cell">' + img + '<span class="' + cls + '">' + shortTeam(team) + '</span></div>';
   }
 
+  /* ── Data ── */
   var allMatches = [];
 
+  /* ── Stats rendering ── */
   function buildStatsHTML(label, labelClass, matches) {
-    var played = matches.filter(function(m) { return m.Result.toLowerCase() !== 'upcoming'; });
-    var upcoming = matches.filter(function(m) { return m.Result.toLowerCase() === 'upcoming'; });
+    var played = matches.filter(isPlayed);
+    var upcoming = matches.filter(isUpcoming);
     var wins = 0, losses = 0, ties = 0, nr = 0;
     for (var i = 0; i < played.length; i++) {
       var rl = played[i].Result.toLowerCase().trim();
@@ -288,7 +306,34 @@
     return html;
   }
 
-  function renderStats(matches) {
+  function renderStats(matches, view) {
+    var el = document.getElementById('eo40-stats');
+    var panel = document.getElementById('eo40-stats-panel');
+
+    if (view === 'stats') {
+      el.innerHTML = '';
+      /* Build current-season stats + CricketStatz panel */
+      var currentMatches = allMatches.filter(function(m) { return m.Season === CURRENT_SEASON; });
+      var engM = currentMatches.filter(function(m) { return !isLionsMatch(m); });
+      var lionsM = currentMatches.filter(function(m) { return isLionsMatch(m); });
+
+      var html = '<div class="eo40-stats-panel">';
+      html += '<h2>' + CURRENT_SEASON + ' Season Statistics</h2>';
+      html += '<div class="eo40-stats-wrap">';
+      html += buildStatsHTML('England Over 40s', '', engM);
+      if (lionsM.length > 0) html += buildStatsHTML('England Lions / A', 'lions', lionsM);
+      html += '</div>';
+      html += '<p style="margin-top:16px;">Access comprehensive career statistics, player records, and detailed match data for all England Over 40s players.</p>';
+      html += '<div class="eo40-stats-btns">';
+      html += '<a href="' + CRICKETSTATZ_URL + '" target="_blank" class="eo40-statz-btn">&#x1F4CA; Full Career &amp; Match Statistics</a>';
+      html += '</div>';
+      html += '</div>';
+      panel.innerHTML = html;
+      return;
+    }
+
+    panel.innerHTML = '';
+
     var engMatches = matches.filter(function(m) { return !isLionsMatch(m); });
     var lionsMatches = matches.filter(function(m) { return isLionsMatch(m); });
 
@@ -299,144 +344,247 @@
     }
     html += '</div>';
 
-    document.getElementById('eo40-stats').innerHTML = html;
+    el.innerHTML = html;
   }
 
-  function renderContent(matches) {
-    var grouped = {};
-    for (var i = 0; i < matches.length; i++) {
-      var s = matches[i].Season;
-      if (!grouped[s]) grouped[s] = [];
-      grouped[s].push(matches[i]);
+  /* ── Table rendering (shared between desktop table and mobile cards) ── */
+  function renderTableHTML(matches, isArchive) {
+    var archiveClass = isArchive ? ' archive-table' : '';
+    var html = '<div class="eo40-table-wrap"><table class="eo40-table' + archiveClass + '"><thead><tr>';
+    html += '<th>Date</th><th>Type</th><th>Home</th><th></th><th>Away</th><th>Venue</th><th>Result</th><th>Details</th><th>Links</th>';
+    html += '</tr></thead><tbody>';
+
+    for (var mi = 0; mi < matches.length; mi++) {
+      var m = matches[mi];
+      var rc = resultClass(m.Result);
+      var rbc = resultBadgeClass(m.Result);
+      var bc = badgeClass(m.Tournament);
+
+      var venueHtml = m.Venue;
+      if (m.VenueMapURL) {
+        venueHtml = '<a href="' + m.VenueMapURL + '" target="_blank" class="eo40-venue-link">' + m.Venue + '</a>';
+      }
+
+      var linksHtml = '<div class="eo40-links-cell">';
+      if (m.ScorecardURL) linksHtml += '<a href="' + m.ScorecardURL + '" target="_blank" class="eo40-link">Scorecard</a>';
+      if (m.VenueMapURL) linksHtml += '<a href="' + m.VenueMapURL + '" target="_blank" class="eo40-link" style="color:#546e7a">Map</a>';
+      if (m.YouTubeLive) linksHtml += '<a href="' + m.YouTubeLive + '" target="_blank" class="eo40-link eo40-link-yt">&#9654; Live</a>';
+      if (m.YouTubeHighlights) linksHtml += '<a href="' + m.YouTubeHighlights + '" target="_blank" class="eo40-link eo40-link-yt">&#9654; Highlights</a>';
+      linksHtml += '</div>';
+
+      html += '<tr class="' + rc + '">';
+      html += '<td style="white-space:nowrap;">' + m.Date.replace(/ \d{4}$/, '') + '</td>';
+      html += '<td><span class="eo40-badge ' + bc + '">' + m.Tournament + '</span></td>';
+      html += '<td>' + teamCellHTML(m.HomeTeam, m.HomeEmblem) + '</td>';
+      html += '<td style="color:#bbb;font-weight:700;font-size:0.75rem;text-align:center">vs</td>';
+      html += '<td>' + teamCellHTML(m.AwayTeam, m.AwayEmblem) + '</td>';
+      html += '<td style="font-size:0.78rem">' + venueHtml + '</td>';
+      html += '<td><span class="eo40-result ' + rbc + '">' + m.Result.toUpperCase() + '</span></td>';
+      html += '<td style="font-size:0.75rem;color:#555">' + m.Details + '</td>';
+      html += '<td>' + linksHtml + '</td>';
+      html += '</tr>';
     }
 
-    var seasons = Object.keys(grouped).sort(function(a, b) { return parseInt(b) - parseInt(a); });
-    var html = '';
+    html += '</tbody></table></div>';
+    return html;
+  }
 
+  function renderCardsHTML(matches) {
+    var html = '<div class="eo40-cards">';
+    for (var ci = 0; ci < matches.length; ci++) {
+      var m2 = matches[ci];
+      var rc2 = resultClass(m2.Result);
+      var rbc2 = resultBadgeClass(m2.Result);
+      var bc2 = badgeClass(m2.Tournament);
+      var homeImg = m2.HomeEmblem ? '<img src="images/' + m2.HomeEmblem + '" alt="">' : '';
+      var awayImg = m2.AwayEmblem ? '<img src="images/' + m2.AwayEmblem + '" alt="">' : '';
+
+      html += '<div class="eo40-card ' + rc2 + '">';
+      html += '<div class="eo40-card-top">';
+      html += '<span class="eo40-card-date">' + m2.Date.replace(/ \d{4}$/, '') + '</span>';
+      html += '<div class="eo40-card-badges"><span class="eo40-badge ' + bc2 + '">' + m2.Tournament + '</span> <span class="eo40-result ' + rbc2 + '">' + m2.Result.toUpperCase() + '</span></div>';
+      html += '</div>';
+      html += '<div class="eo40-card-teams">';
+      html += '<div class="eo40-card-team">' + homeImg + '<span>' + shortTeam(m2.HomeTeam) + '</span></div>';
+      html += '<div class="eo40-card-vs">VS</div>';
+      html += '<div class="eo40-card-team">' + awayImg + '<span>' + shortTeam(m2.AwayTeam) + '</span></div>';
+      html += '</div>';
+      html += '<div class="eo40-card-bottom">';
+      html += '<div class="eo40-card-detail">' + m2.Details + '</div>';
+      if (m2.Venue) {
+        if (m2.VenueMapURL) {
+          html += '<div class="eo40-card-venue"><a href="' + m2.VenueMapURL + '" target="_blank" class="eo40-venue-link">&#x1F4CD; ' + m2.Venue + '</a></div>';
+        } else {
+          html += '<div class="eo40-card-venue">&#x1F4CD; ' + m2.Venue + '</div>';
+        }
+      }
+      html += '<div class="eo40-card-links">';
+      if (m2.ScorecardURL) html += '<a href="' + m2.ScorecardURL + '" target="_blank" class="eo40-card-link">Scorecard</a>';
+      if (m2.VenueMapURL) html += '<a href="' + m2.VenueMapURL + '" target="_blank" class="eo40-card-link">Map</a>';
+      if (m2.YouTubeLive) html += '<a href="' + m2.YouTubeLive + '" target="_blank" class="eo40-card-link eo40-card-link-yt">&#9654; Live</a>';
+      if (m2.YouTubeHighlights) html += '<a href="' + m2.YouTubeHighlights + '" target="_blank" class="eo40-card-link eo40-card-link-yt">&#9654; Highlights</a>';
+      html += '</div></div></div>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  /* ── Section builder ── */
+  function renderSection(title, badge, badgeClass, matches, isArchive) {
+    if (matches.length === 0) return '';
+    var html = '<div class="eo40-section">';
+    html += '<div class="eo40-section-title">' + title + ' <span class="eo40-section-badge' + (badgeClass ? ' ' + badgeClass : '') + '">' + badge + '</span></div>';
+    html += renderTableHTML(matches, isArchive);
+    html += renderCardsHTML(matches);
+    html += '</div>';
+    return html;
+  }
+
+  /* ── View renderers ── */
+  function renderCurrentSeason() {
+    var current = allMatches.filter(function(m) { return m.Season === CURRENT_SEASON; });
+    var upcoming = current.filter(isUpcoming);
+    var played = current.filter(isPlayed);
+
+    var html = '';
+    if (upcoming.length > 0) {
+      html += renderSection('Upcoming Fixtures', upcoming.length + ' fixtures', '', upcoming, false);
+    }
+    if (played.length > 0) {
+      html += renderSection(CURRENT_SEASON + ' Results', played.length + ' matches', '', played, false);
+    }
+    if (html === '') {
+      html = '<div class="eo40-empty">No fixtures or results for the ' + CURRENT_SEASON + ' season yet.</div>';
+    }
+    return html;
+  }
+
+  function renderUpcoming() {
+    var upcoming = allMatches.filter(isUpcoming);
+    if (upcoming.length === 0) return '<div class="eo40-empty">No upcoming fixtures scheduled.</div>';
+    return renderSection('All Upcoming Fixtures', upcoming.length + ' fixtures', '', upcoming, false);
+  }
+
+  function renderResults() {
+    var currentPlayed = allMatches.filter(function(m) { return m.Season === CURRENT_SEASON && isPlayed(m); });
+    if (currentPlayed.length === 0) return '<div class="eo40-empty">No results for the ' + CURRENT_SEASON + ' season yet.</div>';
+    return renderSection(CURRENT_SEASON + ' Season Results', currentPlayed.length + ' matches', '', currentPlayed, false);
+  }
+
+  function renderArchive() {
+    var archiveSeasons = {};
+    for (var i = 0; i < allMatches.length; i++) {
+      var m = allMatches[i];
+      if (m.Season === CURRENT_SEASON) continue;
+      if (!archiveSeasons[m.Season]) archiveSeasons[m.Season] = [];
+      archiveSeasons[m.Season].push(m);
+    }
+
+    var seasons = Object.keys(archiveSeasons).sort(function(a, b) { return parseInt(b) - parseInt(a); });
+    if (seasons.length === 0) return '<div class="eo40-empty">No archived seasons.</div>';
+
+    var html = '';
     for (var si = 0; si < seasons.length; si++) {
       var season = seasons[si];
-      var sMatches = grouped[season];
-      var playedCount = sMatches.filter(function(m) { return m.Result.toLowerCase() !== 'upcoming'; }).length;
-      var upcomingCount = sMatches.filter(function(m) { return m.Result.toLowerCase() === 'upcoming'; }).length;
-      var badgeText = '';
-      if (upcomingCount > 0 && playedCount > 0) badgeText = sMatches.length + ' matches';
-      else if (upcomingCount > 0) badgeText = upcomingCount + ' fixtures';
-      else badgeText = playedCount + ' matches';
-
-      html += '<div class="eo40-section">';
-      html += '<div class="eo40-section-title">' + season + ' Season <span class="eo40-section-badge">' + badgeText + '</span></div>';
-
-      // Desktop table
-      html += '<div class="eo40-table-wrap"><table class="eo40-table"><thead><tr>';
-      html += '<th>Date</th><th>Type</th><th>Home</th><th></th><th>Away</th><th>Venue</th><th>Result</th><th>Details</th><th>Links</th>';
-      html += '</tr></thead><tbody>';
-
-      for (var mi = 0; mi < sMatches.length; mi++) {
-        var m = sMatches[mi];
-        var rc = resultClass(m.Result);
-        var rbc = resultBadgeClass(m.Result);
-        var bc = badgeClass(m.Tournament);
-
-        var venueHtml = m.Venue;
-        if (m.VenueMapURL) {
-          venueHtml = '<a href="' + m.VenueMapURL + '" target="_blank" class="eo40-venue-link">' + m.Venue + '</a>';
-        }
-
-        var linksHtml = '<div class="eo40-links-cell">';
-        if (m.ScorecardURL) linksHtml += '<a href="' + m.ScorecardURL + '" target="_blank" class="eo40-link">Scorecard</a>';
-        if (m.VenueMapURL) linksHtml += '<a href="' + m.VenueMapURL + '" target="_blank" class="eo40-link" style="color:#546e7a">Map</a>';
-        if (m.YouTubeLive) linksHtml += '<a href="' + m.YouTubeLive + '" target="_blank" class="eo40-link eo40-link-yt">&#9654; Live</a>';
-        if (m.YouTubeHighlights) linksHtml += '<a href="' + m.YouTubeHighlights + '" target="_blank" class="eo40-link eo40-link-yt">&#9654; Highlights</a>';
-        linksHtml += '</div>';
-
-        html += '<tr class="' + rc + '">';
-        html += '<td style="white-space:nowrap;">' + m.Date.replace(/ \d{4}$/, '') + '</td>';
-        html += '<td><span class="eo40-badge ' + bc + '">' + m.Tournament + '</span></td>';
-        html += '<td>' + teamCellHTML(m.HomeTeam, m.HomeEmblem) + '</td>';
-        html += '<td style="color:#bbb;font-weight:700;font-size:0.75rem;text-align:center">vs</td>';
-        html += '<td>' + teamCellHTML(m.AwayTeam, m.AwayEmblem) + '</td>';
-        html += '<td style="font-size:0.78rem">' + venueHtml + '</td>';
-        html += '<td><span class="eo40-result ' + rbc + '">' + m.Result.toUpperCase() + '</span></td>';
-        html += '<td style="font-size:0.75rem;color:#555">' + m.Details + '</td>';
-        html += '<td>' + linksHtml + '</td>';
-        html += '</tr>';
-      }
-
-      html += '</tbody></table></div>';
-
-      // Mobile cards
-      html += '<div class="eo40-cards">';
-      for (var ci = 0; ci < sMatches.length; ci++) {
-        var m2 = sMatches[ci];
-        var rc2 = resultClass(m2.Result);
-        var rbc2 = resultBadgeClass(m2.Result);
-        var bc2 = badgeClass(m2.Tournament);
-        var homeImg = m2.HomeEmblem ? '<img src="images/' + m2.HomeEmblem + '" alt="">' : '';
-        var awayImg = m2.AwayEmblem ? '<img src="images/' + m2.AwayEmblem + '" alt="">' : '';
-
-        html += '<div class="eo40-card ' + rc2 + '">';
-        html += '<div class="eo40-card-top">';
-        html += '<span class="eo40-card-date">' + m2.Date.replace(/ \d{4}$/, '') + '</span>';
-        html += '<div class="eo40-card-badges"><span class="eo40-badge ' + bc2 + '">' + m2.Tournament + '</span> <span class="eo40-result ' + rbc2 + '">' + m2.Result.toUpperCase() + '</span></div>';
-        html += '</div>';
-        html += '<div class="eo40-card-teams">';
-        html += '<div class="eo40-card-team">' + homeImg + '<span>' + shortTeam(m2.HomeTeam) + '</span></div>';
-        html += '<div class="eo40-card-vs">VS</div>';
-        html += '<div class="eo40-card-team">' + awayImg + '<span>' + shortTeam(m2.AwayTeam) + '</span></div>';
-        html += '</div>';
-        html += '<div class="eo40-card-bottom">';
-        html += '<div class="eo40-card-detail">' + m2.Details + '</div>';
-        if (m2.Venue) {
-          if (m2.VenueMapURL) {
-            html += '<div class="eo40-card-venue"><a href="' + m2.VenueMapURL + '" target="_blank" class="eo40-venue-link">&#x1F4CD; ' + m2.Venue + '</a></div>';
-          } else {
-            html += '<div class="eo40-card-venue">&#x1F4CD; ' + m2.Venue + '</div>';
-          }
-        }
-        html += '<div class="eo40-card-links">';
-        if (m2.ScorecardURL) html += '<a href="' + m2.ScorecardURL + '" target="_blank" class="eo40-card-link">Scorecard</a>';
-        if (m2.VenueMapURL) html += '<a href="' + m2.VenueMapURL + '" target="_blank" class="eo40-card-link">Map</a>';
-        if (m2.YouTubeLive) html += '<a href="' + m2.YouTubeLive + '" target="_blank" class="eo40-card-link eo40-card-link-yt">&#9654; Live</a>';
-        if (m2.YouTubeHighlights) html += '<a href="' + m2.YouTubeHighlights + '" target="_blank" class="eo40-card-link eo40-card-link-yt">&#9654; Highlights</a>';
-        html += '</div></div></div>';
-      }
-      html += '</div>';
-
-      html += '</div>';
+      var sMatches = archiveSeasons[season];
+      html += renderSection(season + ' Season', sMatches.length + ' matches', 'archive', sMatches, true);
     }
-
-    document.getElementById('eo40-content').innerHTML = html;
+    return html;
   }
 
-  function filterAndRender(season) {
-    var filtered = [];
-    if (season === 'all') {
-      filtered = allMatches;
+  function renderStatsView() {
+    return '<div class="eo40-empty" style="color:#1a3a5c;">Statistics are displayed above. Click the link to access full career data on CricketStatz.</div>';
+  }
+
+  /* ── Navigation ── */
+  var views = [
+    { id: 'current', label: 'Current Season' },
+    { id: 'upcoming', label: 'Upcoming' },
+    { id: 'results', label: 'Results' },
+    { id: 'archive', label: 'Archive' },
+    { id: 'stats', label: 'Stats' }
+  ];
+
+  var activeView = 'current';
+
+  function buildTabs() {
+    var currentMatches = allMatches.filter(function(m) { return m.Season === CURRENT_SEASON; });
+    var upcomingAll = allMatches.filter(isUpcoming);
+    var currentPlayed = currentMatches.filter(isPlayed);
+    var archiveCount = allMatches.filter(function(m) { return m.Season !== CURRENT_SEASON; }).length;
+
+    var counts = {
+      current: currentMatches.length,
+      upcoming: upcomingAll.length,
+      results: currentPlayed.length,
+      archive: archiveCount,
+      stats: 0
+    };
+
+    var html = '';
+    for (var i = 0; i < views.length; i++) {
+      var v = views[i];
+      var cls = v.id === activeView ? ' active' : '';
+      var countBadge = counts[v.id] > 0 ? ' <span class="eo40-tab-count">' + counts[v.id] + '</span>' : '';
+      html += '<button class="eo40-tab' + cls + '" data-view="' + v.id + '">' + v.label + countBadge + '</button>';
+    }
+    document.getElementById('eo40-tabs').innerHTML = html;
+  }
+
+  function switchView(view) {
+    activeView = view;
+    buildTabs();
+
+    var statsMatches;
+    if (view === 'current' || view === 'upcoming' || view === 'results') {
+      statsMatches = allMatches.filter(function(m) { return m.Season === CURRENT_SEASON; });
+    } else if (view === 'archive') {
+      statsMatches = allMatches.filter(function(m) { return m.Season !== CURRENT_SEASON; });
     } else {
-      for (var i = 0; i < allMatches.length; i++) {
-        if (allMatches[i].Season === season) filtered.push(allMatches[i]);
-      }
+      statsMatches = allMatches.filter(function(m) { return m.Season === CURRENT_SEASON; });
     }
-    renderStats(filtered);
-    renderContent(filtered);
+
+    renderStats(statsMatches, view);
+
+    var contentHTML = '';
+    switch (view) {
+      case 'current': contentHTML = renderCurrentSeason(); break;
+      case 'upcoming': contentHTML = renderUpcoming(); break;
+      case 'results': contentHTML = renderResults(); break;
+      case 'archive': contentHTML = renderArchive(); break;
+      case 'stats': contentHTML = renderStatsView(); break;
+    }
+
+    document.getElementById('eo40-content').innerHTML = contentHTML;
+
+    /* Update subtitle */
+    var subtitles = {
+      current: CURRENT_SEASON + ' Season',
+      upcoming: 'All Upcoming Fixtures',
+      results: CURRENT_SEASON + ' Season Results',
+      archive: 'Previous Seasons',
+      stats: 'Player & Match Statistics'
+    };
+    document.getElementById('eo40-subtitle').textContent = subtitles[view] || '';
   }
 
+  /* ── Event delegation ── */
   document.getElementById('eo40-tabs').addEventListener('click', function(e) {
-    if (!e.target.classList.contains('eo40-tab')) return;
-    var tabs = document.querySelectorAll('.eo40-tab');
-    for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove('active');
-    e.target.classList.add('active');
-    filterAndRender(e.target.getAttribute('data-season'));
+    var btn = e.target.closest('.eo40-tab');
+    if (!btn) return;
+    var view = btn.getAttribute('data-view');
+    if (view) switchView(view);
   });
 
-  // Fetch CSV data
+  /* ── Load data ── */
   var xhr = new XMLHttpRequest();
   xhr.open('GET', CSV_URL + '?t=' + Date.now(), true);
   xhr.onload = function() {
     if (xhr.status === 200) {
       allMatches = parseCSV(xhr.responseText);
       document.getElementById('eo40-loading').style.display = 'none';
-      filterAndRender('all');
+      buildTabs();
+      switchView('current');
     } else {
       document.getElementById('eo40-loading').textContent = 'Unable to load fixtures data. Please try refreshing the page.';
     }
