@@ -4,15 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>England Over 40s Cricket — Fixtures & Results</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     color: #e8eef5;
     line-height: 1.5;
     min-height: 100vh;
-    background: #0a1628;
+    background: #05102B;
   }
 
   /* ── Atmospheric background ── */
@@ -40,8 +43,8 @@
   .eo40-wrap { max-width: 1100px; margin: 0 auto; padding: 16px; position: relative; z-index: 1; }
 
   .eo40-header { text-align: center; padding: 24px 16px 12px; }
-  .eo40-header h1 { font-size: 1.5rem; color: #fff; margin-bottom: 4px; text-shadow: 0 2px 8px rgba(0,0,0,0.4); }
-  .eo40-header p { font-size: 0.9rem; color: rgba(200, 215, 235, 0.8); }
+  .eo40-header h1 { font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; font-size: 2.2rem; color: #fff; margin-bottom: 4px; text-shadow: 0 2px 8px rgba(0,0,0,0.4); letter-spacing: 2px; text-transform: uppercase; }
+  .eo40-header p { font-family: 'Manrope', sans-serif; font-size: 0.9rem; color: rgba(200, 215, 235, 0.8); letter-spacing: 0.5px; }
 
   /* Navigation tabs */
   .eo40-tabs { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin: 16px 0; }
@@ -50,9 +53,10 @@
     background: rgba(255,255,255,0.08); color: rgba(220, 230, 245, 0.9);
     font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
     white-space: nowrap; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+    font-family: 'Manrope', sans-serif; letter-spacing: 0.3px;
   }
   .eo40-tab:hover { background: rgba(255,255,255,0.15); border-color: rgba(200, 215, 235, 0.6); }
-  .eo40-tab.active { background: rgba(26, 58, 92, 0.9); color: #fff; border-color: rgba(100, 160, 220, 0.6); box-shadow: 0 0 12px rgba(26, 58, 92, 0.5); }
+  .eo40-tab.active { background: #0080DB; color: #fff; border-color: #0080DB; box-shadow: 0 0 12px rgba(0, 128, 219, 0.4); }
   .eo40-tab .eo40-tab-count { font-size: 0.68rem; background: rgba(255,255,255,0.2); padding: 1px 6px; border-radius: 8px; margin-left: 4px; }
   .eo40-tab.active .eo40-tab-count { background: rgba(255,255,255,0.25); }
   .eo40-tab:not(.active) .eo40-tab-count { background: rgba(255,255,255,0.12); }
@@ -67,11 +71,11 @@
     backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
   }
-  .eo40-stats-group-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #fff; background: rgba(26, 58, 92, 0.9); display: inline-block; padding: 3px 12px; border-radius: 8px; margin-bottom: 8px; }
+  .eo40-stats-group-title { font-family: 'Bebas Neue', sans-serif; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #fff; background: #0080DB; display: inline-block; padding: 3px 12px; border-radius: 8px; margin-bottom: 8px; }
   .eo40-stats-group-title.lions { background: rgba(84, 110, 122, 0.9); }
   .eo40-stats-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
   .eo40-stat { text-align: center; min-width: 45px; }
-  .eo40-stat-val { font-size: 1.3rem; font-weight: 700; color: #c8d7eb; }
+  .eo40-stat-val { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; font-weight: 700; color: #CFA75C; letter-spacing: 1px; }
   .eo40-stat-lbl { font-size: 0.6rem; text-transform: uppercase; color: rgba(180, 195, 215, 0.7); letter-spacing: 0.5px; }
 
   /* Stats panel */
@@ -83,16 +87,17 @@
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     text-align: center;
   }
-  .eo40-stats-panel h2 { font-size: 1.1rem; color: #fff; margin-bottom: 12px; }
+  .eo40-stats-panel h2 { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: #fff; margin-bottom: 12px; letter-spacing: 1px; text-transform: uppercase; }
   .eo40-stats-panel p { font-size: 0.85rem; color: rgba(200, 215, 235, 0.8); margin-bottom: 12px; }
   .eo40-statz-btn {
     display: inline-flex; align-items: center; gap: 6px; padding: 10px 24px;
-    background: linear-gradient(135deg, #1a3a5c, #2a5a8c); color: #fff;
+    background: #0080DB; color: #fff;
     text-decoration: none; border-radius: 24px; font-size: 0.85rem; font-weight: 600;
-    transition: all 0.2s; border: 1px solid rgba(100, 160, 220, 0.3);
-    box-shadow: 0 2px 10px rgba(26, 58, 92, 0.4);
+    transition: all 0.2s; border: 1px solid rgba(0, 128, 219, 0.5);
+    box-shadow: 0 2px 10px rgba(0, 128, 219, 0.3);
+    font-family: 'Manrope', sans-serif; letter-spacing: 0.3px;
   }
-  .eo40-statz-btn:hover { background: linear-gradient(135deg, #2a5a8c, #3a7abc); box-shadow: 0 4px 16px rgba(26, 58, 92, 0.6); }
+  .eo40-statz-btn:hover { background: #006bb3; box-shadow: 0 4px 16px rgba(0, 128, 219, 0.5); }
   .eo40-statz-btn.secondary { background: linear-gradient(135deg, #546e7a, #6a8a9a); margin-left: 8px; }
   .eo40-statz-btn.secondary:hover { background: linear-gradient(135deg, #6a8a9a, #7a9aaa); }
   .eo40-stats-btns { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
@@ -100,11 +105,12 @@
   /* Section headers */
   .eo40-section { margin-bottom: 20px; }
   .eo40-section-title {
-    font-size: 1.1rem; font-weight: 700; color: #fff;
-    padding: 10px 0 8px; border-bottom: 2px solid rgba(100, 160, 220, 0.3);
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; font-weight: 700; color: #fff;
+    padding: 10px 0 8px; border-bottom: 2px solid rgba(0, 128, 219, 0.3);
     margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+    letter-spacing: 1px; text-transform: uppercase;
   }
-  .eo40-section-badge { font-size: 0.7rem; background: rgba(26, 58, 92, 0.9); color: #fff; padding: 2px 10px; border-radius: 10px; }
+  .eo40-section-badge { font-size: 0.7rem; background: #0080DB; color: #fff; padding: 2px 10px; border-radius: 10px; font-family: 'Manrope', sans-serif; }
   .eo40-section-badge.archive { background: rgba(84, 110, 122, 0.9); }
 
   /* Archive toggle */
@@ -124,10 +130,11 @@
   }
   .eo40-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
   .eo40-table thead th {
-    background: rgba(14, 28, 50, 0.95); color: rgba(200, 215, 235, 0.9);
+    background: rgba(5, 16, 43, 0.95); color: rgba(200, 215, 235, 0.9);
     padding: 10px 8px; text-align: left; font-size: 0.75rem;
     text-transform: uppercase; letter-spacing: 0.5px; position: sticky; top: 0;
-    white-space: nowrap; border-bottom: 2px solid rgba(100, 160, 220, 0.2);
+    white-space: nowrap; border-bottom: 2px solid rgba(0, 128, 219, 0.25);
+    font-family: 'Manrope', sans-serif;
   }
   .eo40-table.archive-table thead th { background: rgba(40, 55, 70, 0.95); }
 
@@ -150,8 +157,8 @@
   .eo40-england { font-weight: 700; color: #fff; }
 
   .eo40-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; white-space: nowrap; }
-  .eo40-badge-odi { background: #1565c0; color: #fff; }
-  .eo40-badge-wc { background: #f57c00; color: #fff; }
+  .eo40-badge-odi { background: #0080DB; color: #fff; }
+  .eo40-badge-wc { background: #CFA75C; color: #1a1a2e; font-weight: 700; }
   .eo40-badge-tc { background: #7b1fa2; color: #fff; }
   .eo40-badge-friendly { background: #2e7d32; color: #fff; }
   .eo40-badge-t20 { background: #c62828; color: #fff; }
@@ -162,12 +169,12 @@
   .eo40-result-loss { background: #c62828; color: #fff; }
   .eo40-result-tie { background: #f9a825; color: #1a1a2e; }
   .eo40-result-noresult { background: #757575; color: #fff; }
-  .eo40-result-upcoming { background: rgba(26, 58, 92, 0.9); color: #fff; border: 1px solid rgba(100, 160, 220, 0.3); }
+  .eo40-result-upcoming { background: #0080DB; color: #fff; border: 1px solid rgba(0, 128, 219, 0.5); }
 
-  .eo40-link { color: #7ab3e0; text-decoration: none; font-weight: 600; font-size: 0.75rem; white-space: nowrap; }
-  .eo40-link:hover { text-decoration: underline; color: #a0d0f0; }
+  .eo40-link { color: #0080DB; text-decoration: none; font-weight: 600; font-size: 0.75rem; white-space: nowrap; }
+  .eo40-link:hover { text-decoration: underline; color: #3da5f0; }
   .eo40-venue-link { color: rgba(180, 200, 225, 0.8); text-decoration: none; font-size: 0.8rem; }
-  .eo40-venue-link:hover { color: #7ab3e0; text-decoration: underline; }
+  .eo40-venue-link:hover { color: #0080DB; text-decoration: underline; }
   .eo40-links-cell { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
   .eo40-link-yt { color: #ef5350; }
   .eo40-link-yt:hover { color: #ff8a80; }
@@ -202,11 +209,11 @@
   .eo40-card-venue { font-size: 0.72rem; color: rgba(160, 180, 205, 0.6); margin-bottom: 6px; }
   .eo40-card-links { display: flex; gap: 8px; flex-wrap: wrap; }
   .eo40-card-link {
-    font-size: 0.72rem; color: #7ab3e0; text-decoration: none; font-weight: 600;
-    padding: 4px 12px; border: 1.5px solid rgba(122, 179, 224, 0.4); border-radius: 14px;
+    font-size: 0.72rem; color: #0080DB; text-decoration: none; font-weight: 600;
+    padding: 4px 12px; border: 1.5px solid rgba(0, 128, 219, 0.4); border-radius: 14px;
     transition: all 0.2s; background: rgba(255,255,255,0.04);
   }
-  .eo40-card-link:hover { background: rgba(26, 58, 92, 0.7); color: #fff; border-color: rgba(100, 160, 220, 0.6); }
+  .eo40-card-link:hover { background: rgba(0, 128, 219, 0.2); color: #fff; border-color: #0080DB; }
 
   .eo40-footer { text-align: center; padding: 16px; font-size: 0.72rem; color: rgba(160, 180, 205, 0.5); margin-top: 12px; }
   .eo40-legend { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
