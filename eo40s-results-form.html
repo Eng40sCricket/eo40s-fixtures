@@ -3,134 +3,137 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>EO40s · Enter Result</title>
+<title>EO40s - Match Admin</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy:       #0a1628;
-    --navy-mid:   #0d1f3c;
-    --navy-card:  #111e33;
-    --sky:        #1e90d4;
-    --sky-light:  #4db0f0;
-    --gold:       #c9a84c;
-    --gold-light: #e8c97a;
-    --white:      #f0f4fa;
-    --mid:        #7a8fa8;
-    --border:     rgba(201,168,76,0.2);
-    --border-sky: rgba(30,144,212,0.25);
-    --success:    #2ecc71;
-    --error:      #e74c3c;
+    --navy:#0a1628;--navy-mid:#0d1f3c;--navy-card:#111e33;
+    --sky:#1e90d4;--sky-light:#4db0f0;
+    --gold:#c9a84c;--gold-light:#e8c97a;
+    --amber:#e8a84c;
+    --white:#f0f4fa;--mid:#7a8fa8;
+    --border:rgba(201,168,76,0.2);--border-sky:rgba(30,144,212,0.25);
+    --success:#2ecc71;--error:#e74c3c;--purple:#9b59b6;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-  body {
-    background: var(--navy); color: var(--white);
-    font-family: 'DM Sans', sans-serif; min-height: 100vh; padding-bottom: 60px;
-    background-image: radial-gradient(ellipse at 70% 0%, rgba(30,144,212,0.1) 0%, transparent 55%),
-                      radial-gradient(ellipse at 10% 90%, rgba(201,168,76,0.07) 0%, transparent 50%);
-  }
-  header {
-    background: linear-gradient(180deg, #0b1a30 0%, #0a1628 100%);
-    border-bottom: 2px solid var(--gold);
-    padding: 14px 18px; display: flex; align-items: center; gap: 14px;
-    position: sticky; top: 0; z-index: 20; box-shadow: 0 4px 30px rgba(0,0,0,0.5);
-  }
-  .logo-wrap {
-    width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; overflow: hidden;
-    border: 2px solid rgba(201,168,76,0.4); box-shadow: 0 0 16px rgba(30,144,212,0.25);
-  }
-  .logo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .header-text { flex: 1; min-width: 0; }
-  .header-text h1 {
-    font-family: 'Barlow Condensed', sans-serif; font-size: 19px; font-weight: 800;
-    color: var(--white); letter-spacing: 0.5px; line-height: 1.1; text-transform: uppercase;
-  }
-  .header-text h1 span { color: var(--sky); }
-  .header-text p {
-    font-size: 10px; font-weight: 600; letter-spacing: 2.5px;
-    text-transform: uppercase; color: var(--gold); margin-top: 3px;
-  }
-  .token-bar {
-    background: rgba(9,16,28,0.95); border-bottom: 1px solid rgba(30,144,212,0.15);
-    padding: 10px 16px; display: flex; gap: 10px; align-items: center;
-  }
-  .token-label { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--mid); white-space: nowrap; flex-shrink: 0; }
-  .token-bar input {
-    flex: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(30,144,212,0.2);
-    border-radius: 8px; color: var(--white); font-family: 'DM Sans', sans-serif;
-    font-size: 13px; padding: 8px 12px; outline: none; min-width: 0;
-  }
-  .token-bar input:focus { border-color: var(--sky); }
-  .token-bar input::placeholder { color: rgba(122,143,168,0.5); }
-  .token-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mid); flex-shrink: 0; transition: background 0.3s, box-shadow 0.3s; }
-  .token-dot.ok  { background: var(--success); box-shadow: 0 0 6px var(--success); }
-  .token-dot.err { background: var(--error);   box-shadow: 0 0 6px var(--error); }
-  main { padding: 18px 16px; }
-  .step-label { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-  .step-num { width: 22px; height: 22px; border-radius: 50%; background: var(--sky); color: white; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .step-num.gold { background: var(--gold); color: var(--navy); }
-  .step-text { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
-  .card { background: var(--navy-card); border: 1px solid var(--border); border-radius: 14px; padding: 14px; margin-bottom: 14px; transition: opacity 0.3s, border-color 0.2s; }
-  .card.active   { border-color: var(--border-sky); }
-  .card.locked   { opacity: 0.38; pointer-events: none; }
-  .card.unlocked { opacity: 1; pointer-events: auto; }
-  .fixture-select {
-    width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--border-sky);
-    border-radius: 10px; color: var(--white); font-family: 'DM Sans', sans-serif;
-    font-size: 15px; padding: 13px 36px 13px 14px; outline: none;
-    appearance: none; -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234db0f0' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat; background-position: right 14px center; background-color: rgba(255,255,255,0.04); cursor: pointer;
-  }
-  .fixture-select:focus { border-color: var(--sky); }
-  .fixture-select option { background: #1a2840; }
-  .fixture-preview { margin-top: 12px; background: linear-gradient(135deg,rgba(30,144,212,0.08) 0%,rgba(10,22,40,0.5) 100%); border: 1px solid var(--border-sky); border-radius: 10px; padding: 12px 14px; display: none; }
-  .fixture-preview.visible { display: block; }
-  .prev-tournament { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--sky); margin-bottom: 4px; }
-  .prev-teams { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 800; color: var(--white); text-transform: uppercase; margin-bottom: 5px; }
-  .prev-teams .vs { font-size: 13px; color: var(--mid); font-weight: 400; font-family: 'DM Sans', sans-serif; text-transform: none; margin: 0 6px; }
-  .prev-meta { font-size: 12px; color: var(--mid); display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 8px; }
-  .existing-links { display: flex; gap: 6px; flex-wrap: wrap; }
-  .link-chip { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
-  .chip-sc { background: rgba(201,168,76,0.12); color: var(--gold-light); border: 1px solid rgba(201,168,76,0.3); }
-  .chip-yt { background: rgba(231,76,60,0.12); color: #ff7676; border: 1px solid rgba(231,76,60,0.3); }
-  .field-group { margin-bottom: 12px; }
-  .field-group label { display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--mid); margin-bottom: 6px; }
-  .optional { background: rgba(122,143,168,0.12); color: rgba(122,143,168,0.65); font-size: 9px; font-weight: 600; letter-spacing: 0.8px; padding: 2px 6px; border-radius: 4px; }
-  .field-group input, .field-group select {
-    width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-    border-radius: 10px; color: var(--white); font-family: 'DM Sans', sans-serif;
-    font-size: 15px; padding: 13px 14px; outline: none; transition: border-color 0.2s, background 0.2s;
-  }
-  .field-group select {
-    appearance: none; -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a8fa8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat; background-position: right 14px center; background-color: rgba(255,255,255,0.04); padding-right: 36px; cursor: pointer;
-  }
-  .field-group select option { background: #1a2840; }
-  .field-group input:focus, .field-group select:focus { border-color: var(--sky); background: rgba(30,144,212,0.05); }
-  .field-group input::placeholder { color: rgba(122,143,168,0.45); }
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .field-hint { font-size: 11px; color: var(--mid); margin-top: 5px; padding-left: 2px; }
-  .field-hint em { color: var(--sky-light); font-style: normal; }
-  .divider { height: 1px; background: linear-gradient(90deg,transparent,var(--border),transparent); margin: 14px 0; }
-  .submit-btn {
-    width: 100%; background: linear-gradient(135deg,var(--sky) 0%,#1577b8 100%);
-    color: white; border: none; border-radius: 12px;
-    font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 800;
-    letter-spacing: 1px; text-transform: uppercase; padding: 16px;
-    cursor: pointer; display: flex; align-items: center; justify-content: center;
-    gap: 8px; margin-top: 6px; transition: all 0.2s; box-shadow: 0 4px 20px rgba(30,144,212,0.3);
-  }
-  .submit-btn:active { transform: scale(0.98); opacity: 0.9; }
-  .submit-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-  .status-msg { margin-top: 12px; padding: 12px 14px; border-radius: 10px; font-size: 14px; font-weight: 500; display: none; align-items: flex-start; gap: 10px; line-height: 1.4; }
-  .status-msg.visible { display: flex; }
-  .status-msg.success { background: rgba(46,204,113,0.1); border: 1px solid rgba(46,204,113,0.3); color: #3de07a; }
-  .status-msg.error   { background: rgba(231,76,60,0.1);  border: 1px solid rgba(231,76,60,0.3);  color: #ff6b6b; }
-  .status-msg.loading { background: rgba(30,144,212,0.1); border: 1px solid rgba(30,144,212,0.3); color: var(--sky-light); }
-  .load-indicator { text-align: center; padding: 24px 20px; color: var(--mid); font-size: 13px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-  .spinner { width: 18px; height: 18px; border: 2px solid rgba(30,144,212,0.2); border-top-color: var(--sky); border-radius: 50%; animation: spin 0.7s linear infinite; flex-shrink: 0; }
-  @keyframes spin { to { transform: rotate(360deg); } }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100vh;padding-bottom:60px;
+    background-image:radial-gradient(ellipse at 70% 0%,rgba(30,144,212,0.1) 0%,transparent 55%),radial-gradient(ellipse at 10% 90%,rgba(201,168,76,0.07) 0%,transparent 50%);}
+
+  /* HEADER */
+  header{background:linear-gradient(180deg,#0b1a30 0%,#0a1628 100%);border-bottom:2px solid var(--gold);padding:14px 18px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:20;box-shadow:0 4px 30px rgba(0,0,0,0.5);}
+  .logo-wrap{width:52px;height:52px;flex-shrink:0;border-radius:50%;overflow:hidden;border:2px solid rgba(201,168,76,0.4);box-shadow:0 0 16px rgba(30,144,212,0.25);background:var(--navy-mid);}
+  .logo-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .header-text{flex:1;min-width:0;}
+  .header-text h1{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:800;color:var(--white);letter-spacing:0.5px;line-height:1.1;text-transform:uppercase;}
+  .header-text h1 span{color:var(--sky);}
+  .header-text p{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-top:3px;}
+
+  /* TOKEN BAR */
+  .token-bar{background:rgba(9,16,28,0.95);border-bottom:1px solid rgba(30,144,212,0.15);padding:10px 16px;display:flex;gap:10px;align-items:center;}
+  .token-label{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);white-space:nowrap;flex-shrink:0;}
+  .token-bar input{flex:1;background:rgba(255,255,255,0.05);border:1px solid rgba(30,144,212,0.2);border-radius:8px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:13px;padding:8px 12px;outline:none;min-width:0;}
+  .token-bar input:focus{border-color:var(--sky);}
+  .token-bar input::placeholder{color:rgba(122,143,168,0.5);}
+  .token-dot{width:8px;height:8px;border-radius:50%;background:var(--mid);flex-shrink:0;transition:background 0.3s,box-shadow 0.3s;}
+  .token-dot.ok{background:var(--success);box-shadow:0 0 6px var(--success);}
+  .token-dot.err{background:var(--error);box-shadow:0 0 6px var(--error);}
+
+  /* MODE TOGGLE - 3 tabs */
+  .mode-bar{padding:14px 16px 0;}
+  .mode-toggle{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;background:var(--navy-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .mode-btn{padding:12px 6px;text-align:center;cursor:pointer;transition:all 0.2s;border:none;background:transparent;color:var(--mid);font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;line-height:1.2;}
+  .mode-btn.active-result{background:var(--sky);color:white;}
+  .mode-btn.active-edit{background:var(--amber);color:var(--navy);}
+  .mode-btn.active-highlights{background:var(--purple);color:white;}
+  .mode-hint{font-size:11px;color:var(--mid);text-align:center;margin-top:8px;margin-bottom:4px;padding:0 4px;}
+
+  /* MAIN */
+  main{padding:14px 16px;}
+  .step-label{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+  .step-num{width:22px;height:22px;border-radius:50%;background:var(--sky);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .step-num.gold{background:var(--gold);color:var(--navy);}
+  .step-num.amber{background:var(--amber);color:var(--navy);}
+  .step-num.purple{background:var(--purple);color:white;}
+  .step-text{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+
+  .card{background:var(--navy-card);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:14px;transition:opacity 0.3s,border-color 0.2s;}
+  .card.active{border-color:var(--border-sky);}
+  .card.locked{opacity:0.38;pointer-events:none;}
+  .card.unlocked{opacity:1;pointer-events:auto;}
+  .card.amber-border{border-color:rgba(232,168,76,0.4);}
+  .card.purple-border{border-color:rgba(155,89,182,0.4);}
+
+  /* SELECTS */
+  .fixture-select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border-sky);border-radius:10px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;padding:13px 36px 13px 14px;outline:none;appearance:none;-webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234db0f0' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 14px center;background-color:rgba(255,255,255,0.04);cursor:pointer;}
+  .fixture-select.amber-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23e8a84c' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");border-color:rgba(232,168,76,0.4);}
+  .fixture-select.purple-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239b59b6' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");border-color:rgba(155,89,182,0.4);}
+  .fixture-select:focus{border-color:var(--sky);}
+  .fixture-select option{background:#1a2840;}
+
+  /* PREVIEW */
+  .fixture-preview{margin-top:12px;background:linear-gradient(135deg,rgba(30,144,212,0.08) 0%,rgba(10,22,40,0.5) 100%);border:1px solid var(--border-sky);border-radius:10px;padding:12px 14px;display:none;}
+  .fixture-preview.visible{display:block;}
+  .fixture-preview.amber-preview{background:linear-gradient(135deg,rgba(232,168,76,0.08) 0%,rgba(10,22,40,0.5) 100%);border-color:rgba(232,168,76,0.3);}
+  .fixture-preview.purple-preview{background:linear-gradient(135deg,rgba(155,89,182,0.08) 0%,rgba(10,22,40,0.5) 100%);border-color:rgba(155,89,182,0.3);}
+  .prev-tournament{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--sky);margin-bottom:4px;}
+  .prev-tournament.amber{color:var(--amber);}
+  .prev-tournament.purple{color:var(--purple);}
+  .prev-teams{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--white);text-transform:uppercase;margin-bottom:5px;}
+  .prev-teams .vs{font-size:13px;color:var(--mid);font-weight:400;font-family:'DM Sans',sans-serif;text-transform:none;margin:0 6px;}
+  .prev-meta{font-size:12px;color:var(--mid);display:flex;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .prev-result{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:4px;}
+  .prev-result.win{background:rgba(46,204,113,0.15);color:#3de07a;border:1px solid rgba(46,204,113,0.3);}
+  .prev-result.loss{background:rgba(231,76,60,0.15);color:#ff6b6b;border:1px solid rgba(231,76,60,0.3);}
+  .prev-result.other{background:rgba(122,143,168,0.15);color:var(--mid);border:1px solid rgba(122,143,168,0.3);}
+
+  /* FIELDS */
+  .field-group{margin-bottom:12px;}
+  .field-group label{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
+  .optional{background:rgba(122,143,168,0.12);color:rgba(122,143,168,0.65);font-size:9px;font-weight:600;letter-spacing:0.8px;padding:2px 6px;border-radius:4px;}
+  .field-group input,.field-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:10px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;padding:13px 14px;outline:none;transition:border-color 0.2s,background 0.2s;}
+  .field-group select{appearance:none;-webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a8fa8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 14px center;background-color:rgba(255,255,255,0.04);padding-right:36px;cursor:pointer;}
+  .field-group select option{background:#1a2840;}
+  .field-group input:focus,.field-group select:focus{border-color:var(--sky);background:rgba(30,144,212,0.05);}
+  .field-group input::placeholder{color:rgba(122,143,168,0.45);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .field-hint{font-size:11px;color:var(--mid);margin-top:5px;padding-left:2px;}
+  .field-hint em{color:var(--sky-light);font-style:normal;}
+  .field-hint.warn{color:var(--amber);}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:14px 0;}
+
+  /* HIGHLIGHTS FOCUS */
+  .highlights-focus{background:linear-gradient(135deg,rgba(155,89,182,0.1) 0%,rgba(10,22,40,0.6) 100%);border:1px solid rgba(155,89,182,0.35);border-radius:12px;padding:16px;margin-bottom:12px;}
+  .highlights-focus .hl-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--purple);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+  .hl-input{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(155,89,182,0.35);border-radius:10px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;padding:13px 14px;outline:none;transition:border-color 0.2s;}
+  .hl-input:focus{border-color:var(--purple);background:rgba(155,89,182,0.05);}
+  .hl-input::placeholder{color:rgba(122,143,168,0.45);}
+
+  /* SUBMIT BUTTONS */
+  .submit-btn{width:100%;color:white;border:none;border-radius:12px;font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:6px;transition:all 0.2s;}
+  .submit-btn.blue-btn{background:linear-gradient(135deg,var(--sky) 0%,#1577b8 100%);box-shadow:0 4px 20px rgba(30,144,212,0.3);}
+  .submit-btn.amber-btn{background:linear-gradient(135deg,var(--amber) 0%,#c47d1a 100%);box-shadow:0 4px 20px rgba(232,168,76,0.3);color:var(--navy);}
+  .submit-btn.purple-btn{background:linear-gradient(135deg,var(--purple) 0%,#7d3c98 100%);box-shadow:0 4px 20px rgba(155,89,182,0.3);}
+  .submit-btn:active{transform:scale(0.98);opacity:0.9;}
+  .submit-btn:disabled{opacity:0.4;cursor:not-allowed;transform:none;}
+
+  /* STATUS */
+  .status-msg{margin-top:12px;padding:12px 14px;border-radius:10px;font-size:14px;font-weight:500;display:none;align-items:flex-start;gap:10px;line-height:1.4;}
+  .status-msg.visible{display:flex;}
+  .status-msg.success{background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.3);color:#3de07a;}
+  .status-msg.error{background:rgba(231,76,60,0.1);border:1px solid rgba(231,76,60,0.3);color:#ff6b6b;}
+  .status-msg.loading{background:rgba(30,144,212,0.1);border:1px solid rgba(30,144,212,0.3);color:var(--sky-light);}
+
+  /* LOADER */
+  .load-indicator{text-align:center;padding:24px 20px;color:var(--mid);font-size:13px;display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .spinner{width:18px;height:18px;border:2px solid rgba(30,144,212,0.2);border-top-color:var(--sky);border-radius:50%;animation:spin 0.7s linear infinite;flex-shrink:0;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  .panel{display:none;}
+  .panel.active{display:block;}
 </style>
 </head>
 <body>
@@ -141,187 +144,429 @@
   </div>
   <div class="header-text">
     <h1>England <span>Over 40s</span> Cricket</h1>
-    <p>Enter Match Result</p>
+    <p>Match Admin</p>
   </div>
 </header>
 
 <div class="token-bar">
   <span class="token-label">Token</span>
-  <input type="password" id="tokenInput" placeholder="Paste GitHub personal access token…" autocomplete="off" spellcheck="false">
+  <input type="password" id="tokenInput" placeholder="Paste GitHub personal access token..." autocomplete="off" spellcheck="false">
   <div class="token-dot" id="tokenDot"></div>
 </div>
 
+<div class="mode-bar">
+  <div class="mode-toggle">
+    <button class="mode-btn active-result" id="btnResult"     onclick="setMode('result')">     Up Enter Result</button>
+    <button class="mode-btn"               id="btnEdit"       onclick="setMode('edit')">       Edit Result</button>
+    <button class="mode-btn"               id="btnHighlights" onclick="setMode('highlights')"> Play Add Highlights</button>
+  </div>
+  <div class="mode-hint" id="modeHint">Enter a result immediately after the match</div>
+</div>
+
 <main>
-  <div class="step-label"><div class="step-num">1</div><div class="step-text">Select Fixture</div></div>
-  <div class="card active">
-    <div id="fixtureLoader" class="load-indicator">
-      <div class="spinner"></div><span>Enter your GitHub token above to load fixtures</span>
+
+  <!-- PANEL 1: ENTER RESULT -->
+  <div class="panel active" id="panelResult">
+    <div class="step-label" style="margin-top:6px;">
+      <div class="step-num">1</div><div class="step-text">Select Fixture</div>
     </div>
-    <select class="fixture-select" id="fixtureSelect" style="display:none">
-      <option value="">— Choose upcoming fixture —</option>
-    </select>
-    <div class="fixture-preview" id="fixturePreview">
-      <div class="prev-tournament" id="prevTournament"></div>
-      <div class="prev-teams" id="prevTeams"></div>
-      <div class="prev-meta" id="prevMeta"></div>
-      <div class="existing-links" id="prevLinks"></div>
+    <div class="card active">
+      <div id="loaderResult" class="load-indicator"><div class="spinner"></div><span>Enter your GitHub token above to load fixtures</span></div>
+      <select class="fixture-select" id="selectResult" style="display:none"><option value="">-- Choose upcoming fixture --</option></select>
+      <div class="fixture-preview" id="previewResult">
+        <div class="prev-tournament" id="rTournament"></div>
+        <div class="prev-teams" id="rTeams"></div>
+        <div class="prev-meta" id="rMeta"></div>
+      </div>
+    </div>
+    <div class="step-label"><div class="step-num">2</div><div class="step-text">Match Result</div></div>
+    <div class="card locked" id="cardResult">
+      <div class="two-col">
+        <div class="field-group">
+          <label>Outcome</label>
+          <select id="rOutcome">
+            <option value="">Select...</option>
+            <option value="Win">Win</option><option value="Loss">Loss</option>
+            <option value="Tie">Tie</option><option value="No Result">No Result</option>
+            <option value="Abandoned">Abandoned</option><option value="Cancelled">Cancelled</option>
+          </select>
+        </div>
+        <div class="field-group"><label>Margin</label><input type="text" id="rMargin" placeholder="e.g. 6 wickets"></div>
+      </div>
+      <div class="field-group"><label>Full Result Details</label><input type="text" id="rDetails" placeholder="e.g. England won by 6 wickets"></div>
+      <div class="divider"></div>
+      <div class="step-label" style="margin-bottom:12px;margin-top:2px;"><div class="step-num gold">3</div><div class="step-text">Links</div></div>
+      <div class="field-group">
+        <label>Play Cricket Scorecard URL</label>
+        <input type="url" id="rScorecard" placeholder="Paste Play Cricket result scorecard URL...">
+        <div class="field-hint warn">This differs from the fixture URL -- find the completed match on Play Cricket.</div>
+      </div>
+      <div class="field-group">
+        <label>YouTube Live Stream <span class="optional">Optional</span></label>
+        <input type="url" id="rLive" placeholder="Paste specific post-match YouTube video URL...">
+        <div class="field-hint warn">Do not use the pre-match link -- find the completed video on YouTube.</div>
+      </div>
+      <div class="field-group">
+        <label>YouTube Highlights <span class="optional">Optional</span></label>
+        <input type="url" id="rHighlights" placeholder="Leave blank -- add later via Add Highlights tab">
+        <div class="field-hint">Add this tomorrow using the <em>Add Highlights</em> tab above.</div>
+      </div>
+      <button class="submit-btn blue-btn" id="btnSubmitResult" onclick="submitResult()">Submit Result to GitHub</button>
+      <div class="status-msg" id="statusResult"></div>
     </div>
   </div>
 
-  <div class="step-label"><div class="step-num">2</div><div class="step-text">Match Result</div></div>
-  <div class="card locked" id="resultCard">
-    <div class="two-col">
-      <div class="field-group">
-        <label>Outcome</label>
-        <select id="resultOutcome">
-          <option value="">Select…</option>
-          <option value="Win">Win</option>
-          <option value="Loss">Loss</option>
-          <option value="Tie">Tie</option>
-          <option value="No Result">No Result</option>
-          <option value="Abandoned">Abandoned</option>
-          <option value="Cancelled">Cancelled</option>
-        </select>
-      </div>
-      <div class="field-group">
-        <label>Margin</label>
-        <input type="text" id="resultMargin" placeholder="e.g. 6 wickets">
+  <!-- PANEL 2: EDIT RESULT -->
+  <div class="panel" id="panelEdit">
+    <div class="step-label" style="margin-top:6px;">
+      <div class="step-num amber">1</div><div class="step-text">Select Completed Match</div>
+    </div>
+    <div class="card amber-border">
+      <div id="loaderEdit" class="load-indicator"><div class="spinner"></div><span>Enter your GitHub token above to load results</span></div>
+      <select class="fixture-select amber-select" id="selectEdit" style="display:none"><option value="">-- Choose completed match --</option></select>
+      <div class="fixture-preview amber-preview" id="previewEdit">
+        <div class="prev-tournament amber" id="eTournament"></div>
+        <div class="prev-teams" id="eTeams"></div>
+        <div class="prev-meta" id="eMeta"></div>
+        <div id="eResultBadge"></div>
       </div>
     </div>
-    <div class="field-group">
-      <label>Full Result Details</label>
-      <input type="text" id="resultDetails" placeholder="e.g. England won by 6 wickets">
+    <div class="step-label"><div class="step-num amber">2</div><div class="step-text">Correct Fields</div></div>
+    <div class="card locked amber-border" id="cardEdit">
+      <div class="two-col">
+        <div class="field-group">
+          <label>Outcome</label>
+          <select id="eOutcome">
+            <option value="">Select...</option>
+            <option value="Win">Win</option><option value="Loss">Loss</option>
+            <option value="Tie">Tie</option><option value="No Result">No Result</option>
+            <option value="Abandoned">Abandoned</option><option value="Cancelled">Cancelled</option>
+          </select>
+        </div>
+        <div class="field-group"><label>Margin</label><input type="text" id="eMargin" placeholder="e.g. 6 wickets"></div>
+      </div>
+      <div class="field-group"><label>Full Result Details</label><input type="text" id="eDetails" placeholder="e.g. England won by 6 wickets"></div>
+      <div class="divider"></div>
+      <div class="step-label" style="margin-bottom:12px;margin-top:2px;"><div class="step-num gold">3</div><div class="step-text">Links</div></div>
+      <div class="field-group">
+        <label>Play Cricket Scorecard URL</label>
+        <input type="url" id="eScorecard" placeholder="https://englandseniors.play-cricket.com/...">
+      </div>
+      <div class="field-group">
+        <label>YouTube Live Stream <span class="optional">Optional</span></label>
+        <input type="url" id="eLive" placeholder="https://www.youtube.com/watch?v=...">
+      </div>
+      <div class="field-group">
+        <label>YouTube Highlights <span class="optional">Optional</span></label>
+        <input type="url" id="eHighlights" placeholder="https://www.youtube.com/watch?v=...">
+      </div>
+      <button class="submit-btn amber-btn" id="btnSubmitEdit" onclick="submitEdit()">Save Corrections to GitHub</button>
+      <div class="status-msg" id="statusEdit"></div>
     </div>
-    <div class="divider"></div>
-    <div class="step-label" style="margin-bottom:12px;margin-top:2px;">
-      <div class="step-num gold">3</div><div class="step-text">Links</div>
-    </div>
-    <div class="field-group">
-      <label>Play Cricket Scorecard URL</label>
-      <input type="url" id="scorecardUrl" placeholder="https://englandseniors.play-cricket.com/…">
-    </div>
-    <div class="field-group">
-      <label>YouTube Live Stream <span class="optional">Optional</span></label>
-      <input type="url" id="youtubeLive" placeholder="https://www.youtube.com/watch?v=…">
-      <div class="field-hint">Pre-filled from fixture. Update if the link has changed.</div>
-    </div>
-    <div class="field-group">
-      <label>YouTube Highlights <span class="optional">Optional</span></label>
-      <input type="url" id="youtubeHighlights" placeholder="https://www.youtube.com/watch?v=…">
-      <div class="field-hint">Leave blank if no highlights available. <em>Paste any YouTube URL.</em></div>
-    </div>
-    <button class="submit-btn" id="submitBtn" onclick="submitResult()">↑ &nbsp;Commit Result to GitHub</button>
-    <div class="status-msg" id="statusMsg"></div>
   </div>
+
+  <!-- PANEL 3: ADD HIGHLIGHTS -->
+  <div class="panel" id="panelHighlights">
+    <div class="step-label" style="margin-top:6px;">
+      <div class="step-num purple">1</div><div class="step-text">Select Completed Match</div>
+    </div>
+    <div class="card purple-border">
+      <div id="loaderHl" class="load-indicator"><div class="spinner"></div><span>Enter your GitHub token above to load results</span></div>
+      <select class="fixture-select purple-select" id="selectHl" style="display:none"><option value="">-- Choose completed match --</option></select>
+      <div class="fixture-preview purple-preview" id="previewHl">
+        <div class="prev-tournament purple" id="hTournament"></div>
+        <div class="prev-teams" id="hTeams"></div>
+        <div class="prev-meta" id="hMeta"></div>
+        <div id="hResultBadge"></div>
+      </div>
+    </div>
+    <div class="step-label"><div class="step-num purple">2</div><div class="step-text">Add Highlights Link</div></div>
+    <div class="card locked purple-border" id="cardHl">
+      <div class="highlights-focus">
+        <div class="hl-label">YouTube Highlights URL</div>
+        <input type="url" id="hUrl" class="hl-input" placeholder="https://www.youtube.com/watch?v=...">
+        <div class="field-hint" style="margin-top:8px;">Paste the highlights URL. <em>All other result data remains unchanged.</em></div>
+      </div>
+      <button class="submit-btn purple-btn" id="btnSubmitHl" onclick="submitHighlights()">Add Highlights to GitHub</button>
+      <div class="status-msg" id="statusHl"></div>
+    </div>
+  </div>
+
 </main>
 
 <script>
-const OWNER='Eng40sCricket', REPO='eo40s-fixtures', FILE='matches.csv';
-let csvSha='', allRows=[], headers=[], selectedRowIndex=-1;
+const OWNER='Eng40sCricket',REPO='eo40s-fixtures',FILE='matches.csv';
+let csvSha='',allRows=[],headers=[],currentMode='result';
+let selectedResult=-1,selectedEdit=-1,selectedHl=-1;
+
 const tokenInput=document.getElementById('tokenInput');
 const tokenDot=document.getElementById('tokenDot');
 const saved=sessionStorage.getItem('gh_token');
 if(saved){tokenInput.value=saved;initLoad(saved);}
 tokenInput.addEventListener('blur',()=>{const t=tokenInput.value.trim();if(t.length>10){sessionStorage.setItem('gh_token',t);initLoad(t);}});
+
+// MODE TOGGLE
+function setMode(mode){
+  currentMode=mode;
+  ['result','edit','highlights'].forEach(m=>{
+    document.getElementById('panel'+cap(m)).className='panel'+(m===mode?' active':'');
+    const btn=document.getElementById('btn'+cap(m));
+    btn.className='mode-btn'+(m===mode?' active-'+m:'');
+  });
+  const hints={result:'Enter a result immediately after the match',edit:'Correct URLs or details on a completed result',highlights:'Add a highlights link to a completed result'};
+  document.getElementById('modeHint').textContent=hints[mode];
+  if(allRows.length){
+    if(mode==='edit') populateEditDropdown();
+    if(mode==='highlights') populateHlDropdown();
+  }
+}
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
+
+// LOAD CSV
 async function initLoad(token){
   tokenDot.className='token-dot';
-  showLoader('<div class="spinner"></div><span>Loading fixtures…</span>');
+  ['loaderResult','loaderEdit','loaderHl'].forEach(id=>showLoader(id,'<div class="spinner"></div><span>Loading...</span>'));
   try{
-    const res=await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE}`,{headers:{Authorization:`token ${token}`,Accept:'application/vnd.github.v3+json'}});
-    if(!res.ok)throw new Error('Auth failed');
+    const res=await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE}`,
+      {headers:{Authorization:'token '+token,Accept:'application/vnd.github.v3+json'}});
+    if(!res.ok) throw new Error('Auth failed');
     const data=await res.json();
     csvSha=data.sha;
     const raw=decodeURIComponent(escape(atob(data.content.replace(/\n/g,''))));
     parseCSV(raw);
     tokenDot.className='token-dot ok';
-  }catch(e){tokenDot.className='token-dot err';showLoader('<span style="color:#ff6b6b">⚠ Could not connect. Check your token.</span>');}
+  }catch(e){
+    tokenDot.className='token-dot err';
+    ['loaderResult','loaderEdit','loaderHl'].forEach(id=>showLoader(id,'<span style="color:#ff6b6b">Could not connect. Check your token.</span>'));
+  }
 }
-function showLoader(html){const el=document.getElementById('fixtureLoader');el.style.display='flex';el.innerHTML=html;document.getElementById('fixtureSelect').style.display='none';}
+
+function showLoader(id,html){const el=document.getElementById(id);if(el){el.style.display='flex';el.innerHTML=html;}}
+
+// PARSE CSV
 function parseCSV(text){
   const lines=text.split('\n').filter(l=>l.trim());
   headers=parseLine(lines[0]);
   allRows=lines.slice(1).map(parseLine);
-  const ix=n=>headers.findIndex(h=>h.toLowerCase().trim()===n.toLowerCase());
-  const upcoming=allRows.map((r,i)=>({r,i})).filter(({r})=>{const res=(r[ix('result')]||'').trim().toLowerCase();return res===''||res==='upcoming';});
-  const sel=document.getElementById('fixtureSelect');
-  sel.innerHTML='<option value="">— Choose upcoming fixture —</option>';
-  if(!upcoming.length){showLoader('<span>No upcoming fixtures found.</span>');return;}
+  populateResultDropdown();
+  if(currentMode==='edit') populateEditDropdown();
+  if(currentMode==='highlights') populateHlDropdown();
+}
+
+// ix helper
+const ix=n=>headers.findIndex(h=>h.toLowerCase().trim()===n.toLowerCase());
+
+// UPCOMING -> Enter Result dropdown
+function populateResultDropdown(){
+  const upcoming=allRows.map((r,i)=>({r,i})).filter(({r})=>{
+    const res=(r[ix('result')]||'').trim().toLowerCase();
+    return res===''||res==='upcoming';
+  });
+  const sel=document.getElementById('selectResult');
+  sel.innerHTML='<option value="">-- Choose upcoming fixture --</option>';
+  if(!upcoming.length){showLoader('loaderResult','<span>No upcoming fixtures found.</span>');return;}
   upcoming.forEach(({r,i})=>{
     const o=document.createElement('option');o.value=i;
-    const d=fmtDate(r[ix('date')]||'');
-    const t=r[ix('tournament')]?` · ${r[ix('tournament')]}` :'';
-    o.textContent=`${d}  ${r[ix('hometeam')]||''} v ${r[ix('awayteam')]||''}${t}`;
+    o.textContent=fmtDate(r[ix('date')]||'')+' '+( r[ix('hometeam')]||'')+' v '+(r[ix('awayteam')]||'')+(r[ix('tournament')]?' - '+r[ix('tournament')]:'');
     sel.appendChild(o);
   });
-  document.getElementById('fixtureLoader').style.display='none';
+  document.getElementById('loaderResult').style.display='none';
   sel.style.display='block';
-  sel.addEventListener('change',onSelect);
+  sel.onchange=function(){
+    selectedResult=parseInt(this.value);
+    showPreview(selectedResult,'previewResult','rTournament','rTeams','rMeta',null,'cardResult','');
+  };
 }
-function onSelect(){
-  const val=document.getElementById('fixtureSelect').value;
-  const preview=document.getElementById('fixturePreview');
-  const card=document.getElementById('resultCard');
-  if(!val){preview.classList.remove('visible');card.className='card locked';selectedRowIndex=-1;return;}
-  selectedRowIndex=parseInt(val);
-  const row=allRows[selectedRowIndex];
-  const g=n=>{const i=headers.findIndex(h=>h.toLowerCase().trim()===n.toLowerCase());return i>=0?(row[i]||'').trim():'';};
-  document.getElementById('prevTournament').textContent=g('Tournament');
-  document.getElementById('prevTeams').innerHTML=`${g('HomeTeam')}<span class="vs">v</span>${g('AwayTeam')}`;
-  const meta=document.getElementById('prevMeta');meta.innerHTML='';
-  if(g('Date'))meta.innerHTML+=`<span>📅 ${fmtDate(g('Date'))}</span>`;
-  if(g('Venue'))meta.innerHTML+=`<span>📍 ${g('Venue')}</span>`;
-  const links=document.getElementById('prevLinks');links.innerHTML='';
-  if(g('ScorecardURL'))links.innerHTML+=`<a href="${g('ScorecardURL')}" target="_blank" class="link-chip chip-sc">🏏 Play Cricket</a>`;
-  if(g('YouTubeLive'))links.innerHTML+=`<a href="${g('YouTubeLive')}" target="_blank" class="link-chip chip-yt">▶ Live Stream</a>`;
+
+// COMPLETED -> Edit Result dropdown
+function populateEditDropdown(){
+  const played=allRows.map((r,i)=>({r,i})).filter(({r})=>{
+    const res=(r[ix('result')]||'').trim().toLowerCase();
+    return res!==''&&res!=='upcoming';
+  });
+  const sel=document.getElementById('selectEdit');
+  sel.innerHTML='<option value="">-- Choose completed match --</option>';
+  if(!played.length){showLoader('loaderEdit','<span>No completed results found yet.</span>');return;}
+  played.forEach(({r,i})=>{
+    const o=document.createElement('option');o.value=i;
+    o.textContent=fmtDate(r[ix('date')]||'')+' '+(r[ix('hometeam')]||'')+' v '+(r[ix('awayteam')]||'')+' - '+(r[ix('result')]||'');
+    sel.appendChild(o);
+  });
+  document.getElementById('loaderEdit').style.display='none';
+  sel.style.display='block';
+  sel.onchange=function(){
+    selectedEdit=parseInt(this.value);
+    showPreview(selectedEdit,'previewEdit','eTournament','eTeams','eMeta','eResultBadge','cardEdit','amber');
+    if(!isNaN(selectedEdit)){
+      const row=allRows[selectedEdit];
+      const g=n=>{const i=ix(n);return i>=0?(row[i]||'').trim():'';};
+      // Pre-fill all edit fields
+      const outcomeEl=document.getElementById('eOutcome');
+      const val=g('Result');
+      for(let i=0;i<outcomeEl.options.length;i++){if(outcomeEl.options[i].value===val){outcomeEl.selectedIndex=i;break;}}
+      document.getElementById('eMargin').value=g('Details').includes('by')?'':'';
+      document.getElementById('eDetails').value=g('Details');
+      document.getElementById('eScorecard').value=g('ScorecardURL');
+      document.getElementById('eLive').value=g('YouTubeLive');
+      document.getElementById('eHighlights').value=g('YouTubeHighlights');
+    }
+  };
+}
+
+// COMPLETED, NO HIGHLIGHTS -> Add Highlights dropdown
+function populateHlDropdown(){
+  const needsHl=allRows.map((r,i)=>({r,i})).filter(({r})=>{
+    const res=(r[ix('result')]||'').trim().toLowerCase();
+    const hl=(r[ix('youtubehighlights')]||'').trim();
+    return res!==''&&res!=='upcoming'&&hl==='';
+  });
+  const sel=document.getElementById('selectHl');
+  sel.innerHTML='<option value="">-- Choose completed match --</option>';
+  if(!needsHl.length){showLoader('loaderHl','<span style="color:var(--gold)">All results already have highlights links.</span>');return;}
+  needsHl.forEach(({r,i})=>{
+    const o=document.createElement('option');o.value=i;
+    o.textContent=fmtDate(r[ix('date')]||'')+' '+(r[ix('hometeam')]||'')+' v '+(r[ix('awayteam')]||'')+' - '+(r[ix('result')]||'');
+    sel.appendChild(o);
+  });
+  document.getElementById('loaderHl').style.display='none';
+  sel.style.display='block';
+  sel.onchange=function(){
+    selectedHl=parseInt(this.value);
+    showPreview(selectedHl,'previewHl','hTournament','hTeams','hMeta','hResultBadge','cardHl','purple');
+    document.getElementById('hUrl').value='';
+  };
+}
+
+// SHOW PREVIEW
+function showPreview(idx,previewId,tourId,teamsId,metaId,badgeId,cardId,color){
+  const preview=document.getElementById(previewId);
+  const card=document.getElementById(cardId);
+  if(isNaN(idx)||idx<0){preview.classList.remove('visible');card.className=card.className.replace('unlocked','locked');return;}
+  const row=allRows[idx];
+  const g=n=>{const i=ix(n);return i>=0?(row[i]||'').trim():'';};
+  document.getElementById(tourId).textContent=g('Tournament');
+  document.getElementById(teamsId).innerHTML=g('HomeTeam')+'<span class="vs">v</span>'+g('AwayTeam');
+  const meta=document.getElementById(metaId);meta.innerHTML='';
+  if(g('Date'))  meta.innerHTML+='<span>'+fmtDate(g('Date'))+'</span>';
+  if(g('Venue')) meta.innerHTML+='<span>'+g('Venue')+'</span>';
+  if(badgeId){
+    const badge=document.getElementById(badgeId);
+    const res=g('Result');
+    if(res){const cls=res.toLowerCase()==='win'?'win':res.toLowerCase()==='loss'?'loss':'other';badge.innerHTML='<span class="prev-result '+cls+'">'+res.toUpperCase()+'</span>';}
+  }
   preview.classList.add('visible');
-  document.getElementById('scorecardUrl').value=g('ScorecardURL');
-  document.getElementById('youtubeLive').value=g('YouTubeLive');
-  document.getElementById('youtubeHighlights').value=g('YouTubeHighlights');
-  card.className='card unlocked';
+  card.className=card.className.replace('locked','unlocked');
 }
+
+// SUBMIT RESULT
+async function submitResult(){
+  const token=tokenInput.value.trim();
+  if(!token){showStatus('statusResult','error','Enter your GitHub token first.');return;}
+  if(isNaN(selectedResult)||selectedResult<0){showStatus('statusResult','error','Select a fixture first.');return;}
+  const outcome=document.getElementById('rOutcome').value;
+  const details=document.getElementById('rDetails').value.trim();
+  if(!outcome){showStatus('statusResult','error','Please select a match outcome.');return;}
+  if(!details){showStatus('statusResult','error','Please enter the full result details.');return;}
+  const row=[...allRows[selectedResult]];
+  const set=(n,v)=>{const i=ix(n);if(i>=0)row[i]=v;};
+  set('Result',outcome);set('Details',details);
+  const sc=document.getElementById('rScorecard').value.trim();
+  const lv=document.getElementById('rLive').value.trim();
+  const hl=document.getElementById('rHighlights').value.trim();
+  if(sc) set('ScorecardURL',sc);
+  if(lv) set('YouTubeLive',lv);
+  if(hl) set('YouTubeHighlights',hl);
+  allRows[selectedResult]=row;
+  const msg='Result: '+row[ix('hometeam')]+' v '+row[ix('awayteam')]+' - '+outcome;
+  await commitCSV(token,msg,'btnSubmitResult','statusResult',()=>{
+    document.getElementById('selectResult').value='';
+    document.getElementById('previewResult').classList.remove('visible');
+    document.getElementById('cardResult').className='card locked';
+    ['rOutcome','rMargin','rDetails','rScorecard','rLive','rHighlights'].forEach(id=>document.getElementById(id).value='');
+    selectedResult=-1;
+    populateResultDropdown();
+  });
+}
+
+// SUBMIT EDIT
+async function submitEdit(){
+  const token=tokenInput.value.trim();
+  if(!token){showStatus('statusEdit','error','Enter your GitHub token first.');return;}
+  if(isNaN(selectedEdit)||selectedEdit<0){showStatus('statusEdit','error','Select a match first.');return;}
+  const outcome=document.getElementById('eOutcome').value;
+  const details=document.getElementById('eDetails').value.trim();
+  if(!outcome){showStatus('statusEdit','error','Please select a match outcome.');return;}
+  if(!details){showStatus('statusEdit','error','Please enter the full result details.');return;}
+  const row=[...allRows[selectedEdit]];
+  const set=(n,v)=>{const i=ix(n);if(i>=0)row[i]=v;};
+  set('Result',outcome);set('Details',details);
+  set('ScorecardURL',document.getElementById('eScorecard').value.trim());
+  set('YouTubeLive',document.getElementById('eLive').value.trim());
+  set('YouTubeHighlights',document.getElementById('eHighlights').value.trim());
+  allRows[selectedEdit]=row;
+  const msg='Edit: '+row[ix('hometeam')]+' v '+row[ix('awayteam')]+' - '+outcome;
+  await commitCSV(token,msg,'btnSubmitEdit','statusEdit',()=>{
+    document.getElementById('selectEdit').value='';
+    document.getElementById('previewEdit').classList.remove('visible');
+    document.getElementById('cardEdit').className='card locked amber-border';
+    ['eOutcome','eMargin','eDetails','eScorecard','eLive','eHighlights'].forEach(id=>document.getElementById(id).value='');
+    selectedEdit=-1;
+    populateEditDropdown();
+    populateHlDropdown();
+  });
+}
+
+// SUBMIT HIGHLIGHTS
+async function submitHighlights(){
+  const token=tokenInput.value.trim();
+  if(!token){showStatus('statusHl','error','Enter your GitHub token first.');return;}
+  if(isNaN(selectedHl)||selectedHl<0){showStatus('statusHl','error','Select a match first.');return;}
+  const url=document.getElementById('hUrl').value.trim();
+  if(!url){showStatus('statusHl','error','Please paste a YouTube highlights URL.');return;}
+  if(!url.includes('youtube.com')&&!url.includes('youtu.be')){showStatus('statusHl','error','That does not look like a YouTube URL.');return;}
+  const row=[...allRows[selectedHl]];
+  const i=ix('youtubehighlights');if(i>=0)row[i]=url;
+  allRows[selectedHl]=row;
+  const msg='Highlights: '+row[ix('hometeam')]+' v '+row[ix('awayteam')];
+  await commitCSV(token,msg,'btnSubmitHl','statusHl',()=>{
+    document.getElementById('selectHl').value='';
+    document.getElementById('previewHl').classList.remove('visible');
+    document.getElementById('cardHl').className='card locked purple-border';
+    document.getElementById('hUrl').value='';
+    selectedHl=-1;
+    populateHlDropdown();
+  });
+}
+
+// COMMIT TO GITHUB
+async function commitCSV(token,message,btnId,statusId,onSuccess){
+  const btn=document.getElementById(btnId);
+  btn.disabled=true;
+  showStatus(statusId,'loading','Committing to GitHub...');
+  const newCSV=[buildLine(headers),...allRows.map(buildLine)].join('\n');
+  const encoded=btoa(unescape(encodeURIComponent(newCSV)));
+  try{
+    const res=await fetch('https://api.github.com/repos/'+OWNER+'/'+REPO+'/contents/'+FILE,{
+      method:'PUT',
+      headers:{Authorization:'token '+token,Accept:'application/vnd.github.v3+json','Content-Type':'application/json'},
+      body:JSON.stringify({message:message,content:encoded,sha:csvSha})
+    });
+    if(!res.ok){const e=await res.json();throw new Error(e.message||'Commit failed');}
+    const updated=await res.json();
+    csvSha=updated.content.sha;
+    showStatus(statusId,'success','Saved! '+message+' -- Site updates in ~30 seconds.');
+    setTimeout(()=>{btn.disabled=false;if(onSuccess)onSuccess();},3000);
+  }catch(e){
+    showStatus(statusId,'error','Error: '+e.message);
+    btn.disabled=false;
+  }
+}
+
+// HELPERS
 function fmtDate(s){if(!s)return'';const p=s.split(',');return p.length>=2?p[1].trim():s.trim();}
 function parseLine(line){const out=[];let cur='',inQ=false;for(let i=0;i<line.length;i++){const c=line[i];if(c==='"'){if(inQ&&line[i+1]==='"'){cur+='"';i++;}else inQ=!inQ;}else if(c===','&&!inQ){out.push(cur);cur='';}else cur+=c;}out.push(cur);return out;}
 function buildLine(fields){return fields.map(f=>{if(!f&&f!==0)return'';const s=String(f);return(s.includes(',')||s.includes('"')||s.includes('\n'))?'"'+s.replace(/"/g,'""')+'"':s;}).join(',');}
-async function submitResult(){
-  const token=tokenInput.value.trim();
-  if(!token){showStatus('error','⚠ Enter your GitHub token first.');return;}
-  if(selectedRowIndex<0){showStatus('error','⚠ Select a fixture first.');return;}
-  const outcome=document.getElementById('resultOutcome').value;
-  const details=document.getElementById('resultDetails').value.trim();
-  const scorecard=document.getElementById('scorecardUrl').value.trim();
-  const liveStream=document.getElementById('youtubeLive').value.trim();
-  const highlights=document.getElementById('youtubeHighlights').value.trim();
-  if(!outcome){showStatus('error','⚠ Please select a match outcome.');return;}
-  if(!details){showStatus('error','⚠ Please enter the full result details.');return;}
-  const row=[...allRows[selectedRowIndex]];
-  const set=(n,v)=>{const i=headers.findIndex(h=>h.toLowerCase().trim()===n.toLowerCase());if(i>=0)row[i]=v;};
-  set('Result',outcome);set('Details',details);
-  if(scorecard)set('ScorecardURL',scorecard);
-  if(liveStream)set('YouTubeLive',liveStream);
-  if(highlights)set('YouTubeHighlights',highlights);
-  allRows[selectedRowIndex]=row;
-  const newCSV=[buildLine(headers),...allRows.map(buildLine)].join('\n');
-  const encoded=btoa(unescape(encodeURIComponent(newCSV)));
-  const btn=document.getElementById('submitBtn');btn.disabled=true;
-  showStatus('loading','Committing to GitHub…');
-  const hi=headers.findIndex(h=>h.toLowerCase().trim()==='hometeam');
-  const ai=headers.findIndex(h=>h.toLowerCase().trim()==='awayteam');
-  const msg=`Result: ${row[hi]} v ${row[ai]} — ${outcome}`;
-  try{
-    const res=await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE}`,{method:'PUT',headers:{Authorization:`token ${token}`,Accept:'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify({message:msg,content:encoded,sha:csvSha})});
-    if(!res.ok){const e=await res.json();throw new Error(e.message||'Commit failed');}
-    const updated=await res.json();csvSha=updated.content.sha;
-    showStatus('success',`✓ Result saved!\n${msg}\n\nSite will update in ~30 seconds.`);
-    setTimeout(()=>{
-      document.getElementById('fixtureSelect').value='';
-      document.getElementById('fixturePreview').classList.remove('visible');
-      document.getElementById('resultCard').className='card locked';
-      ['resultOutcome','resultMargin','resultDetails','scorecardUrl','youtubeLive','youtubeHighlights'].forEach(id=>document.getElementById(id).value='');
-      selectedRowIndex=-1;btn.disabled=false;initLoad(token);
-    },4000);
-  }catch(e){showStatus('error','✗ '+e.message);btn.disabled=false;}
-}
-function showStatus(type,msg){const el=document.getElementById('statusMsg');el.className=`status-msg visible ${type}`;el.innerHTML=type==='loading'?`<div class="spinner"></div><span>${msg}</span>`:`<span>${msg.replace(/\n/g,'<br>')}</span>`;}
+function showStatus(id,type,msg){const el=document.getElementById(id);el.className='status-msg visible '+type;el.innerHTML=type==='loading'?'<div class="spinner"></div><span>'+msg+'</span>':'<span>'+msg+'</span>';}
 </script>
 </body>
 </html>
