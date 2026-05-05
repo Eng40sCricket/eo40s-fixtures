@@ -454,13 +454,13 @@
       var bc = badgeClass(m.Tournament);
 
       var venueHtml = m.Venue;
-      if (m.VenueMapURL) {
+      if (m.VenueMapURL && isUpcoming(m)) {
         venueHtml = '<a href="' + m.VenueMapURL + '" target="_blank" class="eo40-venue-link">' + m.Venue + '</a>';
       }
 
       var linksHtml = '<div class="eo40-links-cell">';
       if (m.ScorecardURL) linksHtml += '<a href="' + m.ScorecardURL + '" target="_blank" class="eo40-link">Scorecard</a>';
-      if (m.VenueMapURL) linksHtml += '<a href="' + m.VenueMapURL + '" target="_blank" class="eo40-link" style="color:rgba(180,200,225,0.7)">Map</a>';
+      if (m.VenueMapURL && isUpcoming(m)) linksHtml += '<a href="' + m.VenueMapURL + '" target="_blank" class="eo40-link" style="color:rgba(180,200,225,0.7)">Map</a>';
       if (m.YouTubeLive) linksHtml += '<a href="' + m.YouTubeLive + '" target="_blank" class="eo40-link eo40-link-yt">&#9654; Live</a>';
       if (m.YouTubeHighlights) linksHtml += '<a href="' + m.YouTubeHighlights + '" target="_blank" class="eo40-link eo40-link-yt">&#9654; Highlights</a>';
       linksHtml += '</div>';
